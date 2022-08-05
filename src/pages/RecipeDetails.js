@@ -25,22 +25,24 @@ function RecipeDetails() {
   };
 
   return (
-    <div className="RecipeDetails">
+    <div className="RecipeDetails" key={recipeId}>
       {recipe && (
         <>
           <h1>{recipe.title}</h1>
+          <p>{recipe.protein}</p>
+          <p>{recipe.serving}</p>
+          <p>Ingredients:</p>
+          {recipe &&
+            recipe?.ingredients?.map((ingredient) => (
+              <li className="Ingredients" key={ingredient.length}>
+                <h3>{ingredient[0].ingredient}</h3>
+                <p>{ingredient[0].quantity}</p>
+              </li>
+            ))}
+
           <p>{recipe.description}</p>
         </>
       )}
-
-      {recipe &&
-        recipe?.ingredients?.map((ingredient) => (
-          <li className="Ingredients">
-            <h3>{ingredient.ingredient}</h3>
-            <h4>Description:</h4>
-            <p>{ingredient.quantity}</p>
-          </li>
-        ))}
 
       <Link to={`/recipes/edit/${recipe?._id}`}>
         {/* an alternative is to rely on the projectId from useParams*/}

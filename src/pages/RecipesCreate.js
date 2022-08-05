@@ -8,9 +8,9 @@ function RecipesCreate(props) {
   const [description, setDescription] = useState("");
   const [serving, setServing] = useState("");
   const [protein, setProtein] = useState("");
-  const [ingredients, setIngredients] = useState([
-    { ingredient: "", quantity: "" },
-  ]);
+  const [ingredients, setIngredients] = useState([]);
+  const [inputIngredient, setInputIngredient] = useState("");
+  const [inputQuantity, setInputQuantity] = useState("");
 
   const [errorMsg, setErrorMsg] = useState("");
 
@@ -18,26 +18,32 @@ function RecipesCreate(props) {
 
   const navigate = useNavigate();
 
+  const handleAddButtonClick = () => {
+    const newIngredient = {
+      ingredient: inputIngredient,
+      quantity: inputQuantity,
+    };
+    const newIngredients = [...ingredients, newIngredient];
+    setIngredients(newIngredients);
+    setInputIngredient("");
+    setInputQuantity("");
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(protein);
 
     setErrorMsg("");
 
-    const requestBody = {
-      img,
-      title,
-      description,
-      serving,
-      protein,
-      ingredients,
-    };
-
     axios
-      .post(`${process.env.REACT_APP_API_URL}/recipes`, requestBody, {
-        headers: { Authorization: `Bearer ${storedToken}` },
-      })
+      .post(
+        `${process.env.REACT_APP_API_URL}/recipes`,
+        { img, title, description, serving, protein, ingredients },
+        {
+          headers: { Authorization: `Bearer ${storedToken}` },
+        }
+      )
       .then((response) => {
+        console.log("YAY");
         navigate("/recipes");
 
         setImg("");
@@ -45,7 +51,8 @@ function RecipesCreate(props) {
         setDescription("");
         setServing("");
         setProtein("");
-        setIngredients("");
+        setInputIngredient("");
+        setInputQuantity("");
       })
       .catch((error) => {
         setErrorMsg("oops, error creating a new project");
@@ -71,11 +78,12 @@ function RecipesCreate(props) {
 
         <div>
           <label>Title:</label>
-          <textarea
+          <input
             type="text"
             name="title"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
+            required
           />
         </div>
         <div>
@@ -127,33 +135,48 @@ function RecipesCreate(props) {
         </div>
         <div>
           <label>Serving:</label>
-          <textarea
-            type="quantity"
+          <input
+            type="number"
             name="serving"
             value={serving}
             onChange={(e) => setServing(e.target.value)}
           />
         </div>
         <div>
-          <label>Ingredients:</label>
-          <textarea
-            type="text"
-            name="ingredients"
-            value={ingredients}
-            onChange={(e) => setIngredients(e.target.value)}
-          />
           <label>Description:</label>
-        </div>
-        <div>
           <textarea
             type="text"
             name="description"
             value={description}
-            onChange={(e) => setTitle(e.target.value)}
+            onChange={(e) => setDescription(e.target.value)}
           />
         </div>
         <button type="submit">Submit</button>
       </form>
+      <div className="Input-value">
+        <label>Ingredient: </label>
+        <input
+          value={inputIngredient}
+          onChange={(e) => setInputIngredient(e.target.value)}
+          className="add-ingredients"
+        ></input>
+        <label>Quantity</label>
+        <input
+          value={inputQuantity}
+          onChange={(e) => setInputQuantity(e.target.value)}
+          className="add-quantity"
+        ></input>
+        <button onClick={() => handleAddButtonClick()}>Add</button>
+      </div>
+
+      {ingredients?.map((ingredient, index) => {
+        return (
+          <div className="ingredients-list" key={ingredients.length}>
+            <p className="ingredient">{ingredient.ingredient}</p>
+            <p className="quantity">{ingredient.quantity}</p>
+          </div>
+        );
+      })}
     </div>
   );
 }

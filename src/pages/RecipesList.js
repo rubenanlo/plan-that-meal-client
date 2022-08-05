@@ -26,15 +26,15 @@ function RecipesList() {
           <div className="ProjectCard card" key={recipe._id}>
             <Link to={`/recipes/${recipe._id}`}>
               <h3>{recipe.title}</h3>
-              <img src={recipe.title} alt="recipe" />
+              <img src={recipe.img} alt="recipe" />
               <p>{recipe.protein}</p>
               <p>{recipe.serving}</p>
-              {recipe?.ingredients?.map((ingredient) => {
+              {recipe.ingredients.map((ingredient) => {
                 return (
-                  <>
-                    <p>{ingredient.ingredient}</p>
-                    <p>{ingredient.quantity}</p>
-                  </>
+                  <div key={ingredient.length}>
+                    <p>{ingredient[0].ingredient}</p>
+                    <p>{ingredient[0].quantity}</p>
+                  </div>
                 );
               })}
               <p>{recipe.description}</p>
