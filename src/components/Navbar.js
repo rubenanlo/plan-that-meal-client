@@ -15,9 +15,9 @@ function Navbar() {
               <img src="../../2.png" alt="logo" />
             </NavLink>
             <NavLink to="/recipes">Recipes</NavLink>|
-            <NavLink to="/recipes">Create a Recipe</NavLink>|
-            <NavLink to="/plannings">Plannings</NavLink>|
-            <NavLink to="/plannings">Create a Planning</NavLink>|
+            <NavLink to="/recipes/create">Create a Recipe</NavLink>|
+            <NavLink to="/weeklyplans">Plannings</NavLink>|
+            <NavLink to="/weeklyplans/create">Create a Planning</NavLink>|
             <button onClick={logOutUser}>Logout</button> |
             <span> Hi, {user && user.username}</span>
           </>
