@@ -29,7 +29,7 @@ function LoginPage(props) {
         storeToken(response.data.authToken);
         authenticateUser();
 
-        navigate("/");
+        navigate("/Home");
       })
       .catch((error) => {
         const errorDescription = error.response.data.errorMessage;
@@ -61,8 +61,10 @@ function LoginPage(props) {
         <button type="submit">Login</button>
       </form>
 
-      <p>Don't have an account yet?</p>
-      <Link to={"/signup"}> Sign Up</Link>
+      <p>
+        You don't have an account yet? Please{" "}
+        <Link to={"/signup"}> Sign Up</Link> instead
+      </p>
     </div>
   );
 }
