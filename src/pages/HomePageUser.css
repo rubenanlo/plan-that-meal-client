@@ -1,0 +1,9 @@
+.homepage-links {
+  margin: 1rem;
+  text-decoration: none;
+}
+.homepage-link {
+  text-decoration: none;
+  color: white;
+  margin: .5rem 1rem;
+}

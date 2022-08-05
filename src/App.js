@@ -10,7 +10,7 @@ import PlanningsDetails from "./pages/PlanningsDetails";
 import PlanningsList from "./pages/PlanningsList";
 import RecipeDetails from "./pages/RecipeDetails";
 import RecipesCreate from "./pages/RecipesCreate";
-import RecipesUpdate from "./pages/RecipesUpdate";
+import RecipeUpdate from "./pages/RecipeUpdate";
 import RecipesList from "./pages/RecipesList";
 import SignupPage from "./pages/SignupPage";
 
@@ -27,7 +27,7 @@ function App() {
         <Route path="/recipes/:recipeId" element={<RecipeDetails />}></Route>
         <Route
           path="/recipes/edit/:recipeId"
-          element={<RecipesUpdate />}
+          element={<RecipeUpdate />}
         ></Route>
         <Route path="/recipes/create" element={<RecipesCreate />}></Route>
         <Route path="/weeklyplans" element={<PlanningsList />}></Route>

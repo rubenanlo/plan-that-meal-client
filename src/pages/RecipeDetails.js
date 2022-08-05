@@ -9,10 +9,10 @@ function RecipeDetails() {
   const { recipeId } = useParams();
 
   useEffect(() => {
-    getProject();
+    getRecipe();
   }, []);
 
-  const getProject = () => {
+  const getRecipe = () => {
     axios
       .get(`${process.env.REACT_APP_API_URL}/recipes/${recipeId}`, {
         headers: { Authorization: `Bearer ${storedToken}` },
@@ -45,7 +45,6 @@ function RecipeDetails() {
       )}
 
       <Link to={`/recipes/edit/${recipe?._id}`}>
-        {/* an alternative is to rely on the projectId from useParams*/}
         <button>Edit</button>
       </Link>
       <Link to="/recipes">

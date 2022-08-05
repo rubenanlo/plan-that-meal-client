@@ -1,0 +1,16 @@
+.footer {
+  position:absolute;
+  bottom:0;
+  width:95%;
+  display:flex;
+  justify-content: space-between;
+  color: white;
+  margin-left: 1rem;
+  font-size: .6rem;
+  /* margin-right: 1rem;; */
+}
+
+.icon-footer {
+  width: 1.2rem;
+  margin: .4rem;
+}

@@ -1,0 +1,41 @@
+.logo {
+  width: 2rem;
+  border-radius: 3rem;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header {
+  margin: 1rem;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}
+
+.link {
+  text-decoration: none;
+  color: black;
+  margin-left: .5rem;
+}
+
+.theme {
+  border: none;
+  border-radius: 3rem;
+  background-color: transparent;
+  color: white;
+}
+
+button {
+  background-color: #A2373B;
+  color: white;
+  border: none;
+  border-radius: 3rem;
+  text-decoration: none;
+  padding: .5rem 1rem;
+}
+
+

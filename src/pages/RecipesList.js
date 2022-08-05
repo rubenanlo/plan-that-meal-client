@@ -6,7 +6,7 @@ function RecipesList() {
   const [recipes, setRecipes] = useState([]);
   const storedToken = localStorage.getItem("authToken");
 
-  const getAllProjects = () => {
+  const getAllRecipes = () => {
     axios
       .get(`${process.env.REACT_APP_API_URL}/recipes`, {
         headers: { Authorization: `Bearer ${storedToken}` },
@@ -16,14 +16,14 @@ function RecipesList() {
   };
 
   useEffect(() => {
-    getAllProjects();
+    getAllRecipes();
   }, []);
 
   return (
     <div className="RecipeListPage">
       {recipes?.map((recipe) => {
         return (
-          <div className="ProjectCard card" key={recipe._id}>
+          <div className="RecipeCard card" key={recipe._id}>
             <Link to={`/recipes/${recipe._id}`}>
               <h3>{recipe.title}</h3>
               <img src={recipe.img} alt="recipe" />

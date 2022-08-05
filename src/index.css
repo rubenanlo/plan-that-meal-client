@@ -5,6 +5,14 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: url('../public/homepage7.jpeg');
+  background-size: cover;
+  /* background-position-x: center; */
+  background-repeat: no-repeat;
+  background-repeat: no-repeat;
+  background-size: auto 100%;
+  background-position: center top;
+  background-attachment: fixed;
 }
 
 code {

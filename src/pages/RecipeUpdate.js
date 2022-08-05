@@ -1,8 +1,8 @@
 import axios from "axios";
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 
-function RecipesCreate(props) {
+function RecipeUpdate() {
   const [img, setImg] = useState("");
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -12,11 +12,13 @@ function RecipesCreate(props) {
   const [inputIngredient, setInputIngredient] = useState("");
   const [inputQuantity, setInputQuantity] = useState("");
 
+  const navigate = useNavigate();
+
+  const { recipeId } = useParams();
+
   const [errorMsg, setErrorMsg] = useState("");
 
   const storedToken = localStorage.getItem("authToken");
-
-  const navigate = useNavigate();
 
   const handleAddButtonClick = () => {
     const newIngredient = {
@@ -29,14 +31,30 @@ function RecipesCreate(props) {
     setInputQuantity("");
   };
 
+  useEffect(() => {
+    axios
+      .get(`${process.env.REACT_APP_API_URL}/recipes/${recipeId}`)
+      .then((response) => {
+        setImg(response.data.img);
+        setTitle(response.data.title);
+        setServing(response.data.serving);
+        setProtein(response.data.protein);
+        setIngredients(response.data.ingredients);
+        setInputIngredient(response.data.ingredients[0].ingredient);
+        setInputQuantity(response.data.ingredients[0].quantity);
+        setDescription(response.data.description);
+      })
+      .catch((error) => console.log(error));
+  }, [recipeId]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
     setErrorMsg("");
 
     axios
-      .post(
-        `${process.env.REACT_APP_API_URL}/recipes`,
+      .put(
+        `${process.env.REACT_APP_API_URL}/recipes${recipeId}`,
         { img, title, description, serving, protein, ingredients },
         {
           headers: { Authorization: `Bearer ${storedToken}` },
@@ -44,25 +62,17 @@ function RecipesCreate(props) {
       )
       .then((response) => {
         console.log("YAY");
-        navigate("/recipes");
-
-        setImg("");
-        setTitle("");
-        setDescription("");
-        setServing("");
-        setProtein("");
-        setInputIngredient("");
-        setInputQuantity("");
+        navigate(`/recipes/${recipeId}`);
       })
       .catch((error) => {
-        setErrorMsg("oops, error creating a new recipe");
+        setErrorMsg("oops, error editing this recipe");
         console.log(error);
       });
   };
 
   return (
     <div className="AddRecipe">
-      <h1>Create your recipe</h1>
+      <h1>Update this recipe</h1>
       {errorMsg && <p className="error">{errorMsg}</p>}
 
       <form onSubmit={handleSubmit} encType="multipart/form-data">
@@ -181,4 +191,4 @@ function RecipesCreate(props) {
   );
 }
 
-export default RecipesCreate;
+export default RecipeUpdate;
