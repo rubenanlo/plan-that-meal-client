@@ -10,7 +10,7 @@ body {
   /* background-position-x: center; */
   background-repeat: no-repeat;
   background-repeat: no-repeat;
-  background-size: 100% auto;
+  background-size: auto 60rem;
   background-position: center top;
   background-attachment: fixed;
 }

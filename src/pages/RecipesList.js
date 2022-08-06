@@ -31,7 +31,7 @@ function RecipesList() {
               <p>{recipe.serving}</p>
               {recipe.ingredients[0].map((ingredient) => {
                 return (
-                  <div key={ingredient.length}>
+                  <div key={ingredient.id}>
                     <p>
                       {ingredient.quantity} {ingredient.ingredient}
                     </p>

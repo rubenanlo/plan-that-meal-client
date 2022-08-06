@@ -10,6 +10,7 @@ import PlanningsDetails from "./pages/PlanningsDetails";
 import PlanningsList from "./pages/PlanningsList";
 import RecipeDetails from "./pages/RecipeDetails";
 import RecipesCreate from "./pages/RecipesCreate";
+import RecipesCreateCopy from "./pages/RecipesCreateCopy";
 import RecipeUpdate from "./pages/RecipeUpdate";
 import RecipesList from "./pages/RecipesList";
 import SignupPage from "./pages/SignupPage";

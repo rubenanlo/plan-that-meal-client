@@ -11,10 +11,11 @@ function RecipeUpdate() {
   const [ingredients, setIngredients] = useState([]);
   const [inputIngredient, setInputIngredient] = useState("");
   const [inputQuantity, setInputQuantity] = useState("");
-
-  const navigate = useNavigate();
+  const [newInputIngredient, setNewInputIngredient] = useState("");
+  const [newInputQuantity, setNewInputQuantity] = useState("");
 
   const { recipeId } = useParams();
+  const navigate = useNavigate();
 
   const [errorMsg, setErrorMsg] = useState("");
 
@@ -22,18 +23,20 @@ function RecipeUpdate() {
 
   const handleAddButtonClick = () => {
     const newIngredient = {
-      ingredient: inputIngredient,
-      quantity: inputQuantity,
+      ingredient: newInputIngredient,
+      quantity: newInputQuantity,
     };
     const newIngredients = [...ingredients, newIngredient];
     setIngredients(newIngredients);
-    setInputIngredient("");
-    setInputQuantity("");
+    setNewInputIngredient("");
+    setNewInputQuantity("");
   };
 
   useEffect(() => {
     axios
-      .get(`${process.env.REACT_APP_API_URL}/recipes/${recipeId}`)
+      .get(`${process.env.REACT_APP_API_URL}/recipes/${recipeId}`, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      })
       .then((response) => {
         setImg(response.data.img);
         setTitle(response.data.title);
@@ -84,6 +87,28 @@ function RecipeUpdate() {
             value={img}
             onChange={(e) => setImg(e.target.value)}
           />
+        </div>
+
+        <div>
+          <label>Ingredient/s:</label>
+          {ingredients[0]?.map((element) => {
+            return (
+              <div>
+                <input
+                  type="text"
+                  name="ingredient"
+                  value={inputIngredient}
+                  onChange={(e) => setInputIngredient(e.target.value)}
+                />
+                <input
+                  type="text"
+                  name="ingredient"
+                  value={element.quantity}
+                  onChange={(e) => setInputQuantity(e.target.value)}
+                />
+              </div>
+            );
+          })}
         </div>
 
         <div>
@@ -166,24 +191,28 @@ function RecipeUpdate() {
       <div className="Input-value">
         <label>Ingredient: </label>
         <input
-          value={inputIngredient}
-          onChange={(e) => setInputIngredient(e.target.value)}
+          value={newInputIngredient}
+          onChange={(e) => setNewInputIngredient(e.target.value)}
           className="add-ingredients"
         ></input>
         <label>Quantity</label>
         <input
-          value={inputQuantity}
-          onChange={(e) => setInputQuantity(e.target.value)}
+          value={newInputQuantity}
+          onChange={(e) => setNewInputQuantity(e.target.value)}
           className="add-quantity"
         ></input>
+        <span>gr</span>
         <button onClick={() => handleAddButtonClick()}>Add</button>
       </div>
 
       {ingredients?.map((ingredient, index) => {
         return (
-          <div className="ingredients-list" key={ingredients.length}>
-            <p className="ingredient">{ingredient.ingredient}</p>
-            <p className="quantity">{ingredient.quantity}</p>
+          <div>
+            <div className="ingredients-list">
+              <p>
+                {ingredient.quantity} {ingredient.ingredient}
+              </p>
+            </div>
           </div>
         );
       })}

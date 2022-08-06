@@ -10,8 +10,6 @@ function RecipesCreate(props) {
   const [serving, setServing] = useState("");
   const [protein, setProtein] = useState("");
   const [ingredients, setIngredients] = useState([]);
-  const [inputIngredient, setInputIngredient] = useState("");
-  const [inputQuantity, setInputQuantity] = useState("");
 
   const [errorMsg, setErrorMsg] = useState("");
 
@@ -19,21 +17,14 @@ function RecipesCreate(props) {
 
   const navigate = useNavigate();
 
-  const handleAddButtonClick = () => {
-    const newIngredient = {
-      id: nanoid(),
-      ingredient: inputIngredient,
-      quantity: inputQuantity,
-    };
-    setIngredients([...ingredients, newIngredient]);
-    setInputIngredient("");
-    setInputQuantity("");
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
 
     setErrorMsg("");
+
+    if (ingredients.ingredient == "") {
+      <p>Please add at least one ingredient</p>;
+    }
 
     axios
       .post(
@@ -152,34 +143,64 @@ function RecipesCreate(props) {
         </div>
         <button type="submit">Submit</button>
       </form>
-      <div className="Input-value">
-        <label>Ingredient: </label>
-        <input
-          className="add-ingredients"
-          value={inputIngredient}
-          onChange={(e) => setInputIngredient(e.target.value)}
-        ></input>
-        <label>Quantity</label>
-        <input
-          className="add-quantity"
-          value={inputQuantity}
-          onChange={(e) => setInputQuantity(e.target.value)}
-        />
-        <span>gr</span>
-        <button onClick={() => handleAddButtonClick()}>Add</button>
-      </div>
-
-      {ingredients.map((ingredient, index) => {
-        return (
-          <div key={ingredient.id}>
-            <div className="ingredients-list" key={ingredients.length}>
-              <p>
-                {ingredient.quantity} gr. {ingredient.ingredient}
-              </p>
+      <div className="addIngredient">
+        <button
+          onClick={() => {
+            setIngredients((currentIngredients) => [
+              ...currentIngredients,
+              {
+                id: nanoid(),
+                ingredient: "",
+                quantity: "",
+              },
+            ]);
+          }}
+        >
+          Add new ingredient
+        </button>
+        {ingredients.map((element) => {
+          return (
+            <div key={element.id}>
+              <input
+                required
+                onChange={(e) => {
+                  const ingredient = e.target.value;
+                  setIngredients((currentIngredients) =>
+                    currentIngredients.map((x) =>
+                      x.id === element.id ? { ...x, ingredient } : x
+                    )
+                  );
+                }}
+                value={element.ingredient}
+                placeholder="ingredient"
+              />
+              <input
+                required
+                onChange={(e) => {
+                  const quantity = e.target.value;
+                  setIngredients((currentIngredients) =>
+                    currentIngredients.map((x) =>
+                      x.id === element.id ? { ...x, quantity } : x
+                    )
+                  );
+                }}
+                value={element.quantity}
+                placeholder="quantity"
+              />
+              <button
+                onClick={() => {
+                  setIngredients((currentIngredients) =>
+                    currentIngredients.filter((x) => x.id !== element.id)
+                  );
+                }}
+              >
+                x
+              </button>
             </div>
-          </div>
-        );
-      })}
+          );
+        })}
+      </div>
+      <div>{console.log(ingredients)}</div>
     </div>
   );
 }
