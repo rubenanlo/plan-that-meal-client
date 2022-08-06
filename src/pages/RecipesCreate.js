@@ -51,8 +51,6 @@ function RecipesCreate(props) {
         setDescription("");
         setServing("");
         setProtein("");
-        setInputIngredient("");
-        setInputQuantity("");
       })
       .catch((error) => {
         setErrorMsg("oops, error creating a new recipe");
@@ -156,24 +154,28 @@ function RecipesCreate(props) {
       <div className="Input-value">
         <label>Ingredient: </label>
         <input
+          className="add-ingredients"
           value={inputIngredient}
           onChange={(e) => setInputIngredient(e.target.value)}
-          className="add-ingredients"
         ></input>
         <label>Quantity</label>
         <input
+          className="add-quantity"
           value={inputQuantity}
           onChange={(e) => setInputQuantity(e.target.value)}
-          className="add-quantity"
         ></input>
         <button onClick={() => handleAddButtonClick()}>Add</button>
       </div>
 
-      {ingredients?.map((ingredient, index) => {
+      {ingredients.map((ingredient, index) => {
         return (
-          <div className="ingredients-list" key={ingredients.length}>
-            <p className="ingredient">{ingredient.ingredient}</p>
-            <p className="quantity">{ingredient.quantity}</p>
+          <div>
+            <div className="ingredients-list" key={ingredients.length}>
+              <p className="ingredient">
+                {ingredient.ingredient} {index}
+              </p>
+              <p className="quantity">{ingredient.quantity}</p>
+            </div>
           </div>
         );
       })}

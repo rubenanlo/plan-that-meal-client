@@ -29,11 +29,12 @@ function RecipesList() {
               <img src={recipe.img} alt="recipe" />
               <p>{recipe.protein}</p>
               <p>{recipe.serving}</p>
-              {recipe.ingredients.map((ingredient) => {
+              {recipe.ingredients[0].map((ingredient) => {
                 return (
                   <div key={ingredient.length}>
-                    <p>{ingredient[0].ingredient}</p>
-                    <p>{ingredient[0].quantity}</p>
+                    <p>
+                      {ingredient.quantity} {ingredient.ingredient}
+                    </p>
                   </div>
                 );
               })}
