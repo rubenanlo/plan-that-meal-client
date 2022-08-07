@@ -1,4 +1,5 @@
 import axios from "axios";
+import moment from "moment";
 import React, { useEffect, useState } from "react";
 
 function PlanningsList() {
@@ -19,21 +20,22 @@ function PlanningsList() {
     <div>
       {weeklyPlans?.map((weeklyPlan) => {
         return (
-          <div
-            style={{
-              backgroundImage: `url(${
-                background[Math.floor(Math.random() * background.length)]
-              })`,
-              backgroundRepeat: "no-repeat",
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-            }}
-            key={weeklyPlan._id}
-          >
-            <h3>{weeklyPlan.startDate}</h3>
-            <h1>{weeklyPlan.mealType}</h1>
-            <h1>{weeklyPlan.weeklyRecipes}</h1>
-          </div>
+          <a href={`/weeklyplans/${weeklyPlan._id}`} key={weeklyPlan._id}>
+            <div
+              style={{
+                backgroundImage: `url(${
+                  background[Math.floor(Math.random() * background.length)]
+                })`,
+                backgroundRepeat: "no-repeat",
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+              }}
+            >
+              <h3>
+                {moment(weeklyPlan.startDate).format("dddd, DD MMMM YYYY")}
+              </h3>
+            </div>
+          </a>
         );
       })}
     </div>
