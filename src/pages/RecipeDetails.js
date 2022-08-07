@@ -9,10 +9,6 @@ function RecipeDetails() {
   const { recipeId } = useParams();
 
   useEffect(() => {
-    getRecipe();
-  }, []);
-
-  const getRecipe = () => {
     axios
       .get(`${process.env.REACT_APP_API_URL}/recipes/${recipeId}`, {
         headers: { Authorization: `Bearer ${storedToken}` },
@@ -22,19 +18,20 @@ function RecipeDetails() {
         setRecipe(oneRecipe);
       })
       .catch((error) => console.log(error));
-  };
+  }, [recipeId, storedToken]);
 
   return (
     <div className="RecipeDetails" key={recipeId}>
       {recipe && (
         <>
+          <img src={recipe.img} alt="dish" />
           <h1>{recipe.title}</h1>
           <p>{recipe.protein}</p>
           <p>{recipe.serving}</p>
           <p>Ingredients:</p>
           {recipe &&
             recipe?.ingredients.map((ingredient) => (
-              <li className="Ingredients" key={ingredient.length}>
+              <li className="Ingredients" key={ingredient.id}>
                 <p>
                   {ingredient.quantity} gr {ingredient.ingredient}
                 </p>

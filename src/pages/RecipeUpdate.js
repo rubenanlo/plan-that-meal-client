@@ -49,7 +49,7 @@ function RecipesUpdate(props) {
         setIngredients(oneRecipe.ingredients);
       })
       .catch((error) => console.log(error));
-  }, [recipeId]);
+  }, [recipeId, storedToken]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -84,7 +84,6 @@ function RecipesUpdate(props) {
           <input
             type="file"
             name="img"
-            value={img}
             onChange={(e) => setImg(e.target.value)}
           />
         </div>

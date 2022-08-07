@@ -11,20 +11,6 @@ function HomePageUser() {
         option you want.
       </p>
       <div>
-        <button className="homepage-links">
-          <NavLink className="homepage-link" to="/weeklyplans/create">
-            Create a weekly meal plan
-          </NavLink>
-        </button>
-      </div>
-      <div>
-        <button>
-          <NavLink className="homepage-link" to="/weeklyplans">
-            View your weekly meal plans
-          </NavLink>
-        </button>
-      </div>
-      <div>
         <button>
           <NavLink className="homepage-link" to="/recipes/create">
             Create a recipe
@@ -35,6 +21,21 @@ function HomePageUser() {
         <button>
           <NavLink className="homepage-link" to="/recipes">
             View all recipes
+          </NavLink>
+        </button>
+      </div>
+
+      <div>
+        <button className="homepage-links">
+          <NavLink className="homepage-link" to="/weeklyplans/create">
+            Create a weekly meal plan
+          </NavLink>
+        </button>
+      </div>
+      <div>
+        <button>
+          <NavLink className="homepage-link" to="/weeklyplans">
+            View your weekly meal plans
           </NavLink>
         </button>
       </div>

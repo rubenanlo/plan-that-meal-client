@@ -6,18 +6,14 @@ function RecipesList() {
   const [recipes, setRecipes] = useState([]);
   const storedToken = localStorage.getItem("authToken");
 
-  const getAllRecipes = () => {
+  useEffect(() => {
     axios
       .get(`${process.env.REACT_APP_API_URL}/recipes`, {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
       .then((response) => setRecipes(response.data))
       .catch((error) => console.log(error));
-  };
-
-  useEffect(() => {
-    getAllRecipes();
-  }, []);
+  }, [storedToken]);
 
   return (
     <div className="RecipeListPage wrapper">
