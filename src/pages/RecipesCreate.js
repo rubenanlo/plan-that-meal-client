@@ -32,7 +32,6 @@ function RecipesCreate(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     setErrorMsg("");
 
     axios
@@ -44,7 +43,6 @@ function RecipesCreate(props) {
         }
       )
       .then((response) => {
-        console.log("YAY");
         navigate("/recipes");
 
         setImg("");
@@ -63,6 +61,7 @@ function RecipesCreate(props) {
     <div className="AddRecipe">
       <h1>Create your recipe</h1>
       {errorMsg && <p className="error">{errorMsg}</p>}
+      <span>(*) required fields</span>
 
       <form onSubmit={handleSubmit} encType="multipart/form-data">
         <div>
@@ -76,7 +75,7 @@ function RecipesCreate(props) {
         </div>
 
         <div>
-          <label>Title:</label>
+          <label>Title:(*)</label>
           <input
             type="text"
             name="title"
@@ -86,13 +85,13 @@ function RecipesCreate(props) {
           />
         </div>
         <div>
-          <label>Main protein:</label>
+          <label>Main protein:(*)</label>
           <div>
             <button
               type="button"
               name="protein"
               value={protein}
-              onClick={(e) => setProtein(e.target.value)}
+              onClick={() => setProtein("Meat")}
             >
               Meat
             </button>
@@ -100,7 +99,7 @@ function RecipesCreate(props) {
               name="protein"
               type="button"
               value={protein}
-              onClick={(e) => setProtein(e.target.value)}
+              onClick={() => setProtein("Fish")}
             >
               Fish
             </button>
@@ -109,16 +108,16 @@ function RecipesCreate(props) {
             <button
               name="protein"
               type="button"
-              value="Eggs"
-              onClick={(e) => setProtein(e.target.value)}
+              value={protein}
+              onClick={() => setProtein("Eggs")}
             >
               Eggs
             </button>
             <button
               name="protein"
               type="button"
-              value="Legumes"
-              onClick={(e) => setProtein(e.target.value)}
+              value={protein}
+              onClick={() => setProtein("Legumes")}
             >
               Legumes
             </button>
@@ -126,8 +125,8 @@ function RecipesCreate(props) {
           <button
             name="protein"
             type="button"
-            value="Seeds and nuts"
-            onClick={(e) => setProtein(e.target.value)}
+            value={protein}
+            onClick={() => setProtein("Seeds and nuts")}
           >
             Seeds and nuts
           </button>
@@ -142,8 +141,9 @@ function RecipesCreate(props) {
           />
         </div>
         <div>
-          <label>Description:</label>
+          <label>Description:(*)</label>
           <textarea
+            required
             type="text"
             name="description"
             value={description}
@@ -172,11 +172,19 @@ function RecipesCreate(props) {
       {ingredients.map((ingredient, index) => {
         return (
           <div key={ingredient.id}>
-            <div className="ingredients-list" key={ingredients.length}>
-              <p>
-                {ingredient.quantity} gr. {ingredient.ingredient}
-              </p>
-            </div>
+            <p>
+              {ingredient.quantity} gr. {ingredient.ingredient}
+            </p>
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                setIngredients(
+                  ingredients.filter((x) => x.id !== ingredient.id)
+                );
+              }}
+            >
+              x
+            </button>
           </div>
         );
       })}

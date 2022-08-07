@@ -33,7 +33,7 @@ function RecipeDetails() {
           <p>{recipe.serving}</p>
           <p>Ingredients:</p>
           {recipe &&
-            recipe?.ingredients[0].map((ingredient) => (
+            recipe?.ingredients.map((ingredient) => (
               <li className="Ingredients" key={ingredient.length}>
                 <p>
                   {ingredient.quantity} {ingredient.ingredient}
