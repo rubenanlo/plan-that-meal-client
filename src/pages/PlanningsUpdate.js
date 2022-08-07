@@ -1,14 +1,12 @@
 import axios from "axios";
 import moment from "moment";
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 function PlanningsDetails() {
   const [weeklyPlan, setWeeklyPlan] = useState("");
   const storedToken = localStorage.getItem("authToken");
   const { weeklyPlanId } = useParams();
-
-  const navigate = useNavigate();
 
   useEffect(() => {
     axios
@@ -29,102 +27,70 @@ function PlanningsDetails() {
           <div>
             <h2>{moment(weeklyPlan.startDate).format("dddd")}</h2>
             <h3>Lunch</h3>
-            <Link to={`/recipes/${weeklyPlan.mealRecipe11._id}`}>
-              <p>{weeklyPlan.mealRecipe11.title}</p>
-            </Link>
+            <p>{weeklyPlan.mealRecipe11.title}</p>
             <h3>Dinner</h3>
-            <Link to={`/recipes/${weeklyPlan.mealRecipe12._id}`}>
-              <p>{weeklyPlan.mealRecipe12.title}</p>
-            </Link>
+            <p>{weeklyPlan.mealRecipe12.title}</p>
           </div>
           <div>
             <h2>
               {moment(weeklyPlan.startDate).add(1, "days").format("dddd")}
             </h2>
             <h3>Lunch</h3>
-            <Link to={`/recipes/${weeklyPlan.mealRecipe21._id}`}>
-              <p>{weeklyPlan.mealRecipe21.title}</p>
-            </Link>
+            <p>{weeklyPlan.mealRecipe21.title}</p>
             <h3>Dinner</h3>
-            <Link to={`/recipes/${weeklyPlan.mealRecipe22._id}`}>
-              <p>{weeklyPlan.mealRecipe22.title}</p>
-            </Link>
+            <p>{weeklyPlan.mealRecipe22.title}</p>
           </div>
           <div>
             <h2>
               {moment(weeklyPlan.startDate).add(2, "days").format("dddd")}
             </h2>
             <h3>Lunch</h3>
-            <Link to={`/recipes/${weeklyPlan.mealRecipe31._id}`}>
-              <p>{weeklyPlan.mealRecipe31.title}</p>
-            </Link>
+            <p>{weeklyPlan.mealRecipe31.title}</p>
             <h3>Dinner</h3>
-            <Link to={`/recipes/${weeklyPlan.mealRecipe32._id}`}>
-              <p>{weeklyPlan.mealRecipe32.title}</p>
-            </Link>
+            <p>{weeklyPlan.mealRecipe32.title}</p>
           </div>
           <div>
             <h2>
               {moment(weeklyPlan.startDate).add(3, "days").format("dddd")}
             </h2>
             <h3>Lunch</h3>
-            <Link to={`/recipes/${weeklyPlan.mealRecipe41._id}`}>
-              <p>{weeklyPlan.mealRecipe41.title}</p>
-            </Link>
+            <p>{weeklyPlan.mealRecipe41.title}</p>
             <h3>Dinner</h3>
-            <Link to={`/recipes/${weeklyPlan.mealRecipe42._id}`}>
-              <p>{weeklyPlan.mealRecipe42.title}</p>
-            </Link>
+            <p>{weeklyPlan.mealRecipe42.title}</p>
           </div>
           <div>
             <h2>
               {moment(weeklyPlan.startDate).add(4, "days").format("dddd")}
             </h2>
             <h3>Lunch</h3>
-            <Link to={`/recipes/${weeklyPlan.mealRecipe51._id}`}>
-              <p>{weeklyPlan.mealRecipe51.title}</p>
-            </Link>
+            <p>{weeklyPlan.mealRecipe51.title}</p>
             <h3>Dinner</h3>
-            <Link to={`/recipes/${weeklyPlan.mealRecipe52._id}`}>
-              <p>{weeklyPlan.mealRecipe52.title}</p>
-            </Link>
+            <p>{weeklyPlan.mealRecipe52.title}</p>
           </div>
           <div>
             <h2>
               {moment(weeklyPlan.startDate).add(5, "days").format("dddd")}
             </h2>
             <h3>Lunch</h3>
-            <Link to={`/recipes/${weeklyPlan.mealRecipe61._id}`}>
-              <p>{weeklyPlan.mealRecipe61.title}</p>
-            </Link>
+            <p>{weeklyPlan.mealRecipe61.title}</p>
             <h3>Dinner</h3>
-            <Link to={`/recipes/${weeklyPlan.mealRecipe62._id}`}>
-              <p>{weeklyPlan.mealRecipe62.title}</p>
-            </Link>
+            <p>{weeklyPlan.mealRecipe62.title}</p>
           </div>
           <div>
             <h2>
               {moment(weeklyPlan.startDate).add(6, "days").format("dddd")}
             </h2>
             <h3>Lunch</h3>
-            <Link to={`/recipes/${weeklyPlan.mealRecipe71._id}`}>
-              <p>{weeklyPlan.mealRecipe71.title}</p>
-            </Link>
+            <p>{weeklyPlan.mealRecipe71.title}</p>
             <h3>Dinner</h3>
-            <Link to={`/recipes/${weeklyPlan.mealRecipe72._id}`}>
-              <p>{weeklyPlan.mealRecipe72.title}</p>
-            </Link>
+            <p>{weeklyPlan.mealRecipe72.title}</p>
           </div>
           <Link to={`/weeklyplans/edit/${weeklyPlan?._id}`}>
             <button>Edit</button>
           </Link>
-          <button
-            onClick={() => {
-              navigate(-1);
-            }}
-          >
-            Back to weekly plans
-          </button>
+          <Link to="/weeklyplans">
+            <button>Back to weekly plans</button>
+          </Link>
         </>
       )}
     </div>

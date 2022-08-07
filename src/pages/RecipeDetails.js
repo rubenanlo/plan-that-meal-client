@@ -1,12 +1,14 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 function RecipeDetails() {
   const [recipe, setRecipe] = useState(null);
   const storedToken = localStorage.getItem("authToken");
 
   const { recipeId } = useParams();
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios
@@ -45,9 +47,7 @@ function RecipeDetails() {
       <Link to={`/recipes/edit/${recipe?._id}`}>
         <button>Edit</button>
       </Link>
-      <Link to="/recipes">
-        <button>Back to recipes</button>
-      </Link>
+      <button onClick={() => navigate(-1)}>Back</button>
     </div>
   );
 }

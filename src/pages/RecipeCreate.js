@@ -189,6 +189,13 @@ function RecipeCreate(props) {
           </div>
         );
       })}
+      <button
+        onClick={() => {
+          navigate(-1);
+        }}
+      >
+        Back
+      </button>
     </div>
   );
 }
