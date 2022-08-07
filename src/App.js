@@ -9,8 +9,7 @@ import PlanningsCreate from "./pages/PlanningsCreate";
 import PlanningsDetails from "./pages/PlanningsDetails";
 import PlanningsList from "./pages/PlanningsList";
 import RecipeDetails from "./pages/RecipeDetails";
-import RecipesCreate from "./pages/RecipesCreate";
-import RecipesCreateCopy from "./pages/RecipesCreateCopy";
+import RecipeCreate from "./pages/RecipeCreate";
 import RecipeUpdate from "./pages/RecipeUpdate";
 import RecipesList from "./pages/RecipesList";
 import SignupPage from "./pages/SignupPage";
@@ -30,7 +29,7 @@ function App() {
           path="/recipes/edit/:recipeId"
           element={<RecipeUpdate />}
         ></Route>
-        <Route path="/recipes/create" element={<RecipesCreate />}></Route>
+        <Route path="/recipes/create" element={<RecipeCreate />}></Route>
         <Route path="/weeklyplans" element={<PlanningsList />}></Route>
         <Route
           path="/weeklyplans/:weeklyPlanId"

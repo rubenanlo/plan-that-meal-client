@@ -20,7 +20,7 @@ function RecipesList() {
   }, []);
 
   return (
-    <div className="RecipeListPage">
+    <div className="RecipeListPage wrapper">
       {recipes?.map((recipe) => {
         return (
           <div className="RecipeCard card" key={recipe._id}>

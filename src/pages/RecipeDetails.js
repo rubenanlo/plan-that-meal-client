@@ -36,7 +36,7 @@ function RecipeDetails() {
             recipe?.ingredients.map((ingredient) => (
               <li className="Ingredients" key={ingredient.length}>
                 <p>
-                  {ingredient.quantity} {ingredient.ingredient}
+                  {ingredient.quantity} gr {ingredient.ingredient}
                 </p>
               </li>
             ))}

@@ -3,13 +3,15 @@ import { nanoid } from "nanoid";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-function RecipesCreate(props) {
+function RecipeCreate(props) {
   const [img, setImg] = useState("");
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [serving, setServing] = useState("");
   const [protein, setProtein] = useState("");
   const [ingredients, setIngredients] = useState([]);
+  const [inputIngredient, setInputIngredient] = useState("");
+  const [inputQuantity, setInputQuantity] = useState("");
 
   const [errorMsg, setErrorMsg] = useState("");
 
@@ -17,14 +19,20 @@ function RecipesCreate(props) {
 
   const navigate = useNavigate();
 
+  const handleAddButtonClick = () => {
+    const newIngredient = {
+      id: nanoid(),
+      ingredient: inputIngredient,
+      quantity: inputQuantity,
+    };
+    setIngredients([...ingredients, newIngredient]);
+    setInputIngredient("");
+    setInputQuantity("");
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-
     setErrorMsg("");
-
-    if (ingredients.ingredient == "") {
-      <p>Please add at least one ingredient</p>;
-    }
 
     axios
       .post(
@@ -35,7 +43,6 @@ function RecipesCreate(props) {
         }
       )
       .then((response) => {
-        console.log("YAY");
         navigate("/recipes");
 
         setImg("");
@@ -54,6 +61,7 @@ function RecipesCreate(props) {
     <div className="AddRecipe">
       <h1>Create your recipe</h1>
       {errorMsg && <p className="error">{errorMsg}</p>}
+      <span>(*) required fields</span>
 
       <form onSubmit={handleSubmit} encType="multipart/form-data">
         <div>
@@ -67,7 +75,7 @@ function RecipesCreate(props) {
         </div>
 
         <div>
-          <label>Title:</label>
+          <label>Title:(*)</label>
           <input
             type="text"
             name="title"
@@ -77,13 +85,13 @@ function RecipesCreate(props) {
           />
         </div>
         <div>
-          <label>Main protein:</label>
+          <label>Main protein:(*)</label>
           <div>
             <button
               type="button"
               name="protein"
               value={protein}
-              onClick={(e) => setProtein(e.target.value)}
+              onClick={() => setProtein("Meat")}
             >
               Meat
             </button>
@@ -91,7 +99,7 @@ function RecipesCreate(props) {
               name="protein"
               type="button"
               value={protein}
-              onClick={(e) => setProtein(e.target.value)}
+              onClick={() => setProtein("Fish")}
             >
               Fish
             </button>
@@ -100,16 +108,16 @@ function RecipesCreate(props) {
             <button
               name="protein"
               type="button"
-              value="Eggs"
-              onClick={(e) => setProtein(e.target.value)}
+              value={protein}
+              onClick={() => setProtein("Eggs")}
             >
               Eggs
             </button>
             <button
               name="protein"
               type="button"
-              value="Legumes"
-              onClick={(e) => setProtein(e.target.value)}
+              value={protein}
+              onClick={() => setProtein("Legumes")}
             >
               Legumes
             </button>
@@ -117,8 +125,8 @@ function RecipesCreate(props) {
           <button
             name="protein"
             type="button"
-            value="Seeds and nuts"
-            onClick={(e) => setProtein(e.target.value)}
+            value={protein}
+            onClick={() => setProtein("Seeds and nuts")}
           >
             Seeds and nuts
           </button>
@@ -133,8 +141,9 @@ function RecipesCreate(props) {
           />
         </div>
         <div>
-          <label>Description:</label>
+          <label>Description:(*)</label>
           <textarea
+            required
             type="text"
             name="description"
             value={description}
@@ -143,66 +152,45 @@ function RecipesCreate(props) {
         </div>
         <button type="submit">Submit</button>
       </form>
-      <div className="addIngredient">
-        <button
-          onClick={() => {
-            setIngredients((currentIngredients) => [
-              ...currentIngredients,
-              {
-                id: nanoid(),
-                ingredient: "",
-                quantity: "",
-              },
-            ]);
-          }}
-        >
-          Add new ingredient
-        </button>
-        {ingredients.map((element) => {
-          return (
-            <div key={element.id}>
-              <input
-                required
-                onChange={(e) => {
-                  const ingredient = e.target.value;
-                  setIngredients((currentIngredients) =>
-                    currentIngredients.map((x) =>
-                      x.id === element.id ? { ...x, ingredient } : x
-                    )
-                  );
-                }}
-                value={element.ingredient}
-                placeholder="ingredient"
-              />
-              <input
-                required
-                onChange={(e) => {
-                  const quantity = e.target.value;
-                  setIngredients((currentIngredients) =>
-                    currentIngredients.map((x) =>
-                      x.id === element.id ? { ...x, quantity } : x
-                    )
-                  );
-                }}
-                value={element.quantity}
-                placeholder="quantity"
-              />
-              <button
-                onClick={() => {
-                  setIngredients((currentIngredients) =>
-                    currentIngredients.filter((x) => x.id !== element.id)
-                  );
-                }}
-              >
-                x
-              </button>
-            </div>
-          );
-        })}
+
+      <div className="Input-value">
+        <label>Ingredient: </label>
+        <input
+          className="add-ingredients"
+          value={inputIngredient}
+          onChange={(e) => setInputIngredient(e.target.value)}
+        ></input>
+        <label>Quantity</label>
+        <input
+          className="add-quantity"
+          value={inputQuantity}
+          onChange={(e) => setInputQuantity(e.target.value)}
+        />
+        <span>gr</span>
+        <button onClick={() => handleAddButtonClick()}>Add</button>
       </div>
-      <div>{console.log(ingredients)}</div>
+
+      {ingredients.map((ingredient, index) => {
+        return (
+          <div key={ingredient.id}>
+            <p>
+              {ingredient.quantity} gr. {ingredient.ingredient}
+            </p>
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                setIngredients(
+                  ingredients.filter((x) => x.id !== ingredient.id)
+                );
+              }}
+            >
+              x
+            </button>
+          </div>
+        );
+      })}
     </div>
   );
 }
 
-export default RecipesCreate;
+export default RecipeCreate;

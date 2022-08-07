@@ -1,8 +1,9 @@
 import axios from "axios";
+import { nanoid } from "nanoid";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
-function RecipeUpdate() {
+function RecipesUpdate(props) {
   const [img, setImg] = useState("");
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -11,25 +12,22 @@ function RecipeUpdate() {
   const [ingredients, setIngredients] = useState([]);
   const [inputIngredient, setInputIngredient] = useState("");
   const [inputQuantity, setInputQuantity] = useState("");
-  const [newInputIngredient, setNewInputIngredient] = useState("");
-  const [newInputQuantity, setNewInputQuantity] = useState("");
-
   const { recipeId } = useParams();
-  const navigate = useNavigate();
-
   const [errorMsg, setErrorMsg] = useState("");
 
   const storedToken = localStorage.getItem("authToken");
 
+  const navigate = useNavigate();
+
   const handleAddButtonClick = () => {
     const newIngredient = {
-      ingredient: newInputIngredient,
-      quantity: newInputQuantity,
+      id: nanoid(),
+      ingredient: inputIngredient,
+      quantity: inputQuantity,
     };
-    const newIngredients = [...ingredients, newIngredient];
-    setIngredients(newIngredients);
-    setNewInputIngredient("");
-    setNewInputQuantity("");
+    setIngredients([...ingredients, newIngredient]);
+    setInputIngredient("");
+    setInputQuantity("");
   };
 
   useEffect(() => {
@@ -38,45 +36,47 @@ function RecipeUpdate() {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
       .then((response) => {
-        setImg(response.data.img);
-        setTitle(response.data.title);
-        setServing(response.data.serving);
-        setProtein(response.data.protein);
-        setIngredients(response.data.ingredients);
-        setInputIngredient(response.data.ingredients[0].ingredient);
-        setInputQuantity(response.data.ingredients[0].quantity);
-        setDescription(response.data.description);
+        /* 
+                  We update the state with the project data coming from the response.
+                  This way we set inputs to show the actual title and description of the project
+                */
+        const oneRecipe = response.data;
+        setImg(oneRecipe.img);
+        setTitle(oneRecipe.title);
+        setDescription(oneRecipe.description);
+        setServing(oneRecipe.serving);
+        setProtein(oneRecipe.protein);
+        setIngredients(oneRecipe.ingredients);
       })
       .catch((error) => console.log(error));
   }, [recipeId]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     setErrorMsg("");
 
     axios
       .put(
-        `${process.env.REACT_APP_API_URL}/recipes${recipeId}`,
+        `${process.env.REACT_APP_API_URL}/recipes/${recipeId}`,
         { img, title, description, serving, protein, ingredients },
         {
           headers: { Authorization: `Bearer ${storedToken}` },
         }
       )
       .then((response) => {
-        console.log("YAY");
         navigate(`/recipes/${recipeId}`);
       })
       .catch((error) => {
-        setErrorMsg("oops, error editing this recipe");
+        setErrorMsg("oops, error updating this recipe");
         console.log(error);
       });
   };
 
   return (
-    <div className="AddRecipe">
-      <h1>Update this recipe</h1>
+    <div className="EditRecipe">
+      <h1>Update your recipe</h1>
       {errorMsg && <p className="error">{errorMsg}</p>}
+      <span>(*) required fields</span>
 
       <form onSubmit={handleSubmit} encType="multipart/form-data">
         <div>
@@ -90,29 +90,7 @@ function RecipeUpdate() {
         </div>
 
         <div>
-          <label>Ingredient/s:</label>
-          {ingredients[0]?.map((element) => {
-            return (
-              <div>
-                <input
-                  type="text"
-                  name="ingredient"
-                  value={inputIngredient}
-                  onChange={(e) => setInputIngredient(e.target.value)}
-                />
-                <input
-                  type="text"
-                  name="ingredient"
-                  value={element.quantity}
-                  onChange={(e) => setInputQuantity(e.target.value)}
-                />
-              </div>
-            );
-          })}
-        </div>
-
-        <div>
-          <label>Title:</label>
+          <label>Title:(*)</label>
           <input
             type="text"
             name="title"
@@ -122,13 +100,13 @@ function RecipeUpdate() {
           />
         </div>
         <div>
-          <label>Main protein:</label>
+          <label>Main protein:(*)</label>
           <div>
             <button
               type="button"
               name="protein"
               value={protein}
-              onClick={(e) => setProtein(e.target.value)}
+              onClick={() => setProtein("Meat")}
             >
               Meat
             </button>
@@ -136,7 +114,7 @@ function RecipeUpdate() {
               name="protein"
               type="button"
               value={protein}
-              onClick={(e) => setProtein(e.target.value)}
+              onClick={() => setProtein("Fish")}
             >
               Fish
             </button>
@@ -145,16 +123,16 @@ function RecipeUpdate() {
             <button
               name="protein"
               type="button"
-              value="Eggs"
-              onClick={(e) => setProtein(e.target.value)}
+              value={protein}
+              onClick={() => setProtein("Eggs")}
             >
               Eggs
             </button>
             <button
               name="protein"
               type="button"
-              value="Legumes"
-              onClick={(e) => setProtein(e.target.value)}
+              value={protein}
+              onClick={() => setProtein("Legumes")}
             >
               Legumes
             </button>
@@ -162,8 +140,8 @@ function RecipeUpdate() {
           <button
             name="protein"
             type="button"
-            value="Seeds and nuts"
-            onClick={(e) => setProtein(e.target.value)}
+            value={protein}
+            onClick={() => setProtein("Seeds and nuts")}
           >
             Seeds and nuts
           </button>
@@ -178,8 +156,9 @@ function RecipeUpdate() {
           />
         </div>
         <div>
-          <label>Description:</label>
+          <label>Description:(*)</label>
           <textarea
+            required
             type="text"
             name="description"
             value={description}
@@ -191,28 +170,36 @@ function RecipeUpdate() {
       <div className="Input-value">
         <label>Ingredient: </label>
         <input
-          value={newInputIngredient}
-          onChange={(e) => setNewInputIngredient(e.target.value)}
           className="add-ingredients"
+          value={inputIngredient}
+          onChange={(e) => setInputIngredient(e.target.value)}
         ></input>
         <label>Quantity</label>
         <input
-          value={newInputQuantity}
-          onChange={(e) => setNewInputQuantity(e.target.value)}
           className="add-quantity"
-        ></input>
+          value={inputQuantity}
+          onChange={(e) => setInputQuantity(e.target.value)}
+        />
         <span>gr</span>
         <button onClick={() => handleAddButtonClick()}>Add</button>
       </div>
 
-      {ingredients?.map((ingredient, index) => {
+      {ingredients.map((ingredient, index) => {
         return (
-          <div>
-            <div className="ingredients-list">
-              <p>
-                {ingredient.quantity} {ingredient.ingredient}
-              </p>
-            </div>
+          <div key={ingredient.id}>
+            <p>
+              {ingredient.quantity} gr. {ingredient.ingredient}
+            </p>
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                setIngredients(
+                  ingredients.filter((x) => x.id !== ingredient.id)
+                );
+              }}
+            >
+              x
+            </button>
           </div>
         );
       })}
@@ -220,4 +207,4 @@ function RecipeUpdate() {
   );
 }
 
-export default RecipeUpdate;
+export default RecipesUpdate;
