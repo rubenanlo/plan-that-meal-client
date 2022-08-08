@@ -9,14 +9,14 @@ function Navbar() {
   return (
     <>
       <nav className="navbar">
+        <div>
+          <NavLink to="/">
+            <img className="logo" src="../../2.png" alt="logo" />
+          </NavLink>
+          <button className="theme">Light mode</button>
+        </div>
         {isLoggedIn && (
           <div className="header container">
-            <div>
-              <NavLink to="/home">
-                <img className="logo" src="../../2.png" alt="logo" />
-              </NavLink>
-              <button className="theme">Light mode</button>
-            </div>
             <div className="navbar">
               <NavLink className="link" to="/recipes">
                 Recipes
@@ -46,12 +46,6 @@ function Navbar() {
         )}
         {!isLoggedIn && (
           <div className="header container">
-            <div className="container">
-              <NavLink to="/">
-                <img className="logo" src="../../2.png" alt="logo" />
-              </NavLink>
-              <button className="theme">Light mode</button>
-            </div>
             <div>
               <NavLink className="link" to="/signup">
                 Sign Up

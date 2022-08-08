@@ -46,6 +46,7 @@ function PlanningsCreate() {
       mealRecipe1,
       mealRecipe2,
       mealRecipe3,
+      mealRecipe4,
       mealRecipe5,
       mealRecipe6,
       mealRecipe7,
@@ -56,10 +57,7 @@ function PlanningsCreate() {
       mealRecipe12,
       mealRecipe13,
       mealRecipe14,
-      mealRecipe4,
     ];
-
-    console.log(newMealPlan);
 
     axios
       .post(
@@ -97,6 +95,105 @@ function PlanningsCreate() {
       });
   };
 
+  const handleChangeMealOne = (event) => {
+    const index = event.target.selectedIndex;
+    const optionElement = event.target.childNodes[index];
+    const optionElementId = optionElement.getAttribute("id");
+
+    setMealRecipe1(optionElementId);
+  };
+  const handleChangeMealTwo = (event) => {
+    const index = event.target.selectedIndex;
+    const optionElement = event.target.childNodes[index];
+    const optionElementId = optionElement.getAttribute("id");
+
+    setMealRecipe2(optionElementId);
+  };
+  const handleChangeMealThree = (event) => {
+    const index = event.target.selectedIndex;
+    const optionElement = event.target.childNodes[index];
+    const optionElementId = optionElement.getAttribute("id");
+
+    setMealRecipe3(optionElementId);
+  };
+  const handleChangeMealFour = (event) => {
+    const index = event.target.selectedIndex;
+    const optionElement = event.target.childNodes[index];
+    const optionElementId = optionElement.getAttribute("id");
+
+    setMealRecipe4(optionElementId);
+  };
+  const handleChangeMealFive = (event) => {
+    const index = event.target.selectedIndex;
+    const optionElement = event.target.childNodes[index];
+    const optionElementId = optionElement.getAttribute("id");
+
+    setMealRecipe5(optionElementId);
+  };
+  const handleChangeMealSix = (event) => {
+    const index = event.target.selectedIndex;
+    const optionElement = event.target.childNodes[index];
+    const optionElementId = optionElement.getAttribute("id");
+
+    setMealRecipe6(optionElementId);
+  };
+  const handleChangeMealSeven = (event) => {
+    const index = event.target.selectedIndex;
+    const optionElement = event.target.childNodes[index];
+    const optionElementId = optionElement.getAttribute("id");
+
+    setMealRecipe7(optionElementId);
+  };
+  const handleChangeMealEight = (event) => {
+    const index = event.target.selectedIndex;
+    const optionElement = event.target.childNodes[index];
+    const optionElementId = optionElement.getAttribute("id");
+
+    setMealRecipe8(optionElementId);
+  };
+  const handleChangeMealNine = (event) => {
+    const index = event.target.selectedIndex;
+    const optionElement = event.target.childNodes[index];
+    const optionElementId = optionElement.getAttribute("id");
+
+    setMealRecipe9(optionElementId);
+  };
+  const handleChangeMealTen = (event) => {
+    const index = event.target.selectedIndex;
+    const optionElement = event.target.childNodes[index];
+    const optionElementId = optionElement.getAttribute("id");
+
+    setMealRecipe10(optionElementId);
+  };
+  const handleChangeMealEleven = (event) => {
+    const index = event.target.selectedIndex;
+    const optionElement = event.target.childNodes[index];
+    const optionElementId = optionElement.getAttribute("id");
+
+    setMealRecipe11(optionElementId);
+  };
+  const handleChangeMealTwelve = (event) => {
+    const index = event.target.selectedIndex;
+    const optionElement = event.target.childNodes[index];
+    const optionElementId = optionElement.getAttribute("id");
+
+    setMealRecipe12(optionElementId);
+  };
+  const handleChangeMealThirteen = (event) => {
+    const index = event.target.selectedIndex;
+    const optionElement = event.target.childNodes[index];
+    const optionElementId = optionElement.getAttribute("id");
+
+    setMealRecipe13(optionElementId);
+  };
+  const handleChangeMealFourteen = (event) => {
+    const index = event.target.selectedIndex;
+    const optionElement = event.target.childNodes[index];
+    const optionElementId = optionElement.getAttribute("id");
+
+    setMealRecipe14(optionElementId);
+  };
+
   return (
     <div className="planning">
       <h1>Create your weekly plan</h1>
@@ -122,75 +219,22 @@ function PlanningsCreate() {
                 )}
               </h3>
               <div>
-                <label htmlFor="mealRecipe">
-                  Lunch:
-                  {/* <input
-                    type="textarea"
-                    columns="2"
-                    placeholder="select a meal"
-                    list="mealRecipe"
-                    onChange={(e) => {
-                      setMealRecipe1(e.target.value);
-                    }}
-                  /> */}
-                </label>
-                <select
-                  onChange={(e) => {
-                    console.log(e.target.dataset.id);
-                    return setMealRecipe1(e.target.title);
-                  }}
-                >
+                <label>Lunch:</label>
+                <select onChange={handleChangeMealOne}>
+                  <option style={{ display: "none" }}></option>
                   {recipes.map((recipe) => {
-                    return (
-                      <option
-                        data-id={recipe._id}
-                        value={recipe.title}
-                        title={recipe._id}
-                      >
-                        {recipe.title}
-                      </option>
-                    );
+                    return <option id={recipe._id}>{recipe.title}</option>;
                   })}
                 </select>
-                {/* <datalist id="mealRecipe">
-                  {recipes.map((recipe) => {
-                    return (
-                      <div>
-                        <option
-                          key={recipe._id}
-                          title={recipe._id}
-                          value={recipe._id}
-                        >
-                          {recipe.title}
-                        </option>
-                      </div>
-                    );
-                  })}
-                </datalist> */}
               </div>
               <div>
-                <label htmlFor="mealRecipe">
-                  Dinner:
-                  <input
-                    type="text"
-                    placeholder="select a meal"
-                    list="mealRecipe"
-                    onChange={(e) => {
-                      setMealRecipe2(e.target.value);
-                    }}
-                  />
-                </label>
-                <datalist id="mealRecipe">
+                <label>Dinner:</label>
+                <select onChange={handleChangeMealTwo}>
+                  <option style={{ display: "none" }}></option>
                   {recipes.map((recipe) => {
-                    return (
-                      <option
-                        key={recipe._id}
-                        title={recipe._id}
-                        value={recipe._id}
-                      />
-                    );
+                    return <option id={recipe._id}>{recipe.title}</option>;
                   })}
-                </datalist>
+                </select>
               </div>
             </div>
 
@@ -203,52 +247,23 @@ function PlanningsCreate() {
                 )}
               </h3>
               <div>
-                <label htmlFor="mealRecipe">
-                  Lunch:
-                  <input
-                    type="text"
-                    placeholder="select a meal"
-                    list="mealRecipe"
-                    onChange={(e) => {
-                      setMealRecipe3(e.target.value);
-                    }}
-                  />
-                </label>
-                <datalist id="mealRecipe">
+                <label>Lunch:</label>
+                <select onChange={handleChangeMealThree}>
+                  <option style={{ display: "none" }}></option>
+
                   {recipes.map((recipe) => {
-                    return (
-                      <option
-                        key={recipe._id}
-                        title={recipe._id}
-                        value={recipe._id}
-                      />
-                    );
+                    return <option id={recipe._id}>{recipe.title}</option>;
                   })}
-                </datalist>
+                </select>
               </div>
               <div>
-                <label htmlFor="mealRecipe">
-                  Dinner:
-                  <input
-                    type="text"
-                    placeholder="select a meal"
-                    list="mealRecipe"
-                    onChange={(e) => {
-                      setMealRecipe4(e.target.value);
-                    }}
-                  />
-                </label>
-                <datalist id="mealRecipe">
+                <label>Dinner:</label>
+                <select onChange={handleChangeMealFour}>
+                  <option style={{ display: "none" }}></option>
                   {recipes.map((recipe) => {
-                    return (
-                      <option
-                        key={recipe._id}
-                        title={recipe._id}
-                        value={recipe._id}
-                      />
-                    );
+                    return <option id={recipe._id}>{recipe.title}</option>;
                   })}
-                </datalist>
+                </select>
               </div>
             </div>
 
@@ -261,52 +276,22 @@ function PlanningsCreate() {
                 )}
               </h3>
               <div>
-                <label htmlFor="mealRecipe">
-                  Lunch:
-                  <input
-                    type="text"
-                    placeholder="select a meal"
-                    list="mealRecipe"
-                    onChange={(e) => {
-                      setMealRecipe5(e.target.value);
-                    }}
-                  />
-                </label>
-                <datalist id="mealRecipe">
+                <label>Lunch:</label>
+                <select onChange={handleChangeMealFive}>
+                  <option style={{ display: "none" }}></option>
                   {recipes.map((recipe) => {
-                    return (
-                      <option
-                        key={recipe._id}
-                        title={recipe._id}
-                        value={recipe._id}
-                      />
-                    );
+                    return <option id={recipe._id}>{recipe.title}</option>;
                   })}
-                </datalist>
+                </select>
               </div>
               <div>
-                <label htmlFor="mealRecipe">
-                  Dinner:
-                  <input
-                    type="text"
-                    placeholder="select a meal"
-                    list="mealRecipe"
-                    onChange={(e) => {
-                      setMealRecipe6(e.target.value);
-                    }}
-                  />
-                </label>
-                <datalist id="mealRecipe">
+                <label>Dinner:</label>
+                <select onChange={handleChangeMealSix}>
+                  <option style={{ display: "none" }}></option>
                   {recipes.map((recipe) => {
-                    return (
-                      <option
-                        key={recipe._id}
-                        title={recipe._id}
-                        value={recipe._id}
-                      />
-                    );
+                    return <option id={recipe._id}>{recipe.title}</option>;
                   })}
-                </datalist>
+                </select>
               </div>
             </div>
 
@@ -319,52 +304,22 @@ function PlanningsCreate() {
                 )}
               </h3>
               <div>
-                <label htmlFor="mealRecipe">
-                  Lunch:
-                  <input
-                    type="text"
-                    placeholder="select a meal"
-                    list="mealRecipe"
-                    onChange={(e) => {
-                      setMealRecipe7(e.target.value);
-                    }}
-                  />
-                </label>
-                <datalist id="mealRecipe">
+                <label>Lunch:</label>
+                <select onChange={handleChangeMealSeven}>
+                  <option style={{ display: "none" }}></option>
                   {recipes.map((recipe) => {
-                    return (
-                      <option
-                        key={recipe._id}
-                        title={recipe._id}
-                        value={recipe._id}
-                      />
-                    );
+                    return <option id={recipe._id}>{recipe.title}</option>;
                   })}
-                </datalist>
+                </select>
               </div>
               <div>
-                <label htmlFor="mealRecipe">
-                  Dinner:
-                  <input
-                    type="text"
-                    placeholder="select a meal"
-                    list="mealRecipe"
-                    onChange={(e) => {
-                      setMealRecipe8(e.target.value);
-                    }}
-                  />
-                </label>
-                <datalist id="mealRecipe">
+                <label>Dinner:</label>
+                <select onChange={handleChangeMealEight}>
+                  <option style={{ display: "none" }}></option>
                   {recipes.map((recipe) => {
-                    return (
-                      <option
-                        key={recipe._id}
-                        title={recipe._id}
-                        value={recipe._id}
-                      />
-                    );
+                    return <option id={recipe._id}>{recipe.title}</option>;
                   })}
-                </datalist>
+                </select>
               </div>
             </div>
 
@@ -377,52 +332,22 @@ function PlanningsCreate() {
                 )}
               </h3>
               <div>
-                <label htmlFor="mealRecipe">
-                  Lunch:
-                  <input
-                    type="text"
-                    placeholder="select a meal"
-                    list="mealRecipe"
-                    onChange={(e) => {
-                      setMealRecipe9(e.target.value);
-                    }}
-                  />
-                </label>
-                <datalist id="mealRecipe">
+                <label>Lunch:</label>
+                <select onChange={handleChangeMealNine}>
+                  <option style={{ display: "none" }}></option>
                   {recipes.map((recipe) => {
-                    return (
-                      <option
-                        key={recipe._id}
-                        title={recipe._id}
-                        value={recipe._id}
-                      />
-                    );
+                    return <option id={recipe._id}>{recipe.title}</option>;
                   })}
-                </datalist>
+                </select>
               </div>
               <div>
-                <label htmlFor="mealRecipe">
-                  Dinner:
-                  <input
-                    type="text"
-                    placeholder="select a meal"
-                    list="mealRecipe"
-                    onChange={(e) => {
-                      setMealRecipe10(e.target.value);
-                    }}
-                  />
-                </label>
-                <datalist id="mealRecipe">
+                <label>Dinner:</label>
+                <select onChange={handleChangeMealTen}>
+                  <option style={{ display: "none" }}></option>
                   {recipes.map((recipe) => {
-                    return (
-                      <option
-                        key={recipe._id}
-                        title={recipe._id}
-                        value={recipe._id}
-                      />
-                    );
+                    return <option id={recipe._id}>{recipe.title}</option>;
                   })}
-                </datalist>
+                </select>
               </div>
             </div>
 
@@ -435,52 +360,22 @@ function PlanningsCreate() {
                 )}
               </h3>
               <div>
-                <label htmlFor="mealRecipe">
-                  Lunch:
-                  <input
-                    type="text"
-                    placeholder="select a meal"
-                    list="mealRecipe"
-                    onChange={(e) => {
-                      setMealRecipe11(e.target.value);
-                    }}
-                  />
-                </label>
-                <datalist id="mealRecipe">
+                <label>Lunch:</label>
+                <select onChange={handleChangeMealEleven}>
+                  <option style={{ display: "none" }}></option>
                   {recipes.map((recipe) => {
-                    return (
-                      <option
-                        key={recipe._id}
-                        title={recipe._id}
-                        value={recipe._id}
-                      />
-                    );
+                    return <option id={recipe._id}>{recipe.title}</option>;
                   })}
-                </datalist>
+                </select>
               </div>
               <div>
-                <label htmlFor="mealRecipe">
-                  Dinner:
-                  <input
-                    type="text"
-                    placeholder="select a meal"
-                    list="mealRecipe"
-                    onChange={(e) => {
-                      setMealRecipe12(e.target.value);
-                    }}
-                  />
-                </label>
-                <datalist id="mealRecipe">
+                <label>Dinner:</label>
+                <select onChange={handleChangeMealTwelve}>
+                  <option style={{ display: "none" }}></option>
                   {recipes.map((recipe) => {
-                    return (
-                      <option
-                        key={recipe._id}
-                        title={recipe._id}
-                        value={recipe._id}
-                      />
-                    );
+                    return <option id={recipe._id}>{recipe.title}</option>;
                   })}
-                </datalist>
+                </select>
               </div>
             </div>
 
@@ -493,52 +388,22 @@ function PlanningsCreate() {
                 )}
               </h3>
               <div>
-                <label htmlFor="mealRecipe">
-                  Lunch:
-                  <input
-                    type="text"
-                    placeholder="select a meal"
-                    list="mealRecipe"
-                    onChange={(e) => {
-                      setMealRecipe13(e.target.value);
-                    }}
-                  />
-                </label>
-                <datalist id="mealRecipe">
+                <label>Lunch:</label>
+                <select onChange={handleChangeMealThirteen}>
+                  <option style={{ display: "none" }}></option>
                   {recipes.map((recipe) => {
-                    return (
-                      <option
-                        key={recipe._id}
-                        title={recipe._id}
-                        value={recipe._id}
-                      />
-                    );
+                    return <option id={recipe._id}>{recipe.title}</option>;
                   })}
-                </datalist>
+                </select>
               </div>
               <div>
-                <label htmlFor="mealRecipe">
-                  Dinner:
-                  <input
-                    type="text"
-                    placeholder="select a meal"
-                    list="mealRecipe"
-                    onChange={(e) => {
-                      setMealRecipe14(e.target.value);
-                    }}
-                  />
-                </label>
-                <datalist id="mealRecipe">
+                <label>Dinner:</label>
+                <select onChange={handleChangeMealFourteen}>
+                  <option style={{ display: "none" }}></option>
                   {recipes.map((recipe) => {
-                    return (
-                      <option
-                        key={recipe._id}
-                        title={recipe._id}
-                        value={recipe._id}
-                      />
-                    );
+                    return <option id={recipe._id}>{recipe.title}</option>;
                   })}
-                </datalist>
+                </select>
               </div>
             </div>
           </div>

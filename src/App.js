@@ -3,7 +3,6 @@ import "./App.css";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import HomePage from "./pages/HomePage";
-import HomePageUser from "./pages/HomePageUser";
 import LoginPage from "./pages/LoginPage";
 import PlanningsCreate from "./pages/PlanningsCreate";
 import PlanningsDetails from "./pages/PlanningsDetails";
@@ -21,7 +20,6 @@ function App() {
       <Navbar></Navbar>
       <Routes>
         <Route path="/" element={<HomePage />}></Route>
-        <Route path="/home" element={<HomePageUser />}></Route>
         <Route path="/signup" element={<SignupPage />}></Route>
         <Route path="/login" element={<LoginPage />}></Route>
         <Route path="/recipes" element={<RecipesList />}></Route>
