@@ -23,8 +23,30 @@ function PlanningsDetails() {
       .catch((error) => console.log(error));
   }, [weeklyPlanId, storedToken]);
 
+  const deleteWeeklyPlan = () => {
+    axios
+      .delete(`${process.env.REACT_APP_API_URL}/weeklyplans/${weeklyPlanId}`, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      })
+      .then(() => {
+        navigate("/weeklyplans");
+      })
+      .catch((err) => console.log(err));
+  };
+
   return (
     <div>
+      <div>
+        <button
+          onClick={() => {
+            navigate(-1);
+          }}
+        >
+          Back
+        </button>
+        <button onClick={deleteWeeklyPlan}>Delete</button>
+      </div>
+
       {weeklyPlan && (
         <div className="container-planning">
           <div className="single-day">
@@ -117,19 +139,6 @@ function PlanningsDetails() {
             <Link to={`/recipes/${weeklyPlan.mealRecipes[13]._id}`}>
               <p>{weeklyPlan.mealRecipes[13].title}</p>
             </Link>
-          </div>
-
-          <div>
-            <Link to={`/weeklyplans/edit/${weeklyPlan?._id}`}>
-              <button>Edit</button>
-            </Link>
-            <button
-              onClick={() => {
-                navigate(-1);
-              }}
-            >
-              Back to weekly plans
-            </button>
           </div>
         </div>
       )}

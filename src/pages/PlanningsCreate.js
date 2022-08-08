@@ -59,6 +59,8 @@ function PlanningsCreate() {
       mealRecipe4,
     ];
 
+    console.log(newMealPlan);
+
     axios
       .post(
         `${process.env.REACT_APP_API_URL}/weeklyplans`,
@@ -122,8 +124,7 @@ function PlanningsCreate() {
               <div>
                 <label htmlFor="mealRecipe">
                   Lunch:
-                  <input
-                    required
+                  {/* <input
                     type="textarea"
                     columns="2"
                     placeholder="select a meal"
@@ -131,9 +132,27 @@ function PlanningsCreate() {
                     onChange={(e) => {
                       setMealRecipe1(e.target.value);
                     }}
-                  />
+                  /> */}
                 </label>
-                <datalist id="mealRecipe">
+                <select
+                  onChange={(e) => {
+                    console.log(e.target.dataset.id);
+                    return setMealRecipe1(e.target.title);
+                  }}
+                >
+                  {recipes.map((recipe) => {
+                    return (
+                      <option
+                        data-id={recipe._id}
+                        value={recipe.title}
+                        title={recipe._id}
+                      >
+                        {recipe.title}
+                      </option>
+                    );
+                  })}
+                </select>
+                {/* <datalist id="mealRecipe">
                   {recipes.map((recipe) => {
                     return (
                       <div>
@@ -141,17 +160,18 @@ function PlanningsCreate() {
                           key={recipe._id}
                           title={recipe._id}
                           value={recipe._id}
-                        ></option>
+                        >
+                          {recipe.title}
+                        </option>
                       </div>
                     );
                   })}
-                </datalist>
+                </datalist> */}
               </div>
               <div>
                 <label htmlFor="mealRecipe">
                   Dinner:
                   <input
-                    required
                     type="text"
                     placeholder="select a meal"
                     list="mealRecipe"
@@ -186,7 +206,6 @@ function PlanningsCreate() {
                 <label htmlFor="mealRecipe">
                   Lunch:
                   <input
-                    required
                     type="text"
                     placeholder="select a meal"
                     list="mealRecipe"
@@ -211,7 +230,6 @@ function PlanningsCreate() {
                 <label htmlFor="mealRecipe">
                   Dinner:
                   <input
-                    required
                     type="text"
                     placeholder="select a meal"
                     list="mealRecipe"
@@ -246,7 +264,6 @@ function PlanningsCreate() {
                 <label htmlFor="mealRecipe">
                   Lunch:
                   <input
-                    required
                     type="text"
                     placeholder="select a meal"
                     list="mealRecipe"
@@ -271,7 +288,6 @@ function PlanningsCreate() {
                 <label htmlFor="mealRecipe">
                   Dinner:
                   <input
-                    required
                     type="text"
                     placeholder="select a meal"
                     list="mealRecipe"
@@ -306,7 +322,6 @@ function PlanningsCreate() {
                 <label htmlFor="mealRecipe">
                   Lunch:
                   <input
-                    required
                     type="text"
                     placeholder="select a meal"
                     list="mealRecipe"
@@ -331,7 +346,6 @@ function PlanningsCreate() {
                 <label htmlFor="mealRecipe">
                   Dinner:
                   <input
-                    required
                     type="text"
                     placeholder="select a meal"
                     list="mealRecipe"
@@ -366,7 +380,6 @@ function PlanningsCreate() {
                 <label htmlFor="mealRecipe">
                   Lunch:
                   <input
-                    required
                     type="text"
                     placeholder="select a meal"
                     list="mealRecipe"
@@ -391,7 +404,6 @@ function PlanningsCreate() {
                 <label htmlFor="mealRecipe">
                   Dinner:
                   <input
-                    required
                     type="text"
                     placeholder="select a meal"
                     list="mealRecipe"
@@ -426,7 +438,6 @@ function PlanningsCreate() {
                 <label htmlFor="mealRecipe">
                   Lunch:
                   <input
-                    required
                     type="text"
                     placeholder="select a meal"
                     list="mealRecipe"
@@ -451,7 +462,6 @@ function PlanningsCreate() {
                 <label htmlFor="mealRecipe">
                   Dinner:
                   <input
-                    required
                     type="text"
                     placeholder="select a meal"
                     list="mealRecipe"
@@ -486,7 +496,6 @@ function PlanningsCreate() {
                 <label htmlFor="mealRecipe">
                   Lunch:
                   <input
-                    required
                     type="text"
                     placeholder="select a meal"
                     list="mealRecipe"
@@ -511,7 +520,6 @@ function PlanningsCreate() {
                 <label htmlFor="mealRecipe">
                   Dinner:
                   <input
-                    required
                     type="text"
                     placeholder="select a meal"
                     list="mealRecipe"

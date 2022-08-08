@@ -36,10 +36,6 @@ function RecipesUpdate(props) {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
       .then((response) => {
-        /* 
-                  We update the state with the project data coming from the response.
-                  This way we set inputs to show the actual title and description of the project
-                */
         const oneRecipe = response.data;
         setImg(oneRecipe.img);
         setTitle(oneRecipe.title);
