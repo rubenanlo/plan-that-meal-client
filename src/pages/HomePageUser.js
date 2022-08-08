@@ -11,14 +11,14 @@ function HomePageUser() {
         option you want.
       </p>
       <div>
-        <button>
+        <button className="homepage-links">
           <NavLink className="homepage-link" to="/recipes/create">
             Create a recipe
           </NavLink>
         </button>
       </div>
       <div>
-        <button>
+        <button className="homepage-links">
           <NavLink className="homepage-link" to="/recipes">
             View all recipes
           </NavLink>
@@ -33,14 +33,14 @@ function HomePageUser() {
         </button>
       </div>
       <div>
-        <button>
+        <button className="homepage-links">
           <NavLink className="homepage-link" to="/weeklyplans">
             View your weekly meal plans
           </NavLink>
         </button>
       </div>
       <div>
-        <button>
+        <button className="homepage-links">
           <NavLink className="homepage-link" to="/shoppingitems">
             Create a shopping list
           </NavLink>

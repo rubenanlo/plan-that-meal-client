@@ -1,10 +1,11 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 function RecipesList() {
   const [recipes, setRecipes] = useState([]);
   const storedToken = localStorage.getItem("authToken");
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios
@@ -16,30 +17,39 @@ function RecipesList() {
   }, [storedToken]);
 
   return (
-    <div className="RecipeListPage wrapper">
-      {recipes?.map((recipe) => {
-        return (
-          <div className="RecipeCard card" key={recipe._id}>
-            <Link to={`/recipes/${recipe._id}`}>
-              <h3>{recipe.title}</h3>
-              <img src={recipe.img} alt="recipe" />
-              <p>{recipe.protein}</p>
-              <p>{recipe.serving}</p>
-              {recipe.ingredients.map((ingredient) => {
-                return (
-                  <div key={ingredient.id}>
-                    <p>
-                      {ingredient.quantity} {ingredient.ingredient}
-                    </p>
-                  </div>
-                );
-              })}
-              <p>{recipe.description}</p>
-            </Link>
-          </div>
-        );
-      })}
-    </div>
+    <>
+      <button
+        onClick={() => {
+          navigate(-1);
+        }}
+      >
+        Back
+      </button>
+      <div className="RecipeListPage wrapper">
+        {recipes?.map((recipe) => {
+          return (
+            <div className="RecipeCard card" key={recipe._id}>
+              <Link to={`/recipes/${recipe._id}`}>
+                <h3>{recipe.title}</h3>
+                <img src={recipe.img} alt="recipe" />
+                <p>{recipe.protein}</p>
+                <p>{recipe.serving}</p>
+                {recipe.ingredients.map((ingredient) => {
+                  return (
+                    <div key={ingredient.id}>
+                      <p>
+                        {ingredient.quantity} {ingredient.ingredient}
+                      </p>
+                    </div>
+                  );
+                })}
+                <p>{recipe.description}</p>
+              </Link>
+            </div>
+          );
+        })}
+      </div>
+    </>
   );
 }
 

@@ -4,7 +4,7 @@ import { AuthContext } from "../context/auth.context";
 import { Link, NavLink } from "react-router-dom";
 
 function Navbar() {
-  const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
+  const { isLoggedIn, logOutUser } = useContext(AuthContext);
 
   return (
     <>
@@ -32,6 +32,10 @@ function Navbar() {
               |
               <NavLink className="link" to="/weeklyplans/create">
                 Create a Planning
+              </NavLink>
+              |
+              <NavLink className="link" to="/shoppingitems">
+                Shopping list
               </NavLink>
               |
               <Link to="/">

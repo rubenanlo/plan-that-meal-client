@@ -13,6 +13,7 @@ import RecipeCreate from "./pages/RecipeCreate";
 import RecipeUpdate from "./pages/RecipeUpdate";
 import RecipesList from "./pages/RecipesList";
 import SignupPage from "./pages/SignupPage";
+import ShoppingList from "./pages/ShoppingList";
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
           element={<PlanningsDetails />}
         ></Route>
         <Route path="/weeklyplans/create" element={<PlanningsCreate />}></Route>
+        <Route path="/shoppingitems" element={<ShoppingList />}></Route>
       </Routes>
       <Footer></Footer>
     </div>
