@@ -20,7 +20,11 @@ function PlanningsList() {
     <div>
       {weeklyPlans?.map((weeklyPlan) => {
         return (
-          <a href={`/weeklyplans/${weeklyPlan._id}`} key={weeklyPlan._id}>
+          <a
+            className="link"
+            href={`/weeklyplans/${weeklyPlan._id}`}
+            key={weeklyPlan._id}
+          >
             <div
               style={{
                 backgroundImage: `url(${
@@ -29,9 +33,16 @@ function PlanningsList() {
                 backgroundRepeat: "no-repeat",
                 backgroundSize: "cover",
                 backgroundPosition: "center",
+                opacity: 0.8,
+                padding: ".5rem",
+                margin: "2rem 4rem",
+                borderRadius: "1rem",
+                color: "black",
+                fontSize: "1rem",
+                boxShadow: "animatable",
               }}
             >
-              <h3>
+              <h3 className="weekly-plan">
                 {moment(weeklyPlan.startDate).format("dddd, DD MMMM YYYY")}
               </h3>
             </div>
