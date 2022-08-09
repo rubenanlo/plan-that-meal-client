@@ -21,7 +21,7 @@ function RecipesList() {
       {recipes.length === 0 && (
         <div>
           <p>
-            Be the first in creating a new recipe{" "}
+            Be the first to create a new recipe{" "}
             <Link to="/recipes/create">here</Link>
           </p>
           <img src="../../empty-recipe.jpeg" alt="" />

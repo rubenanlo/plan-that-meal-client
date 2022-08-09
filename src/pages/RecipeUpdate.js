@@ -19,6 +19,20 @@ function RecipesUpdate(props) {
 
   const navigate = useNavigate();
 
+  const handleFileUpload = (e) => {
+    const uploadData = new FormData();
+    uploadData.append("img", e.target.files[0]);
+
+    return axios
+      .post(`${process.env.REACT_APP_API_URL}/upload`, uploadData, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      })
+      .then((response) => {
+        setImg(response.data.fileUrl);
+      })
+      .catch((err) => console.log("Error while uploading the file: ", err));
+  };
+
   const handleAddButtonClick = () => {
     const newIngredient = {
       id: nanoid(),
@@ -77,11 +91,7 @@ function RecipesUpdate(props) {
       <form onSubmit={handleSubmit} encType="multipart/form-data">
         <div>
           <label>Image:</label>
-          <input
-            type="file"
-            name="img"
-            onChange={(e) => setImg(e.target.value)}
-          />
+          <input type="file" onChange={(e) => handleFileUpload(e)} />
         </div>
 
         <div>

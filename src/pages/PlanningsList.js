@@ -23,8 +23,7 @@ function PlanningsList() {
         <div>
           <p>
             Not a weekly plan yet? Not to worry, we've got you covered, you can
-            create your first one
-            <Link to="/weeklyplans/create">here</Link>
+            create your first one <Link to="/weeklyplans/create">here</Link>
           </p>
           <img src="../../empty-recipe.jpeg" alt="" />
         </div>
