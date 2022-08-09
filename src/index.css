@@ -27,3 +27,8 @@ code {
   overflow: auto;
   height: 100%;
 }
+
+img {
+  width: 50%;
+  border-radius: 2rem;
+}

@@ -100,6 +100,10 @@ function PlanningsCreate() {
     const optionElement = event.target.childNodes[index];
     const optionElementId = optionElement.getAttribute("id");
 
+    // const result = optionElementId ? optionElementId : "Going out";
+
+    // console.log(result);
+
     setMealRecipe1(optionElementId);
   };
   const handleChangeMealTwo = (event) => {
@@ -220,16 +224,20 @@ function PlanningsCreate() {
               </h3>
               <div>
                 <label>Lunch:</label>
-                <select onChange={handleChangeMealOne}>
+                <select required onChange={handleChangeMealOne}>
                   <option style={{ display: "none" }}></option>
                   {recipes.map((recipe) => {
-                    return <option id={recipe._id}>{recipe.title}</option>;
+                    return (
+                      <option key={recipe._id} id={recipe._id}>
+                        {recipe.title}
+                      </option>
+                    );
                   })}
                 </select>
               </div>
               <div>
                 <label>Dinner:</label>
-                <select onChange={handleChangeMealTwo}>
+                <select required onChange={handleChangeMealTwo}>
                   <option style={{ display: "none" }}></option>
                   {recipes.map((recipe) => {
                     return <option id={recipe._id}>{recipe.title}</option>;
@@ -258,7 +266,7 @@ function PlanningsCreate() {
               </div>
               <div>
                 <label>Dinner:</label>
-                <select onChange={handleChangeMealFour}>
+                <select required onChange={handleChangeMealFour}>
                   <option style={{ display: "none" }}></option>
                   {recipes.map((recipe) => {
                     return <option id={recipe._id}>{recipe.title}</option>;
@@ -286,7 +294,7 @@ function PlanningsCreate() {
               </div>
               <div>
                 <label>Dinner:</label>
-                <select onChange={handleChangeMealSix}>
+                <select required onChange={handleChangeMealSix}>
                   <option style={{ display: "none" }}></option>
                   {recipes.map((recipe) => {
                     return <option id={recipe._id}>{recipe.title}</option>;
@@ -305,7 +313,7 @@ function PlanningsCreate() {
               </h3>
               <div>
                 <label>Lunch:</label>
-                <select onChange={handleChangeMealSeven}>
+                <select required onChange={handleChangeMealSeven}>
                   <option style={{ display: "none" }}></option>
                   {recipes.map((recipe) => {
                     return <option id={recipe._id}>{recipe.title}</option>;
@@ -314,7 +322,7 @@ function PlanningsCreate() {
               </div>
               <div>
                 <label>Dinner:</label>
-                <select onChange={handleChangeMealEight}>
+                <select required onChange={handleChangeMealEight}>
                   <option style={{ display: "none" }}></option>
                   {recipes.map((recipe) => {
                     return <option id={recipe._id}>{recipe.title}</option>;
@@ -333,7 +341,7 @@ function PlanningsCreate() {
               </h3>
               <div>
                 <label>Lunch:</label>
-                <select onChange={handleChangeMealNine}>
+                <select required onChange={handleChangeMealNine}>
                   <option style={{ display: "none" }}></option>
                   {recipes.map((recipe) => {
                     return <option id={recipe._id}>{recipe.title}</option>;
@@ -342,7 +350,7 @@ function PlanningsCreate() {
               </div>
               <div>
                 <label>Dinner:</label>
-                <select onChange={handleChangeMealTen}>
+                <select required onChange={handleChangeMealTen}>
                   <option style={{ display: "none" }}></option>
                   {recipes.map((recipe) => {
                     return <option id={recipe._id}>{recipe.title}</option>;
@@ -361,7 +369,7 @@ function PlanningsCreate() {
               </h3>
               <div>
                 <label>Lunch:</label>
-                <select onChange={handleChangeMealEleven}>
+                <select required onChange={handleChangeMealEleven}>
                   <option style={{ display: "none" }}></option>
                   {recipes.map((recipe) => {
                     return <option id={recipe._id}>{recipe.title}</option>;
@@ -370,7 +378,7 @@ function PlanningsCreate() {
               </div>
               <div>
                 <label>Dinner:</label>
-                <select onChange={handleChangeMealTwelve}>
+                <select required onChange={handleChangeMealTwelve}>
                   <option style={{ display: "none" }}></option>
                   {recipes.map((recipe) => {
                     return <option id={recipe._id}>{recipe.title}</option>;
@@ -389,7 +397,7 @@ function PlanningsCreate() {
               </h3>
               <div>
                 <label>Lunch:</label>
-                <select onChange={handleChangeMealThirteen}>
+                <select required onChange={handleChangeMealThirteen}>
                   <option style={{ display: "none" }}></option>
                   {recipes.map((recipe) => {
                     return <option id={recipe._id}>{recipe.title}</option>;
@@ -398,7 +406,7 @@ function PlanningsCreate() {
               </div>
               <div>
                 <label>Dinner:</label>
-                <select onChange={handleChangeMealFourteen}>
+                <select required onChange={handleChangeMealFourteen}>
                   <option style={{ display: "none" }}></option>
                   {recipes.map((recipe) => {
                     return <option id={recipe._id}>{recipe.title}</option>;

@@ -1,6 +1,7 @@
 import axios from "axios";
 import moment from "moment";
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 function PlanningsList() {
   const [weeklyPlans, setWeeklyPlans] = useState([]);
@@ -18,6 +19,16 @@ function PlanningsList() {
 
   return (
     <div>
+      {weeklyPlans.length === 0 && (
+        <div>
+          <p>
+            Not a weekly plan yet? Not to worry, we've got you covered, you can
+            create your first one
+            <Link to="/weeklyplans/create">here</Link>
+          </p>
+          <img src="../../empty-recipe.jpeg" alt="" />
+        </div>
+      )}
       {weeklyPlans?.map((weeklyPlan) => {
         return (
           <a

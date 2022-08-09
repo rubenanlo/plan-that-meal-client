@@ -18,6 +18,16 @@ function RecipesList() {
 
   return (
     <>
+      {recipes.length === 0 && (
+        <div>
+          <p>
+            Be the first in creating a new recipe{" "}
+            <Link to="/recipes/create">here</Link>
+          </p>
+          <img src="../../empty-recipe.jpeg" alt="" />
+        </div>
+      )}
+
       <button
         onClick={() => {
           navigate(-1);
