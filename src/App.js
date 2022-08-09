@@ -13,6 +13,7 @@ import RecipeUpdate from "./pages/RecipeUpdate";
 import RecipesList from "./pages/RecipesList";
 import SignupPage from "./pages/SignupPage";
 import ShoppingList from "./pages/ShoppingList";
+import ShoppingListDetails from "./pages/ShoppingListDetails";
 
 function App() {
   return (
@@ -36,6 +37,10 @@ function App() {
         ></Route>
         <Route path="/weeklyplans/create" element={<PlanningsCreate />}></Route>
         <Route path="/shoppingitems" element={<ShoppingList />}></Route>
+        <Route
+          path="/shoppingitems/:shoppingListId"
+          element={<ShoppingListDetails />}
+        ></Route>
       </Routes>
       <Footer></Footer>
     </div>

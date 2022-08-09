@@ -1,25 +1,30 @@
 import axios from "axios";
+import moment from "moment";
 import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 function ShoppingList() {
-  const [shoppingList, setShoppingList] = useState("");
+  const [list, setList] = useState([]);
   const storedToken = localStorage.getItem("authToken");
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios
       .get(`${process.env.REACT_APP_API_URL}/shoppingitems`, {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
-      .then((response) => setShoppingList(response.data))
+      .then((response) => setList(response.data))
       .catch((error) => console.log(error));
   }, [storedToken]);
 
   return (
     <div>
-      {shoppingList?.map((item) => {
+      {list.map((element) => {
         return (
-          <div>
-            <p>{item.description}</p>;<p>{item.quantity}</p>;
+          <div key={element._id}>
+            <Link to={`/shoppingitems/${element._id}`}>
+              <p>Created on {moment(element.date).format("dddd mmmm yyyy")}</p>
+            </Link>
           </div>
         );
       })}
