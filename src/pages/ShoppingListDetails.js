@@ -1,14 +1,16 @@
 import axios from "axios";
 import moment from "moment";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
+import { AuthContext } from "../context/auth.context";
 
 function ShoppingListDetails() {
   const [list, setList] = useState([]);
   const storedToken = localStorage.getItem("authToken");
   const { shoppingListId } = useParams();
   const navigate = useNavigate();
-  console.log(shoppingListId);
+
+  const { isLoading } = useContext(AuthContext);
 
   useEffect(() => {
     axios
@@ -37,34 +39,42 @@ function ShoppingListDetails() {
   };
 
   return (
-    <div>
-      <div>
-        <button
-          onClick={() => {
-            navigate(-1);
-          }}
-        >
-          Back
-        </button>
-        <Link to={`/shoppingitems/edit/${shoppingListId}`}>
-          <button>Edit</button>
-        </Link>
+    <>
+      {isLoading ? (
+        <p>Loading...</p>
+      ) : (
+        <div>
+          <div>
+            <span>
+              Created: {moment(list.date).format("dddd, DD MMMM yyyy")}
+            </span>
+            <button
+              onClick={() => {
+                navigate(-1);
+              }}
+            >
+              Back
+            </button>
+            <Link to={`/shoppingitems/edit/${shoppingListId}`}>
+              <button>Edit</button>
+            </Link>
 
-        <button onClick={handleDelete}>Delete</button>
-      </div>
+            <button onClick={handleDelete}>Delete</button>
+          </div>
 
-      <div key={list._id}>
-        <p>{moment(list.date).format("dddd mmmm yyyy")}</p>
-        {list.items?.map((element) => {
-          return (
-            <div key={element.id}>
-              <p>{element.description}</p>
-              <p>{element.quantity}</p>
-            </div>
-          );
-        })}
-      </div>
-    </div>
+          <div key={list._id}>
+            {list.items?.map((element) => {
+              return (
+                <div key={element._id}>
+                  <p>{element.description}</p>
+                  <p>{element.quantity}</p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      )}
+    </>
   );
 }
 

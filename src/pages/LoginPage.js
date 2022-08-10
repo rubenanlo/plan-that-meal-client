@@ -22,8 +22,6 @@ function LoginPage(props) {
     axios
       .post(`${process.env.REACT_APP_API_URL}/login`, requestBody)
       .then((response) => {
-        console.log("JWT token", response.data.authToken);
-
         storeToken(response.data.authToken);
         authenticateUser();
 

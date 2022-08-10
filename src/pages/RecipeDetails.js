@@ -1,10 +1,12 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
+import { AuthContext } from "../context/auth.context";
 
 function RecipeDetails() {
   const [recipe, setRecipe] = useState(null);
   const storedToken = localStorage.getItem("authToken");
+  const { isLoading } = useContext(AuthContext);
 
   const { recipeId } = useParams();
 
@@ -27,32 +29,38 @@ function RecipeDetails() {
   }
 
   return (
-    <div className="RecipeDetails" key={recipeId}>
-      {recipe && (
-        <>
-          <img src={recipe.img} alt="dish" />
-          <h1>{recipe.title}</h1>
-          <p>{recipe.protein}</p>
-          <p>{recipe.serving}</p>
-          <p>Ingredients:</p>
-          {recipe &&
-            recipe?.ingredients.map((ingredient) => (
-              <li className="Ingredients" key={ingredient.id}>
-                <p>
-                  {ingredient.quantity} gr {ingredient.ingredient}
-                </p>
-              </li>
-            ))}
+    <>
+      {isLoading ? (
+        <p>Loading...</p>
+      ) : (
+        <div className="RecipeDetails" key={recipeId}>
+          {recipe && (
+            <>
+              <img src={recipe.img} alt="dish" />
+              <h1>{recipe.title}</h1>
+              <p>{recipe.protein}</p>
+              <p>{recipe.serving}</p>
+              <p>Ingredients:</p>
+              {recipe &&
+                recipe?.ingredients.map((ingredient) => (
+                  <li className="Ingredients" key={ingredient.id}>
+                    <p>
+                      {ingredient.quantity} gr {ingredient.ingredient}
+                    </p>
+                  </li>
+                ))}
 
-          <p>{recipe.description}</p>
-        </>
+              <p>{recipe.description}</p>
+            </>
+          )}
+
+          <Link to={`/recipes/edit/${recipe?._id}`}>
+            <button>Edit</button>
+          </Link>
+          <button onClick={() => navigate(-1)}>Back</button>
+        </div>
       )}
-
-      <Link to={`/recipes/edit/${recipe?._id}`}>
-        <button>Edit</button>
-      </Link>
-      <button onClick={() => navigate(-1)}>Back</button>
-    </div>
+    </>
   );
 }
 

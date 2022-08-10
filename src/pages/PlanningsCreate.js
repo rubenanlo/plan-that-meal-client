@@ -1,11 +1,13 @@
 import axios from "axios";
 import moment from "moment";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/auth.context";
 import "./PlanningCreate.css";
 
 function PlanningsCreate() {
   const [recipes, setRecipes] = useState([]);
+  const { isLoading } = useContext(AuthContext);
 
   const [startDate, setStartDate] = useState("");
   const [mealRecipe1, setMealRecipe1] = useState("");
@@ -99,10 +101,6 @@ function PlanningsCreate() {
     const index = event.target.selectedIndex;
     const optionElement = event.target.childNodes[index];
     const optionElementId = optionElement.getAttribute("id");
-
-    // const result = optionElementId ? optionElementId : "Going out";
-
-    // console.log(result);
 
     setMealRecipe1(optionElementId);
   };
@@ -198,231 +196,285 @@ function PlanningsCreate() {
     setMealRecipe14(optionElementId);
   };
 
-  if (recipes === null) {
-    return <>loading...</>;
-  }
-
   return (
-    <div className="planning">
-      <h1>Create your weekly plan</h1>
-      {errorMsg && <p className="error">{errorMsg}</p>}
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Starting date of the weekly plan:</label>
-          <input
-            type="date"
-            name="startDate"
-            value={startDate}
-            onChange={(e) => setStartDate(e.target.value)}
-            required
-          />
+    <>
+      {isLoading ? (
+        <p>Loading...</p>
+      ) : (
+        <div className="planning">
+          <h1>Create your weekly plan</h1>
+          {errorMsg && <p className="error">{errorMsg}</p>}
+          <form onSubmit={handleSubmit}>
+            <div>
+              <label>Starting date of the weekly plan:</label>
+              <input
+                type="date"
+                name="startDate"
+                value={startDate}
+                onChange={(e) => setStartDate(e.target.value)}
+                required
+              />
 
-          <div className="container-planning">
-            <div className="single-day">
-              <h3>
-                {!startDate ? (
-                  <p>Monday</p>
-                ) : (
-                  <p>{moment(startDate).format("dddd")}</p>
-                )}
-              </h3>
-              <div>
-                <label>Lunch:</label>
-                <select required onChange={handleChangeMealOne}>
-                  <option style={{ display: "none" }}></option>
-                  {recipes.map((recipe) => {
-                    return (
-                      <option key={recipe._id} id={recipe._id}>
-                        {recipe.title}
-                      </option>
-                    );
-                  })}
-                </select>
-              </div>
-              <div>
-                <label>Dinner:</label>
-                <select required onChange={handleChangeMealTwo}>
-                  <option style={{ display: "none" }}></option>
-                  {recipes.map((recipe) => {
-                    return <option id={recipe._id}>{recipe.title}</option>;
-                  })}
-                </select>
+              <div className="container-planning">
+                <div className="single-day">
+                  <h3>
+                    {!startDate ? (
+                      <p>Monday</p>
+                    ) : (
+                      <p>{moment(startDate).format("dddd")}</p>
+                    )}
+                  </h3>
+                  <div>
+                    <label>Lunch:</label>
+                    <select required onChange={handleChangeMealOne}>
+                      <option style={{ display: "none" }}></option>
+                      {recipes.map((recipe) => {
+                        return (
+                          <option key={recipe._id} id={recipe._id}>
+                            {recipe.title}
+                          </option>
+                        );
+                      })}
+                    </select>
+                  </div>
+                  <div>
+                    <label>Dinner:</label>
+                    <select required onChange={handleChangeMealTwo}>
+                      <option style={{ display: "none" }}></option>
+                      {recipes.map((recipe) => {
+                        return (
+                          <option key={recipe._id} id={recipe._id}>
+                            {recipe.title}
+                          </option>
+                        );
+                      })}
+                    </select>
+                  </div>
+                </div>
+
+                <div className="single-day">
+                  <h3>
+                    {!startDate ? (
+                      <p>Tuesday</p>
+                    ) : (
+                      <p>{moment(startDate).add(1, "days").format("dddd")}</p>
+                    )}
+                  </h3>
+                  <div>
+                    <label>Lunch:</label>
+                    <select onChange={handleChangeMealThree}>
+                      <option style={{ display: "none" }}></option>
+
+                      {recipes.map((recipe) => {
+                        return (
+                          <option key={recipe._id} id={recipe._id}>
+                            {recipe.title}
+                          </option>
+                        );
+                      })}
+                    </select>
+                  </div>
+                  <div>
+                    <label>Dinner:</label>
+                    <select required onChange={handleChangeMealFour}>
+                      <option style={{ display: "none" }}></option>
+                      {recipes.map((recipe) => {
+                        return (
+                          <option key={recipe._id} id={recipe._id}>
+                            {recipe.title}
+                          </option>
+                        );
+                      })}
+                    </select>
+                  </div>
+                </div>
+
+                <div className="single-day">
+                  <h3>
+                    {!startDate ? (
+                      <p>Wednesday</p>
+                    ) : (
+                      <p>{moment(startDate).add(2, "days").format("dddd")}</p>
+                    )}
+                  </h3>
+                  <div>
+                    <label>Lunch:</label>
+                    <select onChange={handleChangeMealFive}>
+                      <option style={{ display: "none" }}></option>
+                      {recipes.map((recipe) => {
+                        return (
+                          <option key={recipe._id} id={recipe._id}>
+                            {recipe.title}
+                          </option>
+                        );
+                      })}
+                    </select>
+                  </div>
+                  <div>
+                    <label>Dinner:</label>
+                    <select required onChange={handleChangeMealSix}>
+                      <option style={{ display: "none" }}></option>
+                      {recipes.map((recipe) => {
+                        return (
+                          <option key={recipe._id} id={recipe._id}>
+                            {recipe.title}
+                          </option>
+                        );
+                      })}
+                    </select>
+                  </div>
+                </div>
+
+                <div className="single-day">
+                  <h3>
+                    {!startDate ? (
+                      <p>Thursday</p>
+                    ) : (
+                      <p>{moment(startDate).add(3, "days").format("dddd")}</p>
+                    )}
+                  </h3>
+                  <div>
+                    <label>Lunch:</label>
+                    <select required onChange={handleChangeMealSeven}>
+                      <option style={{ display: "none" }}></option>
+                      {recipes.map((recipe) => {
+                        return (
+                          <option key={recipe._id} id={recipe._id}>
+                            {recipe.title}
+                          </option>
+                        );
+                      })}
+                    </select>
+                  </div>
+                  <div>
+                    <label>Dinner:</label>
+                    <select required onChange={handleChangeMealEight}>
+                      <option style={{ display: "none" }}></option>
+                      {recipes.map((recipe) => {
+                        return (
+                          <option key={recipe._id} id={recipe._id}>
+                            {recipe.title}
+                          </option>
+                        );
+                      })}
+                    </select>
+                  </div>
+                </div>
+
+                <div className="single-day">
+                  <h3>
+                    {!startDate ? (
+                      <p>Friday</p>
+                    ) : (
+                      <p>{moment(startDate).add(4, "days").format("dddd")}</p>
+                    )}
+                  </h3>
+                  <div>
+                    <label>Lunch:</label>
+                    <select required onChange={handleChangeMealNine}>
+                      <option style={{ display: "none" }}></option>
+                      {recipes.map((recipe) => {
+                        return (
+                          <option key={recipe._id} id={recipe._id}>
+                            {recipe.title}
+                          </option>
+                        );
+                      })}
+                    </select>
+                  </div>
+                  <div>
+                    <label>Dinner:</label>
+                    <select required onChange={handleChangeMealTen}>
+                      <option style={{ display: "none" }}></option>
+                      {recipes.map((recipe) => {
+                        return (
+                          <option key={recipe._id} id={recipe._id}>
+                            {recipe.title}
+                          </option>
+                        );
+                      })}
+                    </select>
+                  </div>
+                </div>
+
+                <div className="single-day">
+                  <h3>
+                    {!startDate ? (
+                      <p>Saturday</p>
+                    ) : (
+                      <p>{moment(startDate).add(5, "days").format("dddd")}</p>
+                    )}
+                  </h3>
+                  <div>
+                    <label>Lunch:</label>
+                    <select required onChange={handleChangeMealEleven}>
+                      <option style={{ display: "none" }}></option>
+                      {recipes.map((recipe) => {
+                        return (
+                          <option key={recipe._id} id={recipe._id}>
+                            {recipe.title}
+                          </option>
+                        );
+                      })}
+                    </select>
+                  </div>
+                  <div>
+                    <label>Dinner:</label>
+                    <select required onChange={handleChangeMealTwelve}>
+                      <option style={{ display: "none" }}></option>
+                      {recipes.map((recipe) => {
+                        return (
+                          <option key={recipe._id} id={recipe._id}>
+                            {recipe.title}
+                          </option>
+                        );
+                      })}
+                    </select>
+                  </div>
+                </div>
+
+                <div className="single-day">
+                  <h3>
+                    {!startDate ? (
+                      <p>Sunday</p>
+                    ) : (
+                      <p>{moment(startDate).add(6, "days").format("dddd")}</p>
+                    )}
+                  </h3>
+                  <div>
+                    <label>Lunch:</label>
+                    <select required onChange={handleChangeMealThirteen}>
+                      <option style={{ display: "none" }}></option>
+                      {recipes.map((recipe) => {
+                        return (
+                          <option key={recipe._id} id={recipe._id}>
+                            {recipe.title}
+                          </option>
+                        );
+                      })}
+                    </select>
+                  </div>
+                  <div>
+                    <label>Dinner:</label>
+                    <select required onChange={handleChangeMealFourteen}>
+                      <option style={{ display: "none" }}></option>
+                      {recipes.map((recipe) => {
+                        return (
+                          <option key={recipe._id} id={recipe._id}>
+                            {recipe.title}
+                          </option>
+                        );
+                      })}
+                    </select>
+                  </div>
+                </div>
               </div>
             </div>
-
-            <div className="single-day">
-              <h3>
-                {!startDate ? (
-                  <p>Tuesday</p>
-                ) : (
-                  <p>{moment(startDate).add(1, "days").format("dddd")}</p>
-                )}
-              </h3>
-              <div>
-                <label>Lunch:</label>
-                <select onChange={handleChangeMealThree}>
-                  <option style={{ display: "none" }}></option>
-
-                  {recipes.map((recipe) => {
-                    return <option id={recipe._id}>{recipe.title}</option>;
-                  })}
-                </select>
-              </div>
-              <div>
-                <label>Dinner:</label>
-                <select required onChange={handleChangeMealFour}>
-                  <option style={{ display: "none" }}></option>
-                  {recipes.map((recipe) => {
-                    return <option id={recipe._id}>{recipe.title}</option>;
-                  })}
-                </select>
-              </div>
-            </div>
-
-            <div className="single-day">
-              <h3>
-                {!startDate ? (
-                  <p>Wednesday</p>
-                ) : (
-                  <p>{moment(startDate).add(2, "days").format("dddd")}</p>
-                )}
-              </h3>
-              <div>
-                <label>Lunch:</label>
-                <select onChange={handleChangeMealFive}>
-                  <option style={{ display: "none" }}></option>
-                  {recipes.map((recipe) => {
-                    return <option id={recipe._id}>{recipe.title}</option>;
-                  })}
-                </select>
-              </div>
-              <div>
-                <label>Dinner:</label>
-                <select required onChange={handleChangeMealSix}>
-                  <option style={{ display: "none" }}></option>
-                  {recipes.map((recipe) => {
-                    return <option id={recipe._id}>{recipe.title}</option>;
-                  })}
-                </select>
-              </div>
-            </div>
-
-            <div className="single-day">
-              <h3>
-                {!startDate ? (
-                  <p>Thursday</p>
-                ) : (
-                  <p>{moment(startDate).add(3, "days").format("dddd")}</p>
-                )}
-              </h3>
-              <div>
-                <label>Lunch:</label>
-                <select required onChange={handleChangeMealSeven}>
-                  <option style={{ display: "none" }}></option>
-                  {recipes.map((recipe) => {
-                    return <option id={recipe._id}>{recipe.title}</option>;
-                  })}
-                </select>
-              </div>
-              <div>
-                <label>Dinner:</label>
-                <select required onChange={handleChangeMealEight}>
-                  <option style={{ display: "none" }}></option>
-                  {recipes.map((recipe) => {
-                    return <option id={recipe._id}>{recipe.title}</option>;
-                  })}
-                </select>
-              </div>
-            </div>
-
-            <div className="single-day">
-              <h3>
-                {!startDate ? (
-                  <p>Friday</p>
-                ) : (
-                  <p>{moment(startDate).add(4, "days").format("dddd")}</p>
-                )}
-              </h3>
-              <div>
-                <label>Lunch:</label>
-                <select required onChange={handleChangeMealNine}>
-                  <option style={{ display: "none" }}></option>
-                  {recipes.map((recipe) => {
-                    return <option id={recipe._id}>{recipe.title}</option>;
-                  })}
-                </select>
-              </div>
-              <div>
-                <label>Dinner:</label>
-                <select required onChange={handleChangeMealTen}>
-                  <option style={{ display: "none" }}></option>
-                  {recipes.map((recipe) => {
-                    return <option id={recipe._id}>{recipe.title}</option>;
-                  })}
-                </select>
-              </div>
-            </div>
-
-            <div className="single-day">
-              <h3>
-                {!startDate ? (
-                  <p>Saturday</p>
-                ) : (
-                  <p>{moment(startDate).add(5, "days").format("dddd")}</p>
-                )}
-              </h3>
-              <div>
-                <label>Lunch:</label>
-                <select required onChange={handleChangeMealEleven}>
-                  <option style={{ display: "none" }}></option>
-                  {recipes.map((recipe) => {
-                    return <option id={recipe._id}>{recipe.title}</option>;
-                  })}
-                </select>
-              </div>
-              <div>
-                <label>Dinner:</label>
-                <select required onChange={handleChangeMealTwelve}>
-                  <option style={{ display: "none" }}></option>
-                  {recipes.map((recipe) => {
-                    return <option id={recipe._id}>{recipe.title}</option>;
-                  })}
-                </select>
-              </div>
-            </div>
-
-            <div className="single-day">
-              <h3>
-                {!startDate ? (
-                  <p>Sunday</p>
-                ) : (
-                  <p>{moment(startDate).add(6, "days").format("dddd")}</p>
-                )}
-              </h3>
-              <div>
-                <label>Lunch:</label>
-                <select required onChange={handleChangeMealThirteen}>
-                  <option style={{ display: "none" }}></option>
-                  {recipes.map((recipe) => {
-                    return <option id={recipe._id}>{recipe.title}</option>;
-                  })}
-                </select>
-              </div>
-              <div>
-                <label>Dinner:</label>
-                <select required onChange={handleChangeMealFourteen}>
-                  <option style={{ display: "none" }}></option>
-                  {recipes.map((recipe) => {
-                    return <option id={recipe._id}>{recipe.title}</option>;
-                  })}
-                </select>
-              </div>
-            </div>
-          </div>
+            <button type="submit">Submit</button>
+          </form>
         </div>
-        <button type="submit">Submit</button>
-      </form>
-    </div>
+      )}
+    </>
   );
 }
 
