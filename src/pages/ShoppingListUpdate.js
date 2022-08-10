@@ -92,7 +92,7 @@ function ShoppingListUpdate() {
               <button onClick={() => handleAddButtonClick()}>Add</button>
               {items.map((items, index) => {
                 return (
-                  <div key={items.id}>
+                  <div key={items._id}>
                     <p>
                       {items.description} gr. {items.quantity}
                     </p>

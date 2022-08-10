@@ -13,7 +13,7 @@ function ShoppingListMain(props) {
             style={{ maxHeight: 90 + "vh", overflow: "scroll" }}
           >
             <div className="list-group">
-              <ShoppingList list={props.list} />;
+              <ShoppingList list={props.list} />
             </div>
           </div>
           <Routes>

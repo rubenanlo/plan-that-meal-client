@@ -1,16 +1,22 @@
 import axios from "axios";
 import moment from "moment";
 import React, { useContext, useEffect, useState } from "react";
-import { Link, NavLink, useNavigate, useParams } from "react-router-dom";
+import { NavLink, useNavigate, useParams } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
 
 function ShoppingListDetails() {
   const [list, setList] = useState([]);
+
+  const [isSelected, setIsSelected] = useState(false);
   const storedToken = localStorage.getItem("authToken");
   const { shoppingListId } = useParams();
   const navigate = useNavigate();
 
   const { isLoading } = useContext(AuthContext);
+
+  const setToComplete = () => {
+    isSelected === false ? setIsSelected(true) : setIsSelected(false);
+  };
 
   useEffect(() => {
     axios
@@ -54,9 +60,23 @@ function ShoppingListDetails() {
           </div>
 
           <div key={list._id}>
-            {list.items?.map((element) => {
+            {list.items?.map((element, index) => {
               return (
-                <div key={element._id}>
+                <div key={element._id} onClick={() => setToComplete()}>
+                  {isSelected && (
+                    <img
+                      src="../../completed.png"
+                      alt="completed"
+                      style={{ width: "1.5rem" }}
+                    />
+                  )}
+                  {!isSelected && (
+                    <img
+                      src="../../not-completed.png"
+                      alt="completed"
+                      style={{ width: "1.5rem" }}
+                    />
+                  )}
                   <p>{element.description}</p>
                   <p>{element.quantity}</p>
                 </div>

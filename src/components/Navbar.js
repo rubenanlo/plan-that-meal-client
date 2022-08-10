@@ -37,7 +37,7 @@ function Navbar() {
                   Create a Planning
                 </NavLink>
                 |
-                <NavLink className="link" to="/shoppingitems">
+                <NavLink className="link" to="/shoppingitems/">
                   Shopping list
                 </NavLink>
                 |

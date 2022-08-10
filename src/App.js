@@ -12,8 +12,6 @@ import RecipeCreate from "./pages/RecipeCreate";
 import RecipeUpdate from "./pages/RecipeUpdate";
 import RecipesList from "./pages/RecipesList";
 import SignupPage from "./pages/SignupPage";
-import ShoppingList from "./pages/ShoppingList";
-import ShoppingListDetails from "./pages/ShoppingListDetails";
 import ShoppingListCreate from "./pages/ShoppingListCreate";
 import ShoppingListUpdate from "./pages/ShoppingListUpdate";
 import { useEffect, useState } from "react";
@@ -173,15 +171,6 @@ function App() {
             </>
           }
         />
-        {/* <Route
-          path="/shoppingitems/:shoppingListId"
-          element={
-            <>
-              <Navbar />
-              <ShoppingListDetails />
-            </>
-          }
-        /> */}
         <Route
           path="/shoppingitems/create"
           element={
