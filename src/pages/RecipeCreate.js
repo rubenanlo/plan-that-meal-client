@@ -60,6 +60,7 @@ function RecipeCreate() {
       )
       .then((response) => {
         navigate("/recipes");
+        window.location.reload();
 
         setImg("");
         setTitle("");

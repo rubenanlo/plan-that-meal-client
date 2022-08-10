@@ -32,3 +32,19 @@ img {
   width: 50%;
   border-radius: 2rem;
 }
+.notfound {
+  background-image: url('../public/notfound.jpeg');
+  background-size: cover;
+  background-position: center;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+.notfound p {
+  text-align: left;
+  color: white;
+  position: absolute;
+  top: 9em;
+  left: 2rem;
+  max-width: 20rem;
+}

@@ -78,6 +78,7 @@ function RecipesUpdate() {
       )
       .then((response) => {
         navigate(`/recipes/${recipeId}`);
+        window.location.reload();
       })
       .catch((error) => {
         setErrorMsg("oops, error updating this recipe");

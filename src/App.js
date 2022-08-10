@@ -18,6 +18,7 @@ import ShoppingListCreate from "./pages/ShoppingListCreate";
 import ShoppingListUpdate from "./pages/ShoppingListUpdate";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import NotFound from "./components/NotFound";
 
 function App() {
   const [recipes, setRecipes] = useState([]);
@@ -62,46 +63,135 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar></Navbar>
       <Routes>
-        <Route path="/" element={<HomePage />}></Route>
-        <Route path="/signup" element={<SignupPage />}></Route>
-        <Route path="/login" element={<LoginPage />}></Route>
+        <Route
+          path="/"
+          element={
+            <>
+              <Navbar />
+              <HomePage />
+            </>
+          }
+        />
+        <Route
+          path="/signup"
+          element={
+            <>
+              <Navbar />
+              <SignupPage />
+            </>
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            <>
+              <Navbar />
+              <LoginPage />
+            </>
+          }
+        />
         <Route
           path="/recipes"
-          element={<RecipesList recipes={recipes} />}
-        ></Route>
-        <Route path="/recipes/:recipeId" element={<RecipeDetails />}></Route>
+          element={
+            <>
+              <Navbar />
+              <RecipesList recipes={recipes} />
+            </>
+          }
+        />
+        <Route
+          path="/recipes/:recipeId"
+          element={
+            <>
+              <Navbar />
+              <RecipeDetails />
+            </>
+          }
+        />
         <Route
           path="/recipes/edit/:recipeId"
-          element={<RecipeUpdate />}
-        ></Route>
-        <Route path="/recipes/create" element={<RecipeCreate />}></Route>
+          element={
+            <>
+              <Navbar />
+              <RecipeUpdate />
+            </>
+          }
+        />
+        <Route
+          path="/recipes/create"
+          element={
+            <>
+              <Navbar />
+              <RecipeCreate />
+            </>
+          }
+        />
         <Route
           path="/weeklyplans"
-          element={<PlanningsList weeklyPlans={weeklyPlans} />}
-        ></Route>
+          element={
+            <>
+              <Navbar />
+              <PlanningsList weeklyPlans={weeklyPlans} />
+            </>
+          }
+        />
         <Route
           path="/weeklyplans/:weeklyPlanId"
-          element={<PlanningsDetails />}
-        ></Route>
-        <Route path="/weeklyplans/create" element={<PlanningsCreate />}></Route>
+          element={
+            <>
+              <Navbar />
+              <PlanningsDetails />
+            </>
+          }
+        />
+        <Route
+          path="/weeklyplans/create"
+          element={
+            <>
+              <Navbar />
+              <PlanningsCreate recipes={recipes} />
+            </>
+          }
+        />
         <Route
           path="/shoppingitems"
-          element={<ShoppingList list={list} />}
-        ></Route>
+          element={
+            <>
+              <Navbar />
+              <ShoppingList list={list} />
+            </>
+          }
+        />
         <Route
           path="/shoppingitems/:shoppingListId"
-          element={<ShoppingListDetails />}
-        ></Route>
+          element={
+            <>
+              <Navbar />
+              <ShoppingListDetails />
+            </>
+          }
+        />
         <Route
           path="/shoppingitems/create"
-          element={<ShoppingListCreate />}
-        ></Route>
+          element={
+            <>
+              <Navbar />
+              <ShoppingListCreate />
+            </>
+          }
+        />
         <Route
           path="/shoppingitems/edit/:shoppingListId"
-          element={<ShoppingListUpdate />}
-        ></Route>
+          element={
+            <>
+              <Navbar />
+
+              <ShoppingListUpdate />
+            </>
+          }
+        />
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer></Footer>
     </div>

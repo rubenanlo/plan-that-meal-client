@@ -72,18 +72,6 @@ function RecipesList(props) {
         <p>Loading...</p>
       ) : (
         <div>
-          {props.recipes.length === 0 ? (
-            <div>
-              <p>
-                Be the first to create a new recipe{" "}
-                <Link to="/recipes/create">here</Link>
-              </p>
-              <img src="../../empty-recipe.jpeg" alt="" />
-            </div>
-          ) : (
-            renderRecipes()
-          )}
-
           <button
             onClick={() => {
               navigate(-1);
@@ -112,6 +100,18 @@ function RecipesList(props) {
               </select>
             </form>
           </div>
+
+          {props.recipes.length === 0 ? (
+            <div>
+              <p>
+                Be the first to create a new recipe{" "}
+                <Link to="/recipes/create">here</Link>
+              </p>
+              <img src="../../empty-recipe.jpeg" alt="" />
+            </div>
+          ) : (
+            renderRecipes()
+          )}
         </div>
       )}
     </>
