@@ -27,31 +27,37 @@ function App() {
   const [list, setList] = useState([]);
 
   useEffect(() => {
+    getAllRecipes();
+    getAllPlannings();
+    getAllShoppingLists();
+  }, []);
+
+  const getAllRecipes = () => {
     axios
       .get(`${process.env.REACT_APP_API_URL}/recipes`, {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
       .then((response) => setRecipes(response.data))
       .catch((error) => console.log(error));
-  }, [storedToken]);
+  };
 
-  useEffect(() => {
+  const getAllPlannings = () => {
     axios
       .get(`${process.env.REACT_APP_API_URL}/weeklyplans`, {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
       .then((response) => setWeeklyPlans(response.data))
       .catch((error) => console.log(error));
-  }, [storedToken]);
+  };
 
-  useEffect(() => {
+  const getAllShoppingLists = () => {
     axios
       .get(`${process.env.REACT_APP_API_URL}/shoppingitems`, {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
       .then((response) => setList(response.data))
       .catch((error) => console.log(error));
-  }, [storedToken]);
+  };
 
   if (list === null) {
     return <>loading...</>;
@@ -123,7 +129,7 @@ function App() {
           element={
             <>
               <Navbar />
-              <RecipeCreate />
+              <RecipeCreate refreshRecipes={getAllRecipes} />
             </>
           }
         />
@@ -150,7 +156,10 @@ function App() {
           element={
             <>
               <Navbar />
-              <PlanningsCreate recipes={recipes} />
+              <PlanningsCreate
+                recipes={recipes}
+                refreshPlannings={getAllPlannings}
+              />
             </>
           }
         />
@@ -177,7 +186,7 @@ function App() {
           element={
             <>
               <Navbar />
-              <ShoppingListCreate />
+              <ShoppingListCreate refreshShoppingLists={getAllShoppingLists} />
             </>
           }
         />

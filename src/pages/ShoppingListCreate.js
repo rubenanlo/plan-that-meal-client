@@ -4,7 +4,7 @@ import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
 
-function ShoppingListCreate() {
+function ShoppingListCreate(props) {
   const [items, setItems] = useState([]);
   const [description, setDescription] = useState("");
   const [quantity, setQuantity] = useState("");
@@ -40,6 +40,7 @@ function ShoppingListCreate() {
       )
       .then(() => {
         navigate("/shoppingitems");
+        props.refreshShoppingLists();
       })
 
       .catch((error) => {

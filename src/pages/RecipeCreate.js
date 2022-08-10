@@ -4,7 +4,7 @@ import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
 
-function RecipeCreate() {
+function RecipeCreate(props) {
   const [img, setImg] = useState("");
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -58,9 +58,9 @@ function RecipeCreate() {
           headers: { Authorization: `Bearer ${storedToken}` },
         }
       )
-      .then((response) => {
+      .then(() => {
         navigate("/recipes");
-        window.location.reload();
+        props.refreshRecipes();
 
         setImg("");
         setTitle("");

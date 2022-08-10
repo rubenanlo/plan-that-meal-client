@@ -64,6 +64,7 @@ function PlanningsCreate(props) {
       )
       .then((response) => {
         navigate("/weeklyplans");
+        props.refreshPlannings();
 
         setStartDate("");
         setMealRecipe1("");
