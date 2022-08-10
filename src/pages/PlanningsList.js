@@ -1,29 +1,12 @@
-import axios from "axios";
 import moment from "moment";
-import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-function PlanningsList() {
-  const [weeklyPlans, setWeeklyPlans] = useState([]);
-  const storedToken = localStorage.getItem("authToken");
+function PlanningsList(props) {
   const background = ["../../week1.jpg", "../../week2.jpeg"];
-
-  useEffect(() => {
-    axios
-      .get(`${process.env.REACT_APP_API_URL}/weeklyplans`, {
-        headers: { Authorization: `Bearer ${storedToken}` },
-      })
-      .then((response) => setWeeklyPlans(response.data))
-      .catch((error) => console.log(error));
-  }, [storedToken]);
-
-  if (weeklyPlans === null) {
-    return <>loading...</>;
-  }
 
   return (
     <div>
-      {weeklyPlans.length === 0 && (
+      {props.weeklyPlans.length === 0 && (
         <div>
           <p>
             Not a weekly plan yet? Not to worry, we've got you covered, you can
@@ -32,7 +15,7 @@ function PlanningsList() {
           <img src="../../empty-recipe.jpeg" alt="" />
         </div>
       )}
-      {weeklyPlans?.map((weeklyPlan) => {
+      {props.weeklyPlans?.map((weeklyPlan) => {
         return (
           <a
             className="link"

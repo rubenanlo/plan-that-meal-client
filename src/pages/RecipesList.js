@@ -1,28 +1,15 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-function RecipesList() {
-  const [recipes, setRecipes] = useState([]);
-  const storedToken = localStorage.getItem("authToken");
+function RecipesList(props) {
   const navigate = useNavigate();
 
-  useEffect(() => {
-    axios
-      .get(`${process.env.REACT_APP_API_URL}/recipes`, {
-        headers: { Authorization: `Bearer ${storedToken}` },
-      })
-      .then((response) => setRecipes(response.data))
-      .catch((error) => console.log(error));
-  }, [storedToken]);
-
-  if (recipes === []) {
+  if (props.recipes === []) {
     return <>loading...</>;
   }
 
   return (
     <>
-      {recipes.length === 0 && (
+      {props.recipes.length === 0 && (
         <div>
           <p>
             Be the first to create a new recipe{" "}
@@ -40,7 +27,7 @@ function RecipesList() {
         Back
       </button>
       <div className="RecipeListPage wrapper">
-        {recipes?.map((recipe) => {
+        {props.recipes?.map((recipe) => {
           return (
             <div className="RecipeCard card" key={recipe._id}>
               <Link to={`/recipes/${recipe._id}`}>
