@@ -3,7 +3,7 @@ import { nanoid } from "nanoid";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
-function RecipesUpdate(props) {
+function RecipesUpdate() {
   const [img, setImg] = useState("");
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");

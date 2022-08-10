@@ -14,6 +14,8 @@ import RecipesList from "./pages/RecipesList";
 import SignupPage from "./pages/SignupPage";
 import ShoppingList from "./pages/ShoppingList";
 import ShoppingListDetails from "./pages/ShoppingListDetails";
+import ShoppingListCreate from "./pages/ShoppingListCreate";
+import ShoppingListUpdate from "./pages/ShoppingListUpdate";
 
 function App() {
   return (
@@ -40,6 +42,14 @@ function App() {
         <Route
           path="/shoppingitems/:shoppingListId"
           element={<ShoppingListDetails />}
+        ></Route>
+        <Route
+          path="/shoppingitems/create"
+          element={<ShoppingListCreate />}
+        ></Route>
+        <Route
+          path="/shoppingitems/edit/:shoppingListId"
+          element={<ShoppingListUpdate />}
         ></Route>
       </Routes>
       <Footer></Footer>

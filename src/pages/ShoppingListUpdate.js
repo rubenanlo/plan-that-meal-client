@@ -1,12 +1,14 @@
 import axios from "axios";
 import { nanoid } from "nanoid";
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 
-function ShoppingListCreate() {
+function ShoppingListUpdate() {
   const [items, setItems] = useState([]);
   const [description, setDescription] = useState("");
   const [quantity, setQuantity] = useState("");
+
+  const { shoppingListId } = useParams();
 
   const [errorMsg, setErrorMsg] = useState("");
 
@@ -24,26 +26,42 @@ function ShoppingListCreate() {
     setQuantity("");
   };
 
+  useEffect(() => {
+    axios
+      .get(`${process.env.REACT_APP_API_URL}/shoppingitems/${shoppingListId}`, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      })
+      .then((response) => {
+        const oneList = response.data;
+        setItems(oneList.items);
+      })
+      .catch((error) => console.log(error));
+  }, [shoppingListId, storedToken]);
+
   const handleSubmit = () => {
     setErrorMsg("");
 
     axios
-      .post(
-        `${process.env.REACT_APP_API_URL}/shoppingitems`,
+      .put(
+        `${process.env.REACT_APP_API_URL}/shoppingitems/${shoppingListId}`,
         { items },
         {
           headers: { Authorization: `Bearer ${storedToken}` },
         }
       )
       .then(() => {
-        navigate("/shoppingitems");
+        navigate(`/shoppingitems/${shoppingListId}`);
       })
 
       .catch((error) => {
-        setErrorMsg("oops, error creating a shopping list");
+        setErrorMsg("oops, error editing a shopping list");
         console.log(error);
       });
   };
+
+  if (items === null) {
+    return <>loading...</>;
+  }
 
   return (
     <div>
@@ -63,6 +81,7 @@ function ShoppingListCreate() {
             value={quantity}
             onChange={(e) => setQuantity(e.target.value)}
           />
+          <span>gr</span>
           <button onClick={() => handleAddButtonClick()}>Add</button>
           {items.map((items, index) => {
             return (
@@ -96,4 +115,4 @@ function ShoppingListCreate() {
   );
 }
 
-export default ShoppingListCreate;
+export default ShoppingListUpdate;

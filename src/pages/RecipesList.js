@@ -16,6 +16,10 @@ function RecipesList() {
       .catch((error) => console.log(error));
   }, [storedToken]);
 
+  if (recipes === []) {
+    return <>loading...</>;
+  }
+
   return (
     <>
       {recipes.length === 0 && (

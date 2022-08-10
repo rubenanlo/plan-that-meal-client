@@ -34,6 +34,10 @@ function PlanningsDetails() {
       .catch((err) => console.log(err));
   };
 
+  if (weeklyPlan === null) {
+    return <>loading...</>;
+  }
+
   return (
     <div>
       <div>

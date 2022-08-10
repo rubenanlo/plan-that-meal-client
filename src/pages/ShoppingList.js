@@ -17,13 +17,19 @@ function ShoppingList() {
       .catch((error) => console.log(error));
   }, [storedToken]);
 
+  if (list === null) {
+    return <>loading...</>;
+  }
+
   return (
     <div>
       {list.map((element) => {
         return (
           <div key={element._id}>
             <Link to={`/shoppingitems/${element._id}`}>
-              <p>Created on {moment(element.date).format("dddd mmmm yyyy")}</p>
+              <p>
+                Created on {moment(element.date).format("dddd, DD MMMM yyyy")}
+              </p>
             </Link>
           </div>
         );

@@ -69,8 +69,15 @@ function HomePage() {
           </div>
           <div>
             <button className="homepage-links">
-              <NavLink className="homepage-link" to="/shoppingitems">
+              <NavLink className="homepage-link" to="/shoppingitems/create">
                 Create a shopping list
+              </NavLink>
+            </button>
+          </div>
+          <div>
+            <button className="homepage-links">
+              <NavLink className="homepage-link" to="/shoppingitems">
+                View your shopping lists
               </NavLink>
             </button>
           </div>

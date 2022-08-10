@@ -1,7 +1,7 @@
 import axios from "axios";
 import moment from "moment";
 import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 function ShoppingListDetails() {
   const [list, setList] = useState([]);
@@ -46,6 +46,10 @@ function ShoppingListDetails() {
         >
           Back
         </button>
+        <Link to={`/shoppingitems/edit/${shoppingListId}`}>
+          <button>Edit</button>
+        </Link>
+
         <button onClick={handleDelete}>Delete</button>
       </div>
 

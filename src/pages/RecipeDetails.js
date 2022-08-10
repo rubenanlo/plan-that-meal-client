@@ -22,6 +22,10 @@ function RecipeDetails() {
       .catch((error) => console.log(error));
   }, [recipeId, storedToken]);
 
+  if (recipe === null) {
+    return <>loading...</>;
+  }
+
   return (
     <div className="RecipeDetails" key={recipeId}>
       {recipe && (

@@ -198,6 +198,10 @@ function PlanningsCreate() {
     setMealRecipe14(optionElementId);
   };
 
+  if (recipes === null) {
+    return <>loading...</>;
+  }
+
   return (
     <div className="planning">
       <h1>Create your weekly plan</h1>

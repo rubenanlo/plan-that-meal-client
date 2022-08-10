@@ -17,6 +17,10 @@ function PlanningsList() {
       .catch((error) => console.log(error));
   }, [storedToken]);
 
+  if (weeklyPlans === null) {
+    return <>loading...</>;
+  }
+
   return (
     <div>
       {weeklyPlans.length === 0 && (
