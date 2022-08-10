@@ -19,6 +19,7 @@ import ShoppingListUpdate from "./pages/ShoppingListUpdate";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import NotFound from "./components/NotFound";
+import ShoppingListMain from "./components/ShoppingListMain";
 
 function App() {
   const [recipes, setRecipes] = useState([]);
@@ -164,15 +165,15 @@ function App() {
           }
         />
         <Route
-          path="/shoppingitems"
+          path="/shoppingitems/*"
           element={
             <>
               <Navbar />
-              <ShoppingList list={list} />
+              <ShoppingListMain list={list} />
             </>
           }
         />
-        <Route
+        {/* <Route
           path="/shoppingitems/:shoppingListId"
           element={
             <>
@@ -180,7 +181,7 @@ function App() {
               <ShoppingListDetails />
             </>
           }
-        />
+        /> */}
         <Route
           path="/shoppingitems/create"
           element={

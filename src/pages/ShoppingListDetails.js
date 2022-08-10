@@ -1,7 +1,7 @@
 import axios from "axios";
 import moment from "moment";
 import React, { useContext, useEffect, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, NavLink, useNavigate, useParams } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
 
 function ShoppingListDetails() {
@@ -43,21 +43,12 @@ function ShoppingListDetails() {
       {isLoading ? (
         <p>Loading...</p>
       ) : (
-        <div>
+        <div className="col-7">
           <div>
-            <span>
-              Created: {moment(list.date).format("dddd, DD MMMM yyyy")}
-            </span>
-            <button
-              onClick={() => {
-                navigate(-1);
-              }}
-            >
-              Back
-            </button>
-            <Link to={`/shoppingitems/edit/${shoppingListId}`}>
+            <h3>Created: {moment(list.date).format("dddd, DD MMMM yyyy")}</h3>
+            <NavLink to={`/shoppingitems/edit/${shoppingListId}`}>
               <button>Edit</button>
-            </Link>
+            </NavLink>
 
             <button onClick={handleDelete}>Delete</button>
           </div>

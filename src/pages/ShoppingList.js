@@ -1,6 +1,6 @@
 import moment from "moment";
 import { useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
 
 function ShoppingList(props) {
@@ -18,7 +18,7 @@ function ShoppingList(props) {
             <div>
               <p>
                 There is still no shopping list? Get in there and create one{" "}
-                <Link to="/shoppingitems/create">here</Link>
+                <NavLink to="/shoppingitems/create">here</NavLink>
               </p>
               <img src="../../empty-recipe.jpeg" alt="" />
             </div>
@@ -27,12 +27,12 @@ function ShoppingList(props) {
           {props.list?.map((element) => {
             return (
               <div key={element._id}>
-                <Link to={`/shoppingitems/${element._id}`}>
+                <NavLink to={`/shoppingitems/${element._id}`}>
                   <p>
                     Created on
                     {moment(element?.date).format("dddd, DD MMMM yyyy")}
                   </p>
-                </Link>
+                </NavLink>
               </div>
             );
           })}
