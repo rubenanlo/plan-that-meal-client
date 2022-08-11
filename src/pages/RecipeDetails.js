@@ -56,7 +56,7 @@ function RecipeDetails() {
 
           <button onClick={() => navigate(-1)}>Back</button>
           <Link to={`/recipes/edit/${recipe?._id}`}>
-            <button>Edit</button>
+            <button className="buttonNotPop">Edit</button>
           </Link>
         </div>
       )}

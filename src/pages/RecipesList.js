@@ -1,10 +1,14 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
 
 function RecipesList(props) {
   const navigate = useNavigate();
   const { isLoading } = useContext(AuthContext);
+
+  useEffect(() => {
+    props.refreshRecipes();
+  }, []);
 
   const [searchParams, setSearchParams] = useSearchParams();
   const searchTerm = searchParams.get("protein") || "";

@@ -1,5 +1,5 @@
 import moment from "moment";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
 
@@ -7,6 +7,10 @@ function PlanningsList(props) {
   const background = ["../../week1.jpg", "../../week2.jpeg"];
 
   const { isLoading } = useContext(AuthContext);
+
+  useEffect(() => {
+    props.refreshPlannings();
+  }, []);
 
   return (
     <>

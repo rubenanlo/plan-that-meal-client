@@ -1,5 +1,5 @@
 import moment from "moment";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
 
@@ -7,6 +7,10 @@ function ShoppingList(props) {
   const navigate = useNavigate();
 
   const { isLoading } = useContext(AuthContext);
+
+  useEffect(() => {
+    props.refreshShoppingLists();
+  }, []);
 
   return (
     <>

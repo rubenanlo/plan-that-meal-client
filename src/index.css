@@ -4,6 +4,8 @@
 
 :root {
   --button-dark: hsl(325, 51%, 36%);
+  --button-light: white;
+  --button-dark-transparency: hsla(325, 51%, 36%, 0.303);
   --text-dark: black;
   --text-light: white;
 }
@@ -23,11 +25,6 @@ body {
 h1 {
   font-family: 'Fira Sans', sans-serif}
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-
 .wrapper {
   display: flex;
   flex-direction: column;
@@ -40,6 +37,7 @@ img {
   width: 50%;
   border-radius: 2rem;
 }
+
 .notfound {
   background-image: url('../public/notfound.jpeg');
   background-size: cover;
@@ -56,3 +54,19 @@ img {
   left: 2rem;
   max-width: 20rem;
 }
+
+button{
+  margin: 1rem;
+  padding: 0.5rem 3rem;
+  border-radius: 1rem;
+  background-color: var(--button-dark);
+  border: none
+}
+
+
+.buttonNotPop {
+  background-color: var(--button-light);
+  border: .1rem solid var(--button-dark)
+}
+
+

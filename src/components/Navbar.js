@@ -16,36 +16,56 @@ function Navbar() {
             <NavLink to="/">
               <img className="logo" src="../../2.png" alt="logo" />
             </NavLink>
-            <button className="theme">Light mode</button>
           </div>
           {isLoggedIn && (
-            <div className="header container">
-              <div className="navbar">
-                <NavLink className="link" to="/recipes">
+            <>
+              {/* <button className="theme">Light mode</button> */}
+              <div className="dropdown">
+                <button className="dropbtn">
                   Recipes
-                </NavLink>
-                |
-                <NavLink className="link" to="/recipes/create">
-                  Create a Recipe
-                </NavLink>
-                |
-                <NavLink className="link" to="/weeklyplans">
-                  Plannings
-                </NavLink>
-                |
-                <NavLink className="link" to="/weeklyplans/create">
-                  Create a Planning
-                </NavLink>
-                |
-                <NavLink className="link" to="/shoppingitems/">
-                  Shopping list
-                </NavLink>
-                |
-                <Link to="/">
-                  <p onClick={logOutUser}>Logout</p>
-                </Link>
+                  <i className="fa fa-caret-down"></i>
+                </button>
+                <div className="dropdown-content">
+                  <NavLink className="link" to="/recipes">
+                    View all recipes
+                  </NavLink>
+                  <NavLink className="link" to="/recipes/create">
+                    Create a Recipe
+                  </NavLink>
+                </div>
               </div>
-            </div>
+              <div className="dropdown">
+                <button className="dropbtn">
+                  Weekly Plans
+                  <i className="fa fa-caret-down"></i>
+                </button>
+                <div className="dropdown-content">
+                  <NavLink className="link" to="/weeklyplans">
+                    View all weekly plans
+                  </NavLink>
+                  <NavLink className="link" to="/weeklyplans/create">
+                    Create a Planning
+                  </NavLink>
+                </div>
+              </div>
+              <div className="dropdown">
+                <button className="dropbtn">
+                  Shopping List
+                  <i className="fa fa-caret-down"></i>
+                </button>
+                <div className="dropdown-content">
+                  <NavLink className="link" to="/shoppingitems/">
+                    View all shopping lists
+                  </NavLink>
+                  <NavLink className="link" to="/shoppingitems/create">
+                    Create a shopping list
+                  </NavLink>
+                </div>
+              </div>
+              <Link to="/">
+                <span onClick={logOutUser}>Logout</span>
+              </Link>
+            </>
           )}
           {!isLoggedIn && (
             <div className="header container">

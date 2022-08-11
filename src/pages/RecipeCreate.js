@@ -60,8 +60,8 @@ function RecipeCreate(props) {
         }
       )
       .then(() => {
-        navigate("/recipes");
         props.refreshRecipes();
+        navigate("/recipes");
 
         setImg("");
         setTitle("");
@@ -85,7 +85,11 @@ function RecipeCreate(props) {
           {errorMsg && <p className="error">{errorMsg}</p>}
           <span>(*) required fields</span>
 
-          <form onSubmit={handleSubmit} encType="multipart/form-data">
+          <form
+            id="recipe-form"
+            onSubmit={handleSubmit}
+            encType="multipart/form-data"
+          >
             <div>
               <label>Image:</label>
               <input type="file" onChange={(e) => handleFileUpload(e)} />
@@ -163,8 +167,8 @@ function RecipeCreate(props) {
                       protein === "Legumes" ? "var(--button-dark)" : "",
                     color:
                       protein === "Legumes"
-                        ? "var(--text-dark)"
-                        : "var(--text-light)",
+                        ? "var(--text-light)"
+                        : "var(--text-dark)",
                   }}
                   onClick={() => setProtein("Legumes")}
                 >
@@ -180,8 +184,8 @@ function RecipeCreate(props) {
                     protein === "Seeds and nuts" ? "var(--button-dark)" : "",
                   color:
                     protein === "Seeds and nuts"
-                      ? "var(--text-dark)"
-                      : "var(--text-light)",
+                      ? "var(--text-light)"
+                      : "var(--text-dark)",
                 }}
                 onClick={() => setProtein("Seeds and nuts")}
               >
@@ -207,8 +211,10 @@ function RecipeCreate(props) {
                 onChange={(e) => setDescription(e.target.value)}
               />
             </div>
-            <button type="submit">Submit</button>
           </form>
+          <button type="submit" form="recipe-form">
+            Submit
+          </button>
 
           <div className="Input-value">
             <label>Ingredient: </label>

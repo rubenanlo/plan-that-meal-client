@@ -101,7 +101,7 @@ function App() {
           element={
             <>
               <Navbar />
-              <RecipesList recipes={recipes} />
+              <RecipesList recipes={recipes} refreshRecipes={getAllRecipes} />
             </>
           }
         />
@@ -137,7 +137,10 @@ function App() {
           element={
             <>
               <Navbar />
-              <PlanningsList weeklyPlans={weeklyPlans} />
+              <PlanningsList
+                weeklyPlans={weeklyPlans}
+                refreshPlannings={getAllPlannings}
+              />
             </>
           }
         />
@@ -167,7 +170,10 @@ function App() {
           element={
             <>
               <Navbar />
-              <ShoppingListMain list={list} />
+              <ShoppingListMain
+                list={list}
+                refreshShoppingLists={getAllShoppingLists}
+              />
             </>
           }
         />
