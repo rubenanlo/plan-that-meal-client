@@ -186,7 +186,7 @@ function RecipeCreate(props) {
             <button onClick={() => handleAddButtonClick()}>Add</button>
           </div>
 
-          {ingredients.map((ingredient, index) => {
+          {ingredients.map((ingredient) => {
             return (
               <div key={ingredient.id}>
                 <p>

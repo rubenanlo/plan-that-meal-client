@@ -29,8 +29,7 @@ function ShoppingList(props) {
               <div key={element._id}>
                 <NavLink to={`/shoppingitems/${element._id}`}>
                   <p>
-                    Created on
-                    {moment(element?.date).format("dddd, DD MMMM yyyy")}
+                    From {moment(element?.date).format("dddd, DD MMMM yyyy")}
                   </p>
                 </NavLink>
               </div>

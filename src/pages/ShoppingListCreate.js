@@ -18,14 +18,17 @@ function ShoppingListCreate(props) {
 
   const handleAddButtonClick = () => {
     const newItem = {
-      id: nanoid(),
+      _id: nanoid(),
       description: description,
       quantity: quantity,
     };
     setItems([...items, newItem]);
+
     setDescription("");
     setQuantity("");
   };
+
+  // console.log(items[0].description);
 
   const handleSubmit = () => {
     setErrorMsg("");
@@ -72,16 +75,18 @@ function ShoppingListCreate(props) {
                 onChange={(e) => setQuantity(e.target.value)}
               />
               <button onClick={() => handleAddButtonClick()}>Add</button>
-              {items.map((items, index) => {
+              {items.map((item, index) => {
                 return (
-                  <div key={items.id}>
+                  <div key={item._id}>
                     <p>
-                      {items.description} gr. {items.quantity}
+                      {item.description} x {item.quantity}
                     </p>
                     <button
                       onClick={(e) => {
                         e.preventDefault();
-                        setDescription(items.filter((x) => x.id !== items.id));
+                        setItems(
+                          items.filter((element) => element._id !== item._id)
+                        );
                       }}
                     >
                       x
