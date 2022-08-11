@@ -119,6 +119,14 @@ function RecipesUpdate() {
                   type="button"
                   name="protein"
                   value={protein}
+                  style={{
+                    backgroundColor:
+                      protein === "Meat" ? "var(--button-dark)" : "",
+                    color:
+                      protein === "Meat"
+                        ? "var(--text-light)"
+                        : "var(--text-dark)",
+                  }}
                   onClick={() => setProtein("Meat")}
                 >
                   Meat
@@ -127,6 +135,14 @@ function RecipesUpdate() {
                   name="protein"
                   type="button"
                   value={protein}
+                  style={{
+                    backgroundColor:
+                      protein === "Fish" ? "var(--button-dark)" : "",
+                    color:
+                      protein === "Fish"
+                        ? "var(--text-light)"
+                        : "var(--text-dark)",
+                  }}
                   onClick={() => setProtein("Fish")}
                 >
                   Fish
@@ -137,12 +153,28 @@ function RecipesUpdate() {
                   name="protein"
                   type="button"
                   value={protein}
+                  style={{
+                    backgroundColor:
+                      protein === "Eggs" ? "var(--button-dark)" : "",
+                    color:
+                      protein === "Eggs"
+                        ? "var(--text-light)"
+                        : "var(--text-dark)",
+                  }}
                   onClick={() => setProtein("Eggs")}
                 >
                   Eggs
                 </button>
                 <button
                   name="protein"
+                  style={{
+                    backgroundColor:
+                      protein === "Legumes" ? "var(--button-dark)" : "",
+                    color:
+                      protein === "Legumes"
+                        ? "var(--text-light)"
+                        : "var(--text-dark)",
+                  }}
                   type="button"
                   value={protein}
                   onClick={() => setProtein("Legumes")}
@@ -154,6 +186,14 @@ function RecipesUpdate() {
                 name="protein"
                 type="button"
                 value={protein}
+                style={{
+                  backgroundColor:
+                    protein === "Seeds and nuts" ? "var(--button-dark)" : "",
+                  color:
+                    protein === "Seeds and nuts"
+                      ? "var(--text-light)"
+                      : "var(--text-dark)",
+                }}
                 onClick={() => setProtein("Seeds and nuts")}
               >
                 Seeds and nuts

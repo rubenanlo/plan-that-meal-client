@@ -42,7 +42,7 @@ function Navbar() {
                 </NavLink>
                 |
                 <Link to="/">
-                  <button onClick={logOutUser}>Logout</button> |
+                  <p onClick={logOutUser}>Logout</p>
                 </Link>
               </div>
             </div>

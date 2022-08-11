@@ -36,6 +36,8 @@ function SignupPage(props) {
         <div className="SignupPage">
           <h1>Sign Up</h1>
 
+          {errorMessage && <p className="error-message">{errorMessage}</p>}
+
           <form onSubmit={handleSignupSubmit}>
             <label>Email:</label>
             <input
@@ -60,8 +62,6 @@ function SignupPage(props) {
 
             <button type="submit">Sign Up</button>
           </form>
-
-          {errorMessage && <p className="error-message">{errorMessage}</p>}
 
           <p>
             Do you already have an account? Please{" "}

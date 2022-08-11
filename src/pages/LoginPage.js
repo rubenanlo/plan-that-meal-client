@@ -25,7 +25,7 @@ function LoginPage(props) {
         storeToken(response.data.authToken);
         authenticateUser();
 
-        navigate("/");
+        window.location.reload(navigate("/"));
       })
       .catch((error) => {
         const errorDescription = error.response.data.errorMessage;

@@ -27,6 +27,7 @@ function RecipeCreate(props) {
       id: nanoid(),
       ingredient: inputIngredient,
       quantity: inputQuantity,
+      isSelected: false,
     };
     setIngredients([...ingredients, newIngredient]);
     setInputIngredient("");
@@ -107,6 +108,14 @@ function RecipeCreate(props) {
                   type="button"
                   name="protein"
                   value={protein}
+                  style={{
+                    backgroundColor:
+                      protein === "Meat" ? "var(--button-dark)" : "",
+                    color:
+                      protein === "Meat"
+                        ? "var(--text-light)"
+                        : "var(--text-dark)",
+                  }}
                   onClick={() => setProtein("Meat")}
                 >
                   Meat
@@ -115,6 +124,14 @@ function RecipeCreate(props) {
                   name="protein"
                   type="button"
                   value={protein}
+                  style={{
+                    backgroundColor:
+                      protein === "Fish" ? "var(--button-dark)" : "",
+                    color:
+                      protein === "Fish"
+                        ? "var(--text-light)"
+                        : "var(--text-dark)",
+                  }}
                   onClick={() => setProtein("Fish")}
                 >
                   Fish
@@ -125,6 +142,14 @@ function RecipeCreate(props) {
                   name="protein"
                   type="button"
                   value={protein}
+                  style={{
+                    backgroundColor:
+                      protein === "Eggs" ? "var(--button-dark)" : "",
+                    color:
+                      protein === "Eggs"
+                        ? "var(--text-light)"
+                        : "var(--text-dark)",
+                  }}
                   onClick={() => setProtein("Eggs")}
                 >
                   Eggs
@@ -133,6 +158,14 @@ function RecipeCreate(props) {
                   name="protein"
                   type="button"
                   value={protein}
+                  style={{
+                    backgroundColor:
+                      protein === "Legumes" ? "var(--button-dark)" : "",
+                    color:
+                      protein === "Legumes"
+                        ? "var(--text-dark)"
+                        : "var(--text-light)",
+                  }}
                   onClick={() => setProtein("Legumes")}
                 >
                   Legumes
@@ -142,6 +175,14 @@ function RecipeCreate(props) {
                 name="protein"
                 type="button"
                 value={protein}
+                style={{
+                  backgroundColor:
+                    protein === "Seeds and nuts" ? "var(--button-dark)" : "",
+                  color:
+                    protein === "Seeds and nuts"
+                      ? "var(--text-dark)"
+                      : "var(--text-light)",
+                }}
                 onClick={() => setProtein("Seeds and nuts")}
               >
                 Seeds and nuts

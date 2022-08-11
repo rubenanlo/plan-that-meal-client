@@ -15,6 +15,8 @@ function ShoppingListDetails() {
   const { isLoading } = useContext(AuthContext);
 
   const setToComplete = () => {
+    const newItems = [...list.items];
+
     isSelected === false ? setIsSelected(true) : setIsSelected(false);
   };
 
@@ -55,7 +57,6 @@ function ShoppingListDetails() {
             <NavLink to={`/shoppingitems/edit/${shoppingListId}`}>
               <button>Edit</button>
             </NavLink>
-
             <button onClick={handleDelete}>Delete</button>
           </div>
 
