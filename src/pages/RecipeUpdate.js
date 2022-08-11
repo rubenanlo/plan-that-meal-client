@@ -91,12 +91,16 @@ function RecipesUpdate() {
       {isLoading ? (
         <p>Loading...</p>
       ) : (
-        <div className="EditRecipe">
+        <div className="Form">
           <h1>Update your recipe</h1>
           {errorMsg && <p className="error">{errorMsg}</p>}
           <span>(*) required fields</span>
 
-          <form onSubmit={handleSubmit} encType="multipart/form-data">
+          <form
+            id="recipe-form"
+            onSubmit={handleSubmit}
+            encType="multipart/form-data"
+          >
             <div>
               <label>Image:</label>
               <input type="file" onChange={(e) => handleFileUpload(e)} />
@@ -121,7 +125,7 @@ function RecipesUpdate() {
                   value={protein}
                   style={{
                     backgroundColor:
-                      protein === "Meat" ? "var(--button-dark)" : "",
+                      protein === "Meat" ? "var(--purple-dark)" : "",
                     color:
                       protein === "Meat"
                         ? "var(--text-light)"
@@ -137,7 +141,7 @@ function RecipesUpdate() {
                   value={protein}
                   style={{
                     backgroundColor:
-                      protein === "Fish" ? "var(--button-dark)" : "",
+                      protein === "Fish" ? "var(--purple-dark)" : "",
                     color:
                       protein === "Fish"
                         ? "var(--text-light)"
@@ -155,7 +159,7 @@ function RecipesUpdate() {
                   value={protein}
                   style={{
                     backgroundColor:
-                      protein === "Eggs" ? "var(--button-dark)" : "",
+                      protein === "Eggs" ? "var(--purple-dark)" : "",
                     color:
                       protein === "Eggs"
                         ? "var(--text-light)"
@@ -169,7 +173,7 @@ function RecipesUpdate() {
                   name="protein"
                   style={{
                     backgroundColor:
-                      protein === "Legumes" ? "var(--button-dark)" : "",
+                      protein === "Legumes" ? "var(--purple-dark)" : "",
                     color:
                       protein === "Legumes"
                         ? "var(--text-light)"
@@ -188,7 +192,7 @@ function RecipesUpdate() {
                 value={protein}
                 style={{
                   backgroundColor:
-                    protein === "Seeds and nuts" ? "var(--button-dark)" : "",
+                    protein === "Seeds and nuts" ? "var(--purple-dark)" : "",
                   color:
                     protein === "Seeds and nuts"
                       ? "var(--text-light)"
@@ -203,6 +207,7 @@ function RecipesUpdate() {
               <label>Serving:</label>
               <input
                 type="number"
+                min="0"
                 name="serving"
                 value={serving}
                 onChange={(e) => setServing(e.target.value)}
@@ -218,9 +223,8 @@ function RecipesUpdate() {
                 onChange={(e) => setDescription(e.target.value)}
               />
             </div>
-            <button type="submit">Submit</button>
           </form>
-          <div className="Input-value">
+          <div id="add-ingredient">
             <label>Ingredient: </label>
             <input
               className="add-ingredients"
@@ -234,7 +238,17 @@ function RecipesUpdate() {
               onChange={(e) => setInputQuantity(e.target.value)}
             />
             <span>gr</span>
-            <button onClick={() => handleAddButtonClick()}>Add</button>
+            <button
+              onClick={() => {
+                if (inputIngredient && inputQuantity) {
+                  handleAddButtonClick();
+                } else {
+                  alert("Please add an ingredient and quantity");
+                }
+              }}
+            >
+              Add
+            </button>
           </div>
 
           {ingredients.map((ingredient, index) => {
@@ -262,6 +276,9 @@ function RecipesUpdate() {
             }}
           >
             Back
+          </button>
+          <button type="submit" form="recipe-form">
+            Submit
           </button>
         </div>
       )}

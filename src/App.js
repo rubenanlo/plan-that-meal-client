@@ -5,8 +5,6 @@ import Navbar from "./components/Navbar";
 import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import PlanningsCreate from "./pages/PlanningsCreate";
-import PlanningsDetails from "./pages/PlanningsDetails";
-import PlanningsList from "./pages/PlanningsList";
 import RecipeDetails from "./pages/RecipeDetails";
 import RecipeCreate from "./pages/RecipeCreate";
 import RecipeUpdate from "./pages/RecipeUpdate";
@@ -18,17 +16,14 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import NotFound from "./components/NotFound";
 import ShoppingListMain from "./components/ShoppingListMain";
+import PlanningsMain from "./components/PlanningsMain";
 
 function App() {
   const [recipes, setRecipes] = useState([]);
-  const [weeklyPlans, setWeeklyPlans] = useState([]);
   const storedToken = localStorage.getItem("authToken");
-  const [list, setList] = useState([]);
 
   useEffect(() => {
     getAllRecipes();
-    getAllPlannings();
-    getAllShoppingLists();
   }, []);
 
   const getAllRecipes = () => {
@@ -39,32 +34,6 @@ function App() {
       .then((response) => setRecipes(response.data))
       .catch((error) => console.log(error));
   };
-
-  const getAllPlannings = () => {
-    axios
-      .get(`${process.env.REACT_APP_API_URL}/weeklyplans`, {
-        headers: { Authorization: `Bearer ${storedToken}` },
-      })
-      .then((response) => setWeeklyPlans(response.data))
-      .catch((error) => console.log(error));
-  };
-
-  const getAllShoppingLists = () => {
-    axios
-      .get(`${process.env.REACT_APP_API_URL}/shoppingitems`, {
-        headers: { Authorization: `Bearer ${storedToken}` },
-      })
-      .then((response) => setList(response.data))
-      .catch((error) => console.log(error));
-  };
-
-  if (list === null) {
-    return <>loading...</>;
-  }
-
-  if (weeklyPlans === null) {
-    return <>loading...</>;
-  }
 
   return (
     <div className="App">
@@ -128,28 +97,16 @@ function App() {
           element={
             <>
               <Navbar />
-              <RecipeCreate refreshRecipes={getAllRecipes} />
+              <RecipeCreate />
             </>
           }
         />
         <Route
-          path="/weeklyplans"
+          path="/weeklyplans/*"
           element={
             <>
               <Navbar />
-              <PlanningsList
-                weeklyPlans={weeklyPlans}
-                refreshPlannings={getAllPlannings}
-              />
-            </>
-          }
-        />
-        <Route
-          path="/weeklyplans/:weeklyPlanId"
-          element={
-            <>
-              <Navbar />
-              <PlanningsDetails />
+              <PlanningsMain />
             </>
           }
         />
@@ -158,10 +115,7 @@ function App() {
           element={
             <>
               <Navbar />
-              <PlanningsCreate
-                recipes={recipes}
-                refreshPlannings={getAllPlannings}
-              />
+              <PlanningsCreate recipes={recipes} />
             </>
           }
         />
@@ -170,10 +124,7 @@ function App() {
           element={
             <>
               <Navbar />
-              <ShoppingListMain
-                list={list}
-                refreshShoppingLists={getAllShoppingLists}
-              />
+              <ShoppingListMain />
             </>
           }
         />
@@ -182,7 +133,7 @@ function App() {
           element={
             <>
               <Navbar />
-              <ShoppingListCreate refreshShoppingLists={getAllShoppingLists} />
+              <ShoppingListCreate />
             </>
           }
         />

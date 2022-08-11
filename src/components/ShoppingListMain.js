@@ -1,12 +1,26 @@
-import React, { useEffect } from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import ShoppingList from "../pages/ShoppingList";
 import ShoppingListDetails from "../pages/ShoppingListDetails";
 
-function ShoppingListMain(props) {
+function ShoppingListMain() {
+  const [list, setList] = useState([]);
+  const storedToken = localStorage.getItem("authToken");
+
   useEffect(() => {
-    props.refreshShoppingLists();
+    getAllShoppingLists();
   }, []);
+
+  const getAllShoppingLists = () => {
+    axios
+      .get(`${process.env.REACT_APP_API_URL}/shoppingitems`, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      })
+      .then((response) => setList(response.data))
+      .catch((error) => console.log(error));
+  };
+
   return (
     <div>
       <div className="container">
@@ -17,15 +31,15 @@ function ShoppingListMain(props) {
           >
             <div className="list-group">
               <ShoppingList
-                list={props.list}
-                refreshShoppingLists={props.refreshShoppingLists}
+                list={list}
+                refreshShoppingLists={getAllShoppingLists}
               />
             </div>
           </div>
           <Routes>
             <Route
               path="/:shoppingListId"
-              element={<ShoppingListDetails details={props.list} />}
+              element={<ShoppingListDetails details={list} />}
             ></Route>
           </Routes>
         </div>

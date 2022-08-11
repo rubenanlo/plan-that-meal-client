@@ -1,32 +1,24 @@
-.planning {
-  margin: auto;
-  height: 10%;
+
+.description-bottom{
+  margin: 8rem 2rem 0 2rem;
 }
 
-.container-planning {
+.detailed-description{
   display: flex;
-  align-items: center;
-  justify-content: center;
   flex-wrap: wrap;
+  margin: 0 3rem;
+  justify-content: center;
+  align-content: center;
 }
-  .single-day {
-    background-color: rgba(255, 255, 255, 0.504);
-    margin: 1rem;
-    border-radius: 1rem;
-    padding: 0 1rem 1rem 1rem;
-  }
 
-  .single-day div {
-    margin-bottom: 0.5rem;
-  }
-
-  .single-day input {
-    border: none;
-    border-radius: 1rem;
-    margin-left: .5rem;
-  }
-
-  .single-day input {
-    text-align: center;
-  }
-
+.detailed-section img{
+  width: 15rem;
+  margin: 0 5rem;
+}
+.detailed-section p{
+  width: 20rem;
+  margin-left: 10%;
+  text-align: center;
+  height: 5rem;
+  font-size: 1.5rem
+}

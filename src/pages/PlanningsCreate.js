@@ -64,7 +64,6 @@ function PlanningsCreate(props) {
       )
       .then((response) => {
         navigate("/weeklyplans");
-        props.refreshPlannings();
 
         setStartDate("");
         setMealRecipe1("");
@@ -212,6 +211,7 @@ function PlanningsCreate(props) {
                     type="date"
                     name="startDate"
                     value={startDate}
+                    min={Date.now()}
                     onChange={(e) => setStartDate(e.target.value)}
                     required
                   />

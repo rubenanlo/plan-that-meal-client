@@ -43,7 +43,6 @@ function ShoppingListCreate(props) {
       )
       .then(() => {
         navigate("/shoppingitems");
-        props.refreshShoppingLists();
       })
 
       .catch((error) => {

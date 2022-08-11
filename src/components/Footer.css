@@ -1,16 +1,19 @@
 .footer {
-  position:absolute;
+  position:fixed;
+  left: 0;
   bottom:0;
   width:95%;
+  text-align: center;
   display:flex;
   justify-content: space-between;
-  color: white;
+  color: var(--text-dark);
   margin-left: 1rem;
-  font-size: .6rem;
+  font-size: .8rem;
   /* margin-right: 1rem;; */
 }
 
 .icon-footer {
   width: 1.2rem;
   margin: .4rem;
+  filter: invert(1)
 }

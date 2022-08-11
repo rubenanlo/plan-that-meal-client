@@ -4,12 +4,10 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
 
 function PlanningsList(props) {
-  const background = ["../../week1.jpg", "../../week2.jpeg"];
-
   const { isLoading } = useContext(AuthContext);
 
   useEffect(() => {
-    props.refreshPlannings();
+    props.refreshWeeklyPlans();
   }, []);
 
   return (
@@ -18,7 +16,7 @@ function PlanningsList(props) {
         <p>Loading...</p>
       ) : (
         <div>
-          {props.weeklyPlans.length === 0 && (
+          {props.weeklyPlans?.length === 0 && (
             <div>
               <p>
                 Not a weekly plan yet? Not to worry, we've got you covered, you
@@ -35,23 +33,7 @@ function PlanningsList(props) {
                 href={`/weeklyplans/${weeklyPlan._id}`}
                 key={weeklyPlan._id}
               >
-                <div
-                  style={{
-                    backgroundImage: `url(${
-                      background[Math.floor(Math.random() * background.length)]
-                    })`,
-                    backgroundRepeat: "no-repeat",
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
-                    opacity: 0.8,
-                    padding: ".5rem",
-                    margin: "2rem 4rem",
-                    borderRadius: "1rem",
-                    color: "black",
-                    fontSize: "1rem",
-                    boxShadow: "animatable",
-                  }}
-                >
+                <div>
                   <h3 className="weekly-plan">
                     {moment(weeklyPlan.startDate).format("dddd, DD MMMM YYYY")}
                   </h3>

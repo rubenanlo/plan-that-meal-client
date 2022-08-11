@@ -1,9 +1,10 @@
 import { useContext, useEffect } from "react";
-import { Link, useNavigate, useSearchParams } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
+import "./RecipeList.css";
+import "../index.css";
 
 function RecipesList(props) {
-  const navigate = useNavigate();
   const { isLoading } = useContext(AuthContext);
 
   useEffect(() => {
@@ -24,45 +25,23 @@ function RecipesList(props) {
           .filter((recipe) => recipe.protein.includes(searchTerm))
           .map((recipe) => {
             return (
-              <div className="RecipeCard card" key={recipe._id}>
-                <Link to={`/recipes/${recipe._id}`}>
+              <div className="recipe" key={recipe._id}>
+                <Link className="link-no-format" to={`/recipes/${recipe._id}`}>
                   <h3>{recipe.title}</h3>
                   <img src={recipe.img} alt="recipe" />
-                  <p>{recipe.protein}</p>
-                  <p>{recipe.serving}</p>
-                  {recipe.ingredients.map((ingredient) => {
-                    return (
-                      <div key={ingredient.id}>
-                        <p>
-                          {ingredient.quantity} {ingredient.ingredient}
-                        </p>
-                      </div>
-                    );
-                  })}
-                  <p>{recipe.description}</p>
                 </Link>
+                <div className="divider"></div>
               </div>
             );
           }))
       : (result = props.recipes.map((recipe) => {
           return (
-            <div className="RecipeCard card" key={recipe._id}>
-              <Link to={`/recipes/${recipe._id}`}>
+            <div className="recipe" key={recipe._id}>
+              <Link className="link-no-format" to={`/recipes/${recipe._id}`}>
                 <h3>{recipe.title}</h3>
                 <img src={recipe.img} alt="recipe" />
-                <p>{recipe.protein}</p>
-                <p>{recipe.serving}</p>
-                {recipe.ingredients.map((ingredient) => {
-                  return (
-                    <div key={ingredient.id}>
-                      <p>
-                        {ingredient.quantity} {ingredient.ingredient}
-                      </p>
-                    </div>
-                  );
-                })}
-                <p>{recipe.description}</p>
               </Link>
+              <div className="divider"></div>
             </div>
           );
         }));
@@ -71,19 +50,13 @@ function RecipesList(props) {
   };
 
   return (
-    <>
+    <div>
       {isLoading ? (
         <p>Loading...</p>
       ) : (
         <div>
-          <button
-            onClick={() => {
-              navigate(-1);
-            }}
-          >
-            Back
-          </button>
-          <div>
+          <div className="search">
+            <p>Search by type of protein </p>
             <form onChange={handleSearch}>
               <select
                 type="text"
@@ -95,7 +68,7 @@ function RecipesList(props) {
                   setSearchParams({ protein: e.target.value });
                 }}
               >
-                <option>All</option>
+                <option></option>
                 <option>Meat</option>
                 <option>Fish</option>
                 <option>Eggs</option>
@@ -104,21 +77,22 @@ function RecipesList(props) {
               </select>
             </form>
           </div>
-
-          {props.recipes.length === 0 ? (
-            <div>
-              <p>
-                Be the first to create a new recipe{" "}
-                <Link to="/recipes/create">here</Link>
-              </p>
-              <img src="../../empty-recipe.jpeg" alt="" />
-            </div>
-          ) : (
-            renderRecipes()
-          )}
+          <div className="recipes">
+            {props.recipes.length === 0 ? (
+              <div>
+                <p>
+                  Be the first to create a new recipe{" "}
+                  <Link to="/recipes/create">here</Link>
+                </p>
+                <img src="../../empty-recipe.jpeg" alt="" />
+              </div>
+            ) : (
+              renderRecipes()
+            )}
+          </div>
         </div>
       )}
-    </>
+    </div>
   );
 }
 

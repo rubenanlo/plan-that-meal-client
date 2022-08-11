@@ -38,8 +38,8 @@ function RecipeDetails() {
             <>
               <img src={recipe.img} alt="dish" />
               <h1>{recipe.title}</h1>
-              <p>{recipe.protein}</p>
-              <p>{recipe.serving}</p>
+              <p>Main protein: {recipe.protein}</p>
+              <p>Serving: {recipe.serving}</p>
               <p>Ingredients:</p>
               {recipe &&
                 recipe?.ingredients.map((ingredient) => (
@@ -50,13 +50,13 @@ function RecipeDetails() {
                   </li>
                 ))}
 
-              <p>{recipe.description}</p>
+              <p>How to make it: {recipe.description}</p>
             </>
           )}
 
           <button onClick={() => navigate(-1)}>Back</button>
           <Link to={`/recipes/edit/${recipe?._id}`}>
-            <button className="buttonNotPop">Edit</button>
+            <button>Edit</button>
           </Link>
         </div>
       )}
