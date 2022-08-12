@@ -16,7 +16,7 @@
   color: var(--purple-dark)
 }
 
-button{
+.specificButton{
   margin-right: 1rem;
   margin-top: 4rem;
   margin-bottom: 1rem;
@@ -55,10 +55,15 @@ button{
 
 }
 
-button {
-  margin-bottom: 7rem;
-}
+
 
 .link{
   color: white;
+}
+
+.item {
+  margin-top: 3rem;
+  position: absolute;
+  left: 60vw;
+
 }

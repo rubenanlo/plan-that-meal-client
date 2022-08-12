@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import ShoppingList from "../pages/ShoppingList";
 import ShoppingListDetails from "../pages/ShoppingListDetails";
+import "./PlanningsMain.css";
 
 function ShoppingListMain() {
   const [list, setList] = useState([]);
@@ -23,19 +24,16 @@ function ShoppingListMain() {
 
   return (
     <div>
-      <div className="container">
-        <div className="row">
-          <div
-            className="col-5"
-            style={{ maxHeight: 90 + "vh", overflow: "scroll" }}
-          >
-            <div className="list-group">
-              <ShoppingList
-                list={list}
-                refreshShoppingLists={getAllShoppingLists}
-              />
-            </div>
+      <div>
+        <div className="container">
+          <div>
+            <ShoppingList
+              list={list}
+              refreshShoppingLists={getAllShoppingLists}
+            />
           </div>
+        </div>
+        <div>
           <Routes>
             <Route
               path="/:shoppingListId"

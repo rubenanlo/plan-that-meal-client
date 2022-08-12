@@ -93,13 +93,6 @@ function ShoppingListCreate(props) {
                   </div>
                 );
               })}
-              <button
-                onClick={() => {
-                  navigate(-1);
-                }}
-              >
-                Back
-              </button>
 
               <button onClick={() => handleSubmit()}>Save shopping list</button>
             </div>

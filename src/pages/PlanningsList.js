@@ -23,7 +23,11 @@ function PlanningsList(props) {
                 can create your first one{" "}
                 <Link to="/weeklyplans/create">here</Link>
               </p>
-              <img src="../../empty-recipe.jpeg" alt="" />
+              <img
+                style={{ width: "20vw" }}
+                src="../../empty-recipe.jpeg"
+                alt=""
+              />
             </div>
           )}
           {props.weeklyPlans?.map((weeklyPlan) => {

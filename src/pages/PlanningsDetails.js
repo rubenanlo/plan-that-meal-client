@@ -43,14 +43,9 @@ function PlanningsDetails(props) {
         <p>Loading...</p>
       ) : (
         <div className="container-planning">
-          <button
-            onClick={() => {
-              navigate(-1);
-            }}
-          >
-            Back
+          <button className="specificButton" onClick={deleteWeeklyPlan}>
+            Delete
           </button>
-          <button onClick={deleteWeeklyPlan}>Delete</button>
 
           {weeklyPlan && (
             <div className="containerTwo">

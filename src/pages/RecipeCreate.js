@@ -248,7 +248,7 @@ function RecipeCreate(props) {
                       {ingredient.quantity} gr. {ingredient.ingredient}
                     </p>
                     <button
-                      className="add"
+                      className="deleteTwo"
                       onClick={(e) => {
                         e.preventDefault();
                         setIngredients(

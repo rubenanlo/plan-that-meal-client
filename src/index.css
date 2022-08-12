@@ -79,7 +79,7 @@ button {
 
 .divider{
   border-bottom: .01px solid var(--purple-dark);
-  margin: 0 40rem;
+  margin: 0 1rem;
   margin-bottom: 2rem;
   color: none;
 

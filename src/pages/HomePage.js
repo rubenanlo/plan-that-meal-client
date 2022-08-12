@@ -1,4 +1,3 @@
-import { NavLink } from "react-router-dom";
 import "./HomePage.css";
 
 function HomePage() {
@@ -6,7 +5,6 @@ function HomePage() {
     <>
       <div>
         <h1>PlanThatMeal</h1>
-        <div className="divider"></div>
         <section className="presentation">
           <div className="detailed-description">
             <div className="detailed-section">

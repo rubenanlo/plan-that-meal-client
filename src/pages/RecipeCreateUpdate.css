@@ -51,7 +51,14 @@
 .add {
     border-radius: .3rem;
     padding: 0 1rem;
-    margin-left: 3rem;
+    margin-left: 4rem;
+}
+
+.deleteTwo{
+    border-radius: .3rem;
+    padding: 0 1rem;
+    margin-left: 10rem;
+
 }
 
 .show-ingredient{
@@ -61,7 +68,7 @@
     margin-left: 40%;
 }
 .show-ingredient p{
-    margin-right: 30%;
+    margin-right: 20%;
     min-width: 30%;
     text-align: left;
 }

@@ -23,7 +23,7 @@ function PlanningsMain() {
   };
 
   return (
-    <div className="all">
+    <div>
       <div>
         <div className="container">
           <div>

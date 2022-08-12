@@ -69,7 +69,7 @@ function Navbar() {
           )}
           {!isLoggedIn && (
             <div className="header container">
-              <div>
+              <div style={{ alignItems: "center" }}>
                 <NavLink className="link" to="/signup">
                   Sign Up
                 </NavLink>{" "}

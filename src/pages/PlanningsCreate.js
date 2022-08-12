@@ -480,7 +480,9 @@ function PlanningsCreate(props) {
                             );
                           })}
                         </select>
-                        <button type="submit">Submit</button>
+                        <button className="specificButton" type="submit">
+                          Submit
+                        </button>
                       </div>
                     </div>
                   </div>

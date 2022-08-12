@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { AuthContext } from "../context/auth.context";
+import "./Login.css";
 
 function SignupPage(props) {
   const [email, setEmail] = useState("");
@@ -34,31 +35,35 @@ function SignupPage(props) {
         <p>Loading...</p>
       ) : (
         <div className="SignupPage">
-          <h1>Sign Up</h1>
+          <h2>Sign Up</h2>
 
           {errorMessage && <p className="error-message">{errorMessage}</p>}
 
           <form onSubmit={handleSignupSubmit}>
-            <label>Email:</label>
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-
-            <label>Password:</label>
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-
-            <label>Username:</label>
-            <input
-              type="text"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-            />
+            <div className="field-login">
+              <label>Email:</label>
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </div>
+            <div className="field-login">
+              <label>Password:</label>
+              <input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </div>
+            <div className="field-login">
+              <label>Username:</label>
+              <input
+                type="text"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+              />
+            </div>
 
             <button type="submit">Sign Up</button>
           </form>

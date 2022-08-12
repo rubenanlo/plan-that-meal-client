@@ -79,7 +79,7 @@ function RecipesList(props) {
           </div>
           <div className="recipes">
             {props.recipes.length === 0 ? (
-              <div>
+              <div style={{ marginLeft: "28vw" }}>
                 <p>
                   Be the first to create a new recipe{" "}
                   <Link to="/recipes/create">here</Link>
