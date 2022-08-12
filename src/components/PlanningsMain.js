@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import PlanningsDetails from "../pages/PlanningsDetails";
 import PlanningsList from "../pages/PlanningsList";
+import "./PlanningsMain.css";
 
 function PlanningsMain() {
   const [weeklyPlans, setWeeklyPlans] = useState([]);
@@ -22,26 +23,28 @@ function PlanningsMain() {
   };
 
   return (
-    <div>
-      <div className="container">
-        <div className="row">
-          <div
-            className="col-5"
-            style={{ maxHeight: 90 + "vh", overflow: "scroll" }}
-          >
-            <div className="list-group">
-              <PlanningsList
-                weeklyPlans={weeklyPlans}
-                refreshWeeklyPlans={getAllWeeklyPlans}
-              />
-            </div>
-            <Routes>
-              <Route
-                path="/:weeklyPlanId"
-                element={<PlanningsDetails details={weeklyPlans} />}
-              ></Route>
-            </Routes>
+    <div className="all">
+      <div>
+        <div className="container">
+          <div>
+            <PlanningsList
+              weeklyPlans={weeklyPlans}
+              refreshWeeklyPlans={getAllWeeklyPlans}
+            />
           </div>
+        </div>
+        <div>
+          <Routes>
+            <Route
+              path="/:weeklyPlanId"
+              element={
+                <PlanningsDetails
+                  details={weeklyPlans}
+                  refreshWeeklyPlans={getAllWeeklyPlans}
+                />
+              }
+            ></Route>
+          </Routes>
         </div>
       </div>
     </div>

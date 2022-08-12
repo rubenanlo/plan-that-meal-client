@@ -39,7 +39,12 @@ function ShoppingListMain() {
           <Routes>
             <Route
               path="/:shoppingListId"
-              element={<ShoppingListDetails details={list} />}
+              element={
+                <ShoppingListDetails
+                  details={list}
+                  refreshShoppingLists={getAllShoppingLists}
+                />
+              }
             ></Route>
           </Routes>
         </div>

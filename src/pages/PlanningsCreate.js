@@ -479,11 +479,11 @@ function PlanningsCreate(props) {
                             );
                           })}
                         </select>
+                        <button type="submit">Submit</button>
                       </div>
                     </div>
                   </div>
                 </div>
-                <button type="submit">Submit</button>
               </form>
             </div>
           )}
