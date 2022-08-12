@@ -48,7 +48,9 @@ function RecipeDetails() {
                   </li>
                 ))}
 
-              <p>How to make it: {recipe.description}</p>
+              <p style={{ maxWidth: "30%", marginLeft: "35vw" }}>
+                How to make it: {recipe.description}
+              </p>
             </>
           )}
 
