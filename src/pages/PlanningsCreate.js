@@ -202,13 +202,14 @@ function PlanningsCreate(props) {
             </div>
           ) : (
             <div className="planning">
-              <h1>Create your weekly plan</h1>
+              <h2>Create your weekly plan</h2>
               {errorMsg && <p className="error">{errorMsg}</p>}
               <form onSubmit={handleSubmit}>
                 <div>
                   <label>Starting date of the weekly plan:</label>
                   <input
                     type="date"
+                    className="date"
                     name="startDate"
                     value={startDate}
                     min={Date.now()}
@@ -216,13 +217,13 @@ function PlanningsCreate(props) {
                     required
                   />
 
-                  <div className="container-planning">
+                  <div className="container-planningTwo">
                     <div className="single-day">
                       <h3>
                         {!startDate ? (
-                          <p>Monday</p>
+                          <h2>Monday</h2>
                         ) : (
-                          <p>{moment(startDate).format("dddd")}</p>
+                          <h2>{moment(startDate).format("dddd")}</h2>
                         )}
                       </h3>
                       <div>
@@ -256,11 +257,11 @@ function PlanningsCreate(props) {
                     <div className="single-day">
                       <h3>
                         {!startDate ? (
-                          <p>Tuesday</p>
+                          <h2>Tuesday</h2>
                         ) : (
-                          <p>
+                          <h2>
                             {moment(startDate).add(1, "days").format("dddd")}
-                          </p>
+                          </h2>
                         )}
                       </h3>
                       <div>
@@ -295,11 +296,11 @@ function PlanningsCreate(props) {
                     <div className="single-day">
                       <h3>
                         {!startDate ? (
-                          <p>Wednesday</p>
+                          <h2>Wednesday</h2>
                         ) : (
-                          <p>
+                          <h2>
                             {moment(startDate).add(2, "days").format("dddd")}
-                          </p>
+                          </h2>
                         )}
                       </h3>
                       <div>
@@ -333,11 +334,11 @@ function PlanningsCreate(props) {
                     <div className="single-day">
                       <h3>
                         {!startDate ? (
-                          <p>Thursday</p>
+                          <h2>Thursday</h2>
                         ) : (
-                          <p>
+                          <h2>
                             {moment(startDate).add(3, "days").format("dddd")}
-                          </p>
+                          </h2>
                         )}
                       </h3>
                       <div>
@@ -371,11 +372,11 @@ function PlanningsCreate(props) {
                     <div className="single-day">
                       <h3>
                         {!startDate ? (
-                          <p>Friday</p>
+                          <h2>Friday</h2>
                         ) : (
-                          <p>
+                          <h2>
                             {moment(startDate).add(4, "days").format("dddd")}
-                          </p>
+                          </h2>
                         )}
                       </h3>
                       <div>
@@ -409,11 +410,11 @@ function PlanningsCreate(props) {
                     <div className="single-day">
                       <h3>
                         {!startDate ? (
-                          <p>Saturday</p>
+                          <h2>Saturday</h2>
                         ) : (
-                          <p>
+                          <h2>
                             {moment(startDate).add(5, "days").format("dddd")}
-                          </p>
+                          </h2>
                         )}
                       </h3>
                       <div>
@@ -447,11 +448,11 @@ function PlanningsCreate(props) {
                     <div className="single-day">
                       <h3>
                         {!startDate ? (
-                          <p>Sunday</p>
+                          <h2>Sunday</h2>
                         ) : (
-                          <p>
+                          <h2>
                             {moment(startDate).add(6, "days").format("dddd")}
-                          </p>
+                          </h2>
                         )}
                       </h3>
                       <div>
