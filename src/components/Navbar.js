@@ -68,16 +68,14 @@ function Navbar() {
             </>
           )}
           {!isLoggedIn && (
-            <div className="header container">
-              <div style={{ alignItems: "center" }}>
-                <NavLink className="link" to="/signup">
-                  Sign Up
-                </NavLink>{" "}
-                <NavLink className="link" to="/login">
-                  Login
-                </NavLink>
+            <>
+              <div>
+                <div style={{ alignItems: "center" }}>
+                  <NavLink to="/signup">Sign Up</NavLink>{" "}
+                  <NavLink to="/login">Login</NavLink>
+                </div>
               </div>
-            </div>
+            </>
           )}
         </nav>
       )}
