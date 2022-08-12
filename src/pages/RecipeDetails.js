@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
-
+import "./RecipeDetails.css";
 function RecipeDetails() {
   const [recipe, setRecipe] = useState(null);
   const storedToken = localStorage.getItem("authToken");
@@ -36,17 +36,15 @@ function RecipeDetails() {
         <div className="RecipeDetails" key={recipeId}>
           {recipe && (
             <>
+              <h2>{recipe.title}</h2>
               <img src={recipe.img} alt="dish" />
-              <h1>{recipe.title}</h1>
               <p>Main protein: {recipe.protein}</p>
               <p>Serving: {recipe.serving}</p>
               <p>Ingredients:</p>
               {recipe &&
                 recipe?.ingredients.map((ingredient) => (
                   <li className="Ingredients" key={ingredient.id}>
-                    <p>
-                      {ingredient.quantity} gr {ingredient.ingredient}
-                    </p>
+                    {ingredient.quantity} gr {ingredient.ingredient}
                   </li>
                 ))}
 

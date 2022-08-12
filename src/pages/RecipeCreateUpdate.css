@@ -4,7 +4,7 @@
     background-size:cover;
     margin: 0 20% 5rem 20%;
     padding-top: .3rem;
-    min-height: 65rem;
+    min-height: 110vh;
     box-shadow: 10px 10px 5px #aaaaaa; 
 }
 
@@ -27,6 +27,7 @@
 
 .back{
     margin-right: 1rem;
+    margin-bottom: 4rem;
 }
 
 .img-input {
@@ -55,11 +56,20 @@
 
 .show-ingredient{
     display:flex;
-    margin-left: 40%
+    justify-content: baseline;
+    align-items: baseline;
+    margin-left: 40%;
 }
+.show-ingredient p{
+    margin-right: 30%;
+    min-width: 30%;
+    text-align: left;
+}
+
 
 .show-ingredient button{
     background-color: var(--delete);
-
+    border: none;
+    padding: .3rem 1rem;
 }
 

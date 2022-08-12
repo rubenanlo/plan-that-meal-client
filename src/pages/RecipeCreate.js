@@ -3,7 +3,7 @@ import { nanoid } from "nanoid";
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
-import "./RecipeCreate.css";
+import "./RecipeCreateUpdate.css";
 
 function RecipeCreate(props) {
   const [img, setImg] = useState(null);
@@ -265,9 +265,8 @@ function RecipeCreate(props) {
 
             <form id="recipe-form">
               <div className="field">
-                <label>Description:(*)</label>
+                <label>Description:</label>
                 <textarea
-                  required
                   type="textarea"
                   cols={40}
                   rows={10}

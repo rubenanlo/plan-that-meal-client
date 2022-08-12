@@ -71,7 +71,7 @@ buttondelete{
 
 
 button {
-  padding: 0.5rem 3rem;
+  padding: 0.3rem 3rem;
   border-radius: 1rem;
   background-color: var(--light);
   border: .1rem solid var(--purple-dark)
