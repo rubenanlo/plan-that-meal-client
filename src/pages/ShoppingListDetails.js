@@ -51,7 +51,12 @@ function ShoppingListDetails() {
             <NavLink to={`/shoppingitems/edit/${shoppingListId}`}>
               <button>Edit</button>
             </NavLink>
-            <button onClick={handleDelete}>Delete</button>
+            <button
+              style={{ backgroundColor: "var(--delete)" }}
+              onClick={handleDelete}
+            >
+              Delete
+            </button>
           </div>
 
           <div key={list._id}>

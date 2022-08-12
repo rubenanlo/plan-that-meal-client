@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import Footer from "./components/Footer";
+// import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
@@ -149,7 +149,7 @@ function App() {
         />
         <Route path="*" element={<NotFound />} />
       </Routes>
-      <Footer></Footer>
+      {/* <Footer></Footer> */}
     </div>
   );
 }

@@ -219,13 +219,13 @@ function PlanningsCreate(props) {
 
                   <div className="container-planningTwo">
                     <div className="single-day">
-                      <h3>
+                      <section>
                         {!startDate ? (
                           <h2>Monday</h2>
                         ) : (
                           <h2>{moment(startDate).format("dddd")}</h2>
                         )}
-                      </h3>
+                      </section>
                       <div>
                         <label>Lunch:</label>
                         <select required onChange={handleChangeMealOne}>
@@ -255,7 +255,7 @@ function PlanningsCreate(props) {
                     </div>
 
                     <div className="single-day">
-                      <h3>
+                      <section>
                         {!startDate ? (
                           <h2>Tuesday</h2>
                         ) : (
@@ -263,7 +263,7 @@ function PlanningsCreate(props) {
                             {moment(startDate).add(1, "days").format("dddd")}
                           </h2>
                         )}
-                      </h3>
+                      </section>
                       <div>
                         <label>Lunch:</label>
                         <select onChange={handleChangeMealThree}>
@@ -294,7 +294,7 @@ function PlanningsCreate(props) {
                     </div>
 
                     <div className="single-day">
-                      <h3>
+                      <section>
                         {!startDate ? (
                           <h2>Wednesday</h2>
                         ) : (
@@ -302,7 +302,7 @@ function PlanningsCreate(props) {
                             {moment(startDate).add(2, "days").format("dddd")}
                           </h2>
                         )}
-                      </h3>
+                      </section>
                       <div>
                         <label>Lunch:</label>
                         <select onChange={handleChangeMealFive}>
@@ -332,7 +332,7 @@ function PlanningsCreate(props) {
                     </div>
 
                     <div className="single-day">
-                      <h3>
+                      <section>
                         {!startDate ? (
                           <h2>Thursday</h2>
                         ) : (
@@ -340,7 +340,7 @@ function PlanningsCreate(props) {
                             {moment(startDate).add(3, "days").format("dddd")}
                           </h2>
                         )}
-                      </h3>
+                      </section>
                       <div>
                         <label>Lunch:</label>
                         <select required onChange={handleChangeMealSeven}>
@@ -370,7 +370,7 @@ function PlanningsCreate(props) {
                     </div>
 
                     <div className="single-day">
-                      <h3>
+                      <section>
                         {!startDate ? (
                           <h2>Friday</h2>
                         ) : (
@@ -378,7 +378,7 @@ function PlanningsCreate(props) {
                             {moment(startDate).add(4, "days").format("dddd")}
                           </h2>
                         )}
-                      </h3>
+                      </section>
                       <div>
                         <label>Lunch:</label>
                         <select required onChange={handleChangeMealNine}>
@@ -408,7 +408,7 @@ function PlanningsCreate(props) {
                     </div>
 
                     <div className="single-day">
-                      <h3>
+                      <section>
                         {!startDate ? (
                           <h2>Saturday</h2>
                         ) : (
@@ -416,7 +416,7 @@ function PlanningsCreate(props) {
                             {moment(startDate).add(5, "days").format("dddd")}
                           </h2>
                         )}
-                      </h3>
+                      </section>
                       <div>
                         <label>Lunch:</label>
                         <select required onChange={handleChangeMealEleven}>
@@ -446,7 +446,7 @@ function PlanningsCreate(props) {
                     </div>
 
                     <div className="single-day">
-                      <h3>
+                      <section>
                         {!startDate ? (
                           <h2>Sunday</h2>
                         ) : (
@@ -454,7 +454,7 @@ function PlanningsCreate(props) {
                             {moment(startDate).add(6, "days").format("dddd")}
                           </h2>
                         )}
-                      </h3>
+                      </section>
                       <div>
                         <label>Lunch:</label>
                         <select required onChange={handleChangeMealThirteen}>
@@ -480,7 +480,10 @@ function PlanningsCreate(props) {
                             );
                           })}
                         </select>
-                        <button className="specificButton" type="submit">
+                        <button
+                          style={{ marginTop: "2rem", marginLeft: "15vw" }}
+                          type="submit"
+                        >
                           Submit
                         </button>
                       </div>
