@@ -1,7 +1,7 @@
 import { useContext, useEffect } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
-import "./RecipeList.css";
+import "./RecipesList.css";
 import "../index.css";
 
 function RecipesList(props) {

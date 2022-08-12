@@ -92,7 +92,7 @@ function RecipesUpdate() {
         <p>Loading...</p>
       ) : (
         <div className="Form">
-          <h1>Update your recipe</h1>
+          <h2>Update your recipe</h2>
           {errorMsg && <p className="error">{errorMsg}</p>}
           <span>(*) required fields</span>
 

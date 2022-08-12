@@ -58,7 +58,7 @@ function ShoppingListCreate(props) {
       ) : (
         <div>
           <div className="AddRecipe">
-            <h1>Create your shopping list</h1>
+            <h2>Create your shopping list</h2>
             {errorMsg && <p className="error">{errorMsg}</p>}
             <div className="Input-value">
               <label>items: </label>

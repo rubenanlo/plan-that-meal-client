@@ -4,6 +4,7 @@
 
 :root {
   --purple-dark: hsl(325, 51%, 36%);
+  --delete:#D65550;
   --light: white;
   --purple-dark-transparency: hsla(325, 51%, 36%, 0.303);
   --text-dark: black;
@@ -70,7 +71,6 @@ buttondelete{
 
 
 button {
-  margin: 5rem;
   padding: 0.5rem 3rem;
   border-radius: 1rem;
   background-color: var(--light);
@@ -85,3 +85,9 @@ button {
 
 }
 
+h2{
+  font-size: 2.3rem;
+  margin-top: 5.5rem;
+  margin-bottom: 1rem;
+
+}
