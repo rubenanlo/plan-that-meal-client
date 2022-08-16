@@ -14,6 +14,8 @@
 .detailed-section img{
   width: 15rem;
   margin: 0 5rem;
+  border-radius: 2rem;
+
 }
 .detailed-section p{
   width: 20rem;

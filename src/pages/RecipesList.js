@@ -2,7 +2,6 @@ import { useContext, useEffect } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
 import "./RecipesList.css";
-import "../index.css";
 
 function RecipesList(props) {
   const { isLoading } = useContext(AuthContext);

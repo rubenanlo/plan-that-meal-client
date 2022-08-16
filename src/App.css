@@ -1,4 +1,79 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@500&family=Kalam:wght@300;400;700&display=swap');
+
+:root {
+  --purple-dark: hsl(325, 51%, 36%);
+  --delete:#D65550;
+  --light: white;
+  --purple-dark-transparency: hsla(325, 51%, 36%, 0.303);
+  --text-dark: black;
+  --text-light: white;
+  --light-transparent: rgba(255, 255, 255, 0.672);
+  --grey: rgb(156, 149, 149);
+}
+
 .App {
   text-align: center;
 }
 
+body {
+  margin: 0;
+  font-family: "Kalam", cursive;
+  background-image: url('../public/homepage6.webp');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center top;
+  background-attachment: fixed;
+  padding-bottom: 5rem;
+}
+
+h1 {
+  font-family: 'Fira Sans', sans-serif;
+  margin-top: 4.5rem;
+  margin-bottom: 3rem;
+  color: var(--purple-dark);
+  font-size: 2.5rem;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: auto;
+  height: 100%;
+}
+
+
+buttondelete{
+  background-color: var(--purple-dark);
+  border: none
+}
+
+
+button {
+  padding: 0.3rem 3rem;
+  border-radius: 1rem;
+  background-color: var(--light);
+  border: .1rem solid var(--purple-dark)
+}
+
+.divider{
+  border-bottom: .01px solid var(--purple-dark);
+  margin: 0 1rem;
+  margin-bottom: 2rem;
+  color: none;
+
+}
+
+h2{
+  font-size: 2.3rem;
+  margin-top: 5.5rem;
+  margin-bottom: 1rem;
+
+}
+
+.link{
+  color: var(--text-light);
+}

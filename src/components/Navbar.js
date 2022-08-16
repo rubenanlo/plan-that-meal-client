@@ -26,10 +26,10 @@ function Navbar() {
                   <i className="fa fa-caret-down"></i>
                 </button>
                 <div className="dropdown-content">
-                  <NavLink className="link" to="/recipes">
+                  <NavLink className="link-navbar" to="/recipes">
                     View all recipes
                   </NavLink>
-                  <NavLink className="link" to="/recipes/create">
+                  <NavLink className="link-navbar" to="/recipes/create">
                     Create a Recipe
                   </NavLink>
                 </div>
@@ -40,10 +40,10 @@ function Navbar() {
                   <i className="fa fa-caret-down"></i>
                 </button>
                 <div className="dropdown-content">
-                  <NavLink className="link" to="/weeklyplans">
+                  <NavLink className="link-navbar" to="/weeklyplans">
                     View all weekly plans
                   </NavLink>
-                  <NavLink className="link" to="/weeklyplans/create">
+                  <NavLink className="link-navbar" to="/weeklyplans/create">
                     Create a Planning
                   </NavLink>
                 </div>
@@ -54,10 +54,10 @@ function Navbar() {
                   <i className="fa fa-caret-down"></i>
                 </button>
                 <div className="dropdown-content">
-                  <NavLink className="link" to="/shoppingitems/">
+                  <NavLink className="link-navbar" to="/shoppingitems/">
                     View all shopping lists
                   </NavLink>
-                  <NavLink className="link" to="/shoppingitems/create">
+                  <NavLink className="link-navbar" to="/shoppingitems/create">
                     Create a shopping list
                   </NavLink>
                 </div>

@@ -1,15 +1,15 @@
 import moment from "moment";
 import { useEffect } from "react";
 
-function PlanningsList(props) {
+function PlanningsList({ refreshWeeklyPlans, weeklyPlans }) {
   useEffect(() => {
-    props.refreshWeeklyPlans();
-  }, []);
+    refreshWeeklyPlans();
+  }, [refreshWeeklyPlans]);
 
   return (
     <>
       <div>
-        {props.weeklyPlans?.map((weeklyPlan) => {
+        {weeklyPlans?.map((weeklyPlan) => {
           return (
             <a
               className="link"

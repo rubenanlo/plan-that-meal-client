@@ -1,6 +1,5 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
-// import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
@@ -12,28 +11,30 @@ import RecipesList from "./pages/RecipesList";
 import SignupPage from "./pages/SignupPage";
 import ShoppingListCreate from "./pages/ShoppingListCreate";
 import ShoppingListUpdate from "./pages/ShoppingListUpdate";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import axios from "axios";
 import NotFound from "./components/NotFound";
 import ShoppingListMain from "./components/ShoppingListMain";
 import PlanningsMain from "./components/PlanningsMain";
+import Footer from "./components/Footer";
+import FooterNotFound from "./components/FooterNotFound";
 
 function App() {
   const [recipes, setRecipes] = useState([]);
   const storedToken = localStorage.getItem("authToken");
 
-  useEffect(() => {
-    getAllRecipes();
-  }, []);
-
-  const getAllRecipes = () => {
+  const getAllRecipes = useCallback(() => {
     axios
       .get(`${process.env.REACT_APP_API_URL}/recipes`, {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
       .then((response) => setRecipes(response.data))
       .catch((error) => console.log(error));
-  };
+  }, [storedToken]);
+
+  useEffect(() => {
+    getAllRecipes();
+  }, [getAllRecipes]);
 
   return (
     <div className="App">
@@ -43,6 +44,7 @@ function App() {
           element={
             <>
               <Navbar />
+              <Footer />
               <HomePage />
             </>
           }
@@ -52,6 +54,7 @@ function App() {
           element={
             <>
               <Navbar />
+              <Footer />
               <SignupPage />
             </>
           }
@@ -61,6 +64,7 @@ function App() {
           element={
             <>
               <Navbar />
+              <Footer />
               <LoginPage />
             </>
           }
@@ -70,6 +74,7 @@ function App() {
           element={
             <>
               <Navbar />
+              <Footer />
               <RecipesList recipes={recipes} refreshRecipes={getAllRecipes} />
             </>
           }
@@ -79,6 +84,7 @@ function App() {
           element={
             <>
               <Navbar />
+              <Footer />
               <RecipeDetails />
             </>
           }
@@ -88,6 +94,7 @@ function App() {
           element={
             <>
               <Navbar />
+              <Footer />
               <RecipeUpdate />
             </>
           }
@@ -97,6 +104,7 @@ function App() {
           element={
             <>
               <Navbar />
+              <Footer />
               <RecipeCreate />
             </>
           }
@@ -106,6 +114,7 @@ function App() {
           element={
             <>
               <Navbar />
+              <Footer />
               <PlanningsMain />
             </>
           }
@@ -115,6 +124,7 @@ function App() {
           element={
             <>
               <Navbar />
+              <Footer />
               <PlanningsCreate recipes={recipes} />
             </>
           }
@@ -124,6 +134,7 @@ function App() {
           element={
             <>
               <Navbar />
+              <Footer />
               <ShoppingListMain />
             </>
           }
@@ -133,6 +144,7 @@ function App() {
           element={
             <>
               <Navbar />
+              <Footer />
               <ShoppingListCreate />
             </>
           }
@@ -142,14 +154,13 @@ function App() {
           element={
             <>
               <Navbar />
-
+              <Footer />
               <ShoppingListUpdate />
             </>
           }
         />
         <Route path="*" element={<NotFound />} />
       </Routes>
-      {/* <Footer></Footer> */}
     </div>
   );
 }

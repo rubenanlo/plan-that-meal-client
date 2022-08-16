@@ -1,9 +1,10 @@
 import "./Footer.css";
+import "./NotFound.css";
 
 function Footer() {
   return (
     <>
-      <footer className="footer">
+      <footer className="footer footer-not-found">
         <p>(C) PlanThatMeal, Inc 2022, by Ruben Andino</p>
         <div>
           <a
@@ -12,7 +13,7 @@ function Footer() {
             rel="noopener noreferrer"
           >
             <img
-              className="icon-footer"
+              className="icon-footer icon-footer-not-found"
               src="../../linkedin.svg"
               alt="linkedin-logo"
             />
@@ -23,7 +24,7 @@ function Footer() {
             rel="noopener noreferrer"
           >
             <img
-              className="icon-footer"
+              className="icon-footer icon-footer-not-found"
               src="../../github.svg"
               alt="github-logo"
             />
