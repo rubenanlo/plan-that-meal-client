@@ -1,0 +1,46 @@
+/* Main page */
+
+.notfound {
+  background-image: url('../../public/notfound.jpeg');
+  background-size: cover;
+  background-position: center;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+.not-found-message {
+  text-align: left;
+  color: white;
+  position: absolute;
+  top: 9em;
+  left: 2rem;
+  max-width: 20rem;
+
+}
+
+.not-found-message Link{
+  text-decoration: none;
+
+}
+
+/* Footer */
+
+.footer-not-found {
+  position:fixed;
+  left: 0;
+  bottom:0;
+  width:93%;
+  text-align: center;
+  display:flex;
+  justify-content: space-between;
+  color: var(--text-light);
+  margin-left: 1rem;
+  font-size: .8rem;
+}
+
+.icon-footer-not-found {
+  width: 1.2rem;
+  margin: 0 0.3rem -1.2rem 0.4rem;
+  filter: invert(0)
+}
+
