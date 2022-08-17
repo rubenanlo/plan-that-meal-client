@@ -1,6 +1,5 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import Navbar from "./components/Navbar";
 import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import PlanningsCreate from "./pages/PlanningsCreate";
@@ -17,6 +16,7 @@ import NotFound from "./components/NotFound";
 import ShoppingListMain from "./components/ShoppingListMain";
 import PlanningsMain from "./components/PlanningsMain";
 import Footer from "./components/Footer";
+import Navbar from "./components/Navbar/Navbar";
 
 function App() {
   const [recipes, setRecipes] = useState([]);

@@ -12,7 +12,7 @@ function PlanningsList({ refreshWeeklyPlans, weeklyPlans }) {
         {weeklyPlans?.map((weeklyPlan) => {
           return (
             <a
-              className="link"
+              className="plan-name"
               href={`/weeklyplans/${weeklyPlan._id}`}
               key={weeklyPlan._id}
             >

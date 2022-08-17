@@ -45,21 +45,7 @@
   
   .container-planning h2 {
     margin-top: 1rem;
-  }
-  
-  
-  .containerTwo{
-    display:flex;
-    flex-wrap: wrap;
-  }
-  
-  .single-day{
-    margin: 0 7rem 0 7rem;
-    justify-content: space-around;
-    width: 20%;
-  
-  }
-  
+  }  
   
   .link{
     color: white;

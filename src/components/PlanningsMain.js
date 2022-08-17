@@ -25,7 +25,7 @@ function PlanningsMain() {
   }, [getAllWeeklyPlans]);
 
   return (
-    <div>
+    <div className="container-planning">
       {isLoading ? (
         <p>Loading...</p>
       ) : (
@@ -45,8 +45,8 @@ function PlanningsMain() {
             </div>
           )}
           <div>
-            <div className="container">
-              <div>
+            <div>
+              <div className="planning-list">
                 <PlanningsList
                   weeklyPlans={weeklyPlans}
                   refreshWeeklyPlans={getAllWeeklyPlans}

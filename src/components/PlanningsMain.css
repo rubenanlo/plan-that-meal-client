@@ -1,65 +1,46 @@
-.container{
-  display:flex;
-  overflow: auto;
-  float: left;
-  width: 25%;
-  margin-left: 10vw;
-  height: 100%;
-  overflow-y: scroll;
-  max-width: 100vh;
-  overflow: auto;  
-  margin-top: 4rem;
-}
-
-.container a{
-  text-decoration: none;
-  color: var(--purple-dark)
-}
 
 .specificButton{
   margin-right: 1rem;
   margin-top: 4rem;
   margin-bottom: 1rem;
-  background-color: var(--delete)
+  background-color: var(--purple-dark)
 }
 
-.container-planning {
-  margin-top: 4rem;
-  padding-bottom: 4rem;
-  width: 55vw;
-  position: absolute;
-  left: 40vw;
+.container-daily-plan{
   background-image: url("../../public/blackboard.jpeg"); 
   background-size: cover;
   background-position: center;
   border-radius: 3rem;
   color: var(--light);
+  margin: auto;
+  max-width: 95vw;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  columns: 3;
 }
+
 
 .container-planning h2 {
-  margin-top: 1rem;
-}
-
-.last-item{
-  margin-bottom: 10rem;
-}
-
-.containerTwo{
-  display:flex;
-  flex-wrap: wrap;
+  margin-top: 2rem;
 }
 
 .single-day{
-  margin: 0 7rem 0 7rem;
-  justify-content: space-around;
-  width: 20%;
+  margin: 0 3rem 0 3rem;
+  justify-content: space-between;  
+  width: 20%
+}
+
+.planning-list{
+  border: 1px solid var(--purple-dark);
+  margin: 6rem 3rem 2rem 2.5rem;
+  height: 15vh;
+  overflow: scroll;
+  border-radius: 1rem;
 
 }
 
-
-.item {
-  margin-top: 3rem;
-  position: absolute;
-  left: 60vw;
-
+.plan-name{
+  color: black;
 }

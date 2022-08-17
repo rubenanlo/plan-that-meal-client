@@ -3,7 +3,6 @@ import moment from "moment";
 import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
-import "./PlanningsDetails.css";
 
 function PlanningsDetails(props) {
   const [weeklyPlan, setWeeklyPlan] = useState("");
@@ -42,13 +41,9 @@ function PlanningsDetails(props) {
       {isLoading ? (
         <p>Loading...</p>
       ) : (
-        <div className="container-planning">
-          <button className="specificButton" onClick={deleteWeeklyPlan}>
-            Delete
-          </button>
-
+        <div>
           {weeklyPlan && (
-            <div className="containerTwo">
+            <div className="container-daily-plan">
               <div className="single-day">
                 <h2>{moment(weeklyPlan.startDate).format("dddd")}</h2>
                 <h3>
@@ -212,6 +207,9 @@ function PlanningsDetails(props) {
               </div>
             </div>
           )}
+          <button className="specificButton" onClick={deleteWeeklyPlan}>
+            Delete
+          </button>
         </div>
       )}
     </>
