@@ -17,7 +17,6 @@ import NotFound from "./components/NotFound";
 import ShoppingListMain from "./components/ShoppingListMain";
 import PlanningsMain from "./components/PlanningsMain";
 import Footer from "./components/Footer";
-import FooterNotFound from "./components/FooterNotFound";
 
 function App() {
   const [recipes, setRecipes] = useState([]);
