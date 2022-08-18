@@ -18,9 +18,7 @@
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  columns: 3;
 }
-
 
 .container-planning h2 {
   margin-top: 2rem;
@@ -29,7 +27,7 @@
 .single-day{
   margin: 0 3rem 0 3rem;
   justify-content: space-between;  
-  width: 20%
+  max-width: 20vw
 }
 
 .planning-list{
