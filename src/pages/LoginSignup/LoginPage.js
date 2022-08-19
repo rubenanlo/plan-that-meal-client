@@ -35,30 +35,31 @@ function LoginPage(props) {
   };
 
   return (
-    <div className="LoginPage">
+    <div className="sign-page">
       <h2>Login</h2>
 
       {errorMessage && <p className="error-message">{errorMessage}</p>}
 
-      <form onSubmit={handleLoginSubmit}>
-        <div className="field-login">
-          <label>Username:</label>
-          <input
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-        </div>
+      <form className="sign-form" onSubmit={handleLoginSubmit}>
+        <div className="fields-user">
+          <div className="field-user">
+            <label>Username:</label>
+            <input
+              type="text"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
+          </div>
 
-        <div className="field-login">
-          <label>Password:</label>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
+          <div className="field-user">
+            <label>Password:</label>
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </div>
         </div>
-
         <button type="submit">Login</button>
       </form>
 

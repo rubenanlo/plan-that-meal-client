@@ -34,15 +34,12 @@ function SignupPage(props) {
       {isLoading ? (
         <p>Loading...</p>
       ) : (
-        <div className="signup-page">
+        <div className="sign-page">
           <h2>Sign Up</h2>
 
           {errorMessage && <p className="error-message">{errorMessage}</p>}
 
-          <form
-            className="signup-form background-form"
-            onSubmit={handleSignupSubmit}
-          >
+          <form className="sign-form" onSubmit={handleSignupSubmit}>
             <div className="fields-user">
               <div className="field-user">
                 <label>Email:</label>
