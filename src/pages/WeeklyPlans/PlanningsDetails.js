@@ -49,7 +49,7 @@ function PlanningsDetails(props) {
                 <h3>
                   Lunch:{" "}
                   <Link
-                    className="link"
+                    className="link-planning"
                     to={`/recipes/${weeklyPlan.mealRecipes[0]?._id}`}
                   >
                     {weeklyPlan.mealRecipes[0]?.title}
@@ -58,7 +58,7 @@ function PlanningsDetails(props) {
                 <h3>
                   Dinner:{" "}
                   <Link
-                    className="link"
+                    className="link-planning"
                     to={`/recipes/${weeklyPlan.mealRecipes[1]?._id}`}
                   >
                     {weeklyPlan.mealRecipes[1]?.title}
@@ -73,7 +73,7 @@ function PlanningsDetails(props) {
                   <h3>
                     Lunch{" "}
                     <Link
-                      className="link"
+                      className="link-planning"
                       to={`/recipes/${weeklyPlan.mealRecipes[2]?._id}`}
                     >
                       {weeklyPlan.mealRecipes[2]?.title}
@@ -82,7 +82,7 @@ function PlanningsDetails(props) {
                   <h3>
                     Dinner{" "}
                     <Link
-                      className="link"
+                      className="link-planning"
                       to={`/recipes/${weeklyPlan.mealRecipes[3]?._id}`}
                     >
                       {weeklyPlan.mealRecipes[3]?.title}
@@ -97,7 +97,7 @@ function PlanningsDetails(props) {
                 <h3>
                   Lunch{" "}
                   <Link
-                    className="link"
+                    className="link-planning"
                     to={`/recipes/${weeklyPlan.mealRecipes[4]?._id}`}
                   >
                     {weeklyPlan.mealRecipes[4]?.title}
@@ -106,7 +106,7 @@ function PlanningsDetails(props) {
                 <h3>
                   Dinner{" "}
                   <Link
-                    className="link"
+                    className="link-planning"
                     to={`/recipes/${weeklyPlan.mealRecipes[5]?._id}`}
                   >
                     {weeklyPlan.mealRecipes[5]?.title}
@@ -120,7 +120,7 @@ function PlanningsDetails(props) {
                 <h3>
                   Lunch{" "}
                   <Link
-                    className="link"
+                    className="link-planning"
                     to={`/recipes/${weeklyPlan.mealRecipes[6]?._id}`}
                   >
                     {weeklyPlan.mealRecipes[6]?.title}
@@ -129,7 +129,7 @@ function PlanningsDetails(props) {
                 <h3>
                   Dinner{" "}
                   <Link
-                    className="link"
+                    className="link-planning"
                     to={`/recipes/${weeklyPlan.mealRecipes[7]?._id}`}
                   >
                     {weeklyPlan.mealRecipes[7]?.title}
@@ -143,7 +143,7 @@ function PlanningsDetails(props) {
                 <h3>
                   Lunch{" "}
                   <Link
-                    className="link"
+                    className="link-planning"
                     to={`/recipes/${weeklyPlan.mealRecipes[8]?._id}`}
                   >
                     {weeklyPlan.mealRecipes[8]?.title}
@@ -152,7 +152,7 @@ function PlanningsDetails(props) {
                 <h3>
                   Dinner{" "}
                   <Link
-                    className="link"
+                    className="link-planning"
                     to={`/recipes/${weeklyPlan.mealRecipes[9]?._id}`}
                   >
                     {weeklyPlan.mealRecipes[9]?.title}
@@ -166,7 +166,7 @@ function PlanningsDetails(props) {
                 <h3>
                   Lunch{" "}
                   <Link
-                    className="link"
+                    className="link-planning"
                     to={`/recipes/${weeklyPlan.mealRecipes[10]?._id}`}
                   >
                     {weeklyPlan.mealRecipes[10]?.title}
@@ -175,7 +175,7 @@ function PlanningsDetails(props) {
                 <h3>
                   Dinner{" "}
                   <Link
-                    className="link"
+                    className="link-planning"
                     to={`/recipes/${weeklyPlan.mealRecipes[11]?._id}`}
                   >
                     {weeklyPlan.mealRecipes[11]?.title}
@@ -189,7 +189,7 @@ function PlanningsDetails(props) {
                 <h3>
                   Lunch{" "}
                   <Link
-                    className="link"
+                    className="link-planning"
                     to={`/recipes/${weeklyPlan.mealRecipes[12]?._id}`}
                   >
                     {weeklyPlan.mealRecipes[12]?.title}
@@ -198,7 +198,7 @@ function PlanningsDetails(props) {
                 <h3 className="last-item">
                   Dinner{" "}
                   <Link
-                    className="link"
+                    className="link-planning"
                     to={`/recipes/${weeklyPlan.mealRecipes[13]?._id}`}
                   >
                     {weeklyPlan.mealRecipes[13]?.title}

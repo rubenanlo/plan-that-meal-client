@@ -35,6 +35,11 @@
   min-height: 20rem;
 }
 
+.link-planning{
+  max-width: 20rem;
+  color: var(--text-light);
+}
+
 .planning-list{
   border: 1px solid var(--purple-dark);
   margin: 6rem 3rem 2rem 2.5rem;
