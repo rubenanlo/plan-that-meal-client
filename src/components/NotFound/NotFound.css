@@ -1,7 +1,7 @@
 /* Main page */
 
 .notfound {
-  background-image: url('../../public/notfound.jpeg');
+  background-image: url('../../../public/notfound.jpeg');
   background-size: cover;
   background-position: center;
   height: 100%;

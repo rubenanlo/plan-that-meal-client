@@ -1,0 +1,40 @@
+.signup-form{
+  display: flex;
+  flex-direction: column;
+  width: 70vw;
+  border: solid;
+  border-radius: 1rem;
+  height: 50vh;
+  margin: auto;
+  justify-content: center;
+  align-items: center;
+  background-image: url("../../../public/signup.webp");
+  background-size: cover;
+  background-repeat: none;
+  
+}
+
+
+.fields-user{
+  display: flex;
+  flex-direction: column;
+  /* border:solid; */
+  width: 70vw;
+  align-items: center;
+}
+
+.field-user {
+  display: flex;
+  justify-content: space-between;
+  /* border:solid; */
+  width: 60vw;
+  margin-bottom: 2rem;
+}
+
+.field-user input{
+  border: .1rem solid var(--purple-dark);
+  border-radius: .2rem;
+  /* padding: .5vw 4vw; */
+  background-color: var(--light-transparent)
+
+}

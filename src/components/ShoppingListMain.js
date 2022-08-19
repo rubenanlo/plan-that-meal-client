@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import ShoppingList from "../pages/ShoppingList";
 import ShoppingListDetails from "../pages/ShoppingListDetails";
-import "./PlanningsMain.css";
+import "../components/PlanningHub/PlanningsMain.css";
 
 function ShoppingListMain() {
   const [list, setList] = useState([]);

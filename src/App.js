@@ -1,21 +1,21 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import HomePage from "./pages/HomePage";
-import LoginPage from "./pages/LoginPage";
+import HomePage from "./pages/Homepage/HomePage";
+import LoginPage from "./pages/LoginSignup/LoginPage";
 import PlanningsCreate from "./pages/PlanningsCreate";
 import RecipeDetails from "./pages/RecipeDetails";
 import RecipeCreate from "./pages/RecipeCreate";
 import RecipeUpdate from "./pages/RecipeUpdate";
 import RecipesList from "./pages/RecipesList";
-import SignupPage from "./pages/SignupPage";
+import SignupPage from "./pages/LoginSignup/SignupPage";
 import ShoppingListCreate from "./pages/ShoppingListCreate";
 import ShoppingListUpdate from "./pages/ShoppingListUpdate";
 import { useCallback, useEffect, useState } from "react";
 import axios from "axios";
-import NotFound from "./components/NotFound";
+import NotFound from "./components/NotFound/NotFound";
 import ShoppingListMain from "./components/ShoppingListMain";
-import PlanningsMain from "./components/PlanningsMain";
-import Footer from "./components/Footer";
+import PlanningsMain from "./components/PlanningHub/PlanningsMain";
+import Footer from "./components/Footer/Footer";
 import Navbar from "./components/Navbar/Navbar";
 
 function App() {

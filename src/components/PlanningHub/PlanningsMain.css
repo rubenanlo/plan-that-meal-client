@@ -7,7 +7,7 @@
 }
 
 .container-daily-plan{
-  background-image: url("../../public/blackboard.jpeg"); 
+  background-image: url("../../../public/blackboard.jpeg"); 
   background-size: cover;
   background-position: center;
   border-radius: 3rem;

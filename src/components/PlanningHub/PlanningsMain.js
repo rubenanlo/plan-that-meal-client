@@ -1,9 +1,9 @@
 import axios from "axios";
 import React, { useCallback, useContext, useEffect, useState } from "react";
 import { Link, Route, Routes } from "react-router-dom";
-import { AuthContext } from "../context/auth.context";
-import PlanningsDetails from "../pages/PlanningsDetails";
-import PlanningsList from "../pages/PlanningsList";
+import { AuthContext } from "../../context/auth.context";
+import PlanningsDetails from "../../pages/PlanningsDetails";
+import PlanningsList from "../../pages/PlanningsList";
 import "./PlanningsMain.css";
 
 function PlanningsMain() {

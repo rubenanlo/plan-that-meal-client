@@ -8,8 +8,9 @@
   --purple-dark-transparency: hsla(325, 51%, 36%, 0.303);
   --text-dark: black;
   --text-light: white;
-  --light-transparent: rgba(255, 255, 255, 0.672);
+  --light-transparent: rgba(248, 244, 244, 0.656);
   --grey: rgb(156, 149, 149);
+  --highlight-link: #117964;
 }
 
 .App {
@@ -22,8 +23,6 @@ body {
   background-image: url('../public/homepage6.webp');
   background-size: cover;
   background-repeat: no-repeat;
-  background-repeat: no-repeat;
-  background-size: cover;
   background-position: center top;
   background-attachment: fixed;
   padding-bottom: 5rem;
@@ -31,7 +30,7 @@ body {
 
 h1 {
   font-family: 'Fira Sans', sans-serif;
-  margin-top: 4.5rem;
+  margin-top: 3rem;
   margin-bottom: 3rem;
   color: var(--purple-dark);
   font-size: 2.5rem;
@@ -60,16 +59,14 @@ button {
 }
 
 .divider{
-  border-bottom: .01px solid var(--purple-dark);
-  margin: 0 1rem;
-  margin-bottom: 2rem;
-  color: none;
-
+  border-bottom: 2px solid var(--purple-dark);
+  width: 6rem;
+  margin: auto;
 }
 
 h2{
   font-size: 2.3rem;
-  margin-top: 5.5rem;
+  margin-top: 3rem;
   margin-bottom: 1rem;
 
 }

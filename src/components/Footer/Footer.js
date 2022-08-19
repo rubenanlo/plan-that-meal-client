@@ -1,5 +1,4 @@
 import "./Footer.css";
-import "./NotFound.css";
 
 function Footer() {
   return (

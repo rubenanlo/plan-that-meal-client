@@ -1,10 +1,9 @@
 
-  .logo{
+  /* .logo{
     width: 5rem;
     border-radius: 1rem;
 
   }
-
 
   .navbar {
     overflow: hidden;
@@ -12,7 +11,10 @@
     align-items: center;
     justify-content: space-between;
     margin-bottom: 10rem;
-    margin: 0 1.5rem 1.5rem 1.5rem;
+    padding: 0 1.5rem 0 1.5rem;
+    position: sticky;
+    top: 0;
+    background-color: var(--purple-dark);
   
   }
   
@@ -77,4 +79,200 @@
     background-color: transparent;
   
   }
+ */
 
+
+ /* desktop mode............/// */
+
+.navbar input[type="checkbox"],
+.navbar .hamburger-lines {
+  display: none;
+}
+
+.navbar {
+  position: sticky;
+  top:0;
+  width: 100%;
+  background: var(--purple-dark);
+  height: 5rem;
+  z-index: 12;
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  height: 64px;
+  align-items: center;
+  padding: 1.7rem;
+}
+
+.menu-items {
+  position: fixed;
+  top:1.7rem;
+  order: 2;
+  display: flex;
+  padding: 0;
+  margin: 0;
+}
+
+.menu-items li {
+  list-style: none;
+  color: white;
+  margin-left: 1.5rem;
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.menu-items .link-navbar {
+  text-decoration: none;
+  color: var(--text-light);
+  font-weight: 500;
+  transition: color 0.3s ease-in-out;
+}
+
+.menu-items a:hover {
+  color: var(--highlight-link);
+  transition: color 0.3s ease-in-out;
+}
+
+.logo {
+  position: absolute;
+  right: 0;
+  margin-bottom: 0.5rem;
+  width: 8rem;
+  height: 4rem;
+  object-fit: cover;
+}
+
+.link-nav {
+  text-decoration: none;
+}
+
+.logout span{
+  color: var(--text-light);
+}
+
+.logout span::before{
+  content:"";
+  border-right: solid;
+  width: 50%;
+  margin-right: 1rem;  
+}
+
+/* ......../ media query /.......... */
+
+@media (max-width: 768px) {
+  .navbar {
+    opacity: 0.95;
+  }
+
+  .navbar-container input[type="checkbox"],
+  .navbar-container .hamburger-lines {
+    display: block;
+  }
+
+  .navbar-container {
+    display: block;
+    position: fixed;
+    height: 64px;
+  }
+
+  .navbar-container input[type="checkbox"] {
+    position: absolute;
+    display: block;
+    height: 32px;
+    width: 30px;
+    top: 0;
+    left: 20px;
+    z-index: 5;
+    opacity: 0;
+  }
+
+  .navbar-container .hamburger-lines {
+    display: block;
+    height: 23px;
+    width: 35px;
+    /* position: absolute; */
+    /* top: 0;
+    left: 0; */
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .navbar-container .hamburger-lines .line {
+    display: block;
+    height: 4px;
+    width: 100%;
+    border-radius: 10px;
+    background: var(--text-light);
+  }
+
+  .navbar-container .hamburger-lines .line1 {
+    transform-origin: 0% 0%;
+    transition: transform 0.4s ease-in-out;
+  }
+
+  .navbar-container .hamburger-lines .line2 {
+    transition: transform 0.2s ease-in-out;
+  }
+
+  .navbar-container .hamburger-lines .line3 {
+    transform-origin: 0% 100%;
+    transition: transform 0.4s ease-in-out;
+  }
+
+  .navbar .menu-items {
+    padding-top: 100px;
+    background: var(--purple-dark-transparency);
+    height: 100vh;
+    max-width: 300px;
+    transform: translate(-150%);
+    display: flex;
+    flex-direction: column;
+    margin-left: -5rem;
+    padding: 5rem 3rem;
+    transition: transform 0.5s ease-in-out;
+  }
+
+  .navbar .menu-items li {
+    margin-bottom: 1.5rem;
+    font-size: 1.3rem;
+    font-weight: 500;
+    text-align: left;
+  }
+
+  .logo {
+    position: absolute;
+    top: 5px;
+    right: 15px;
+    font-size: 2rem;
+  }
+
+  .navbar-container input[type="checkbox"]:checked ~ .menu-items {
+    transform: translateX(0);
+  }
+
+  .navbar-container input[type="checkbox"]:checked ~ .hamburger-lines .line1 {
+    transform: rotate(35deg);
+  }
+
+  .navbar-container input[type="checkbox"]:checked ~ .hamburger-lines .line2 {
+    transform: scaleY(0);
+  }
+
+  .navbar-container input[type="checkbox"]:checked ~ .hamburger-lines .line3 {
+    transform: rotate(-35deg);
+  }
+
+  .logout span{
+    border-top: solid;
+  }
+
+  .logout span::before{
+    display: none;
+  }
+  
+
+}

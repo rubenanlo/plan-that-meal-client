@@ -3,7 +3,7 @@ import moment from "moment";
 import React, { useContext, useEffect, useState } from "react";
 import { NavLink, useNavigate, useParams } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
-import "../components/PlanningsMain.css";
+import "../components/PlanningHub/PlanningsMain.css";
 
 function ShoppingListDetails() {
   const [list, setList] = useState([]);

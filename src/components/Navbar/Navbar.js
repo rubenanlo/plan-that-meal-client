@@ -14,69 +14,54 @@ function Navbar() {
         <nav className="navbar">
           <div>
             <NavLink to="/">
-              <img className="logo" src="../../2.png" alt="logo" />
+              <img className="logo" src="../../3.png" alt="logo" />
             </NavLink>
           </div>
-          {isLoggedIn && (
-            <>
-              {/* <button className="theme">Light mode</button> */}
-              <div className="dropdown">
-                <button className="dropbtn">
-                  Recipes
-                  <i className="fa fa-caret-down"></i>
-                </button>
-                <div className="dropdown-content">
+          <div className="navbar-container">
+            <input type="checkbox" name="" id="" />
+            <div className="hamburger-lines">
+              <span className="line line1"></span>
+              <span className="line line2"></span>
+              <span className="line line3"></span>
+            </div>
+            {isLoggedIn && (
+              <ul className="menu-items">
+                {/* <button className="theme">Light mode</button> */}
+                <li>
                   <NavLink className="link-navbar" to="/recipes">
-                    View all recipes
+                    Recipes
                   </NavLink>
-                  <NavLink className="link-navbar" to="/recipes/create">
-                    Create a Recipe
-                  </NavLink>
-                </div>
-              </div>
-              <div className="dropdown">
-                <button className="dropbtn">
-                  Weekly Plans
-                  <i className="fa fa-caret-down"></i>
-                </button>
-                <div className="dropdown-content">
+                </li>
+                <li>
                   <NavLink className="link-navbar" to="/weeklyplans">
-                    View all weekly plans
+                    Weekly plans
                   </NavLink>
-                  <NavLink className="link-navbar" to="/weeklyplans/create">
-                    Create a Planning
-                  </NavLink>
-                </div>
-              </div>
-              <div className="dropdown">
-                <button className="dropbtn">
-                  Shopping List
-                  <i className="fa fa-caret-down"></i>
-                </button>
-                <div className="dropdown-content">
+                </li>
+                <li>
                   <NavLink className="link-navbar" to="/shoppingitems/">
-                    View all shopping lists
+                    Shopping lists
                   </NavLink>
-                  <NavLink className="link-navbar" to="/shoppingitems/create">
-                    Create a shopping list
+                </li>
+                <li className="logout">
+                  <Link to="/" className="link-nav">
+                    <span onClick={logOutUser}>Logout</span>
+                  </Link>
+                </li>
+              </ul>
+            )}
+            {!isLoggedIn && (
+              <ul className="menu-items">
+                <li>
+                  <NavLink className="link-navbar" to="/signup">
+                    Sign Up |
+                  </NavLink>{" "}
+                  <NavLink className="link-navbar" to="/login">
+                    Login
                   </NavLink>
-                </div>
-              </div>
-              <Link to="/">
-                <span onClick={logOutUser}>Logout</span>
-              </Link>
-            </>
-          )}
-          {!isLoggedIn && (
-            <>
-              <div>
-                <div style={{ alignItems: "center" }}>
-                  <NavLink to="/signup">Sign Up</NavLink>{" "}
-                  <NavLink to="/login">Login</NavLink>
-                </div>
-              </div>
-            </>
-          )}
+                </li>
+              </ul>
+            )}
+          </div>
         </nav>
       )}
     </>
