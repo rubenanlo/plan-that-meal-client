@@ -1,7 +1,7 @@
 
 .specificButton{
   margin-right: 1rem;
-  margin-top: 4rem;
+  margin-top: 2rem;
   margin-bottom: 1rem;
   background-color: var(--purple-dark)
 }
@@ -20,7 +20,7 @@
   justify-items: center;
   align-items: center;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  padding-bottom: 2rem;
+  padding-top: 2rem;
 }
 
 
@@ -31,7 +31,8 @@
 .single-day{
   margin: 0 3rem 0 3rem;
   justify-content: space-between;  
-  max-width: 10rem
+  min-width: 20rem;
+  min-height: 20rem;
 }
 
 .planning-list{
@@ -46,3 +47,4 @@
 .plan-name{
   color: black;
 }
+

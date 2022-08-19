@@ -2,8 +2,8 @@ import axios from "axios";
 import moment from "moment";
 import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { AuthContext } from "../context/auth.context";
-import "./PlanningCreate.css";
+import { AuthContext } from "../../context/auth.context";
+import "./Planning.css";
 
 function PlanningsCreate(props) {
   const { isLoading } = useContext(AuthContext);

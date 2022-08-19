@@ -2,7 +2,7 @@ import axios from "axios";
 import moment from "moment";
 import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { AuthContext } from "../context/auth.context";
+import { AuthContext } from "../../context/auth.context";
 
 function PlanningsDetails(props) {
   const [weeklyPlan, setWeeklyPlan] = useState("");

@@ -2,7 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import HomePage from "./pages/Homepage/HomePage";
 import LoginPage from "./pages/LoginSignup/LoginPage";
-import PlanningsCreate from "./pages/PlanningsCreate";
+import PlanningsCreate from "./pages/WeeklyPlans/PlanningsCreate";
 import RecipeDetails from "./pages/RecipeDetails";
 import RecipeCreate from "./pages/RecipeCreate";
 import RecipeUpdate from "./pages/RecipeUpdate";
