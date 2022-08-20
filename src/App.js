@@ -10,8 +10,6 @@ import RecipesList from "./pages/RecipesList";
 import SignupPage from "./pages/LoginSignup/SignupPage";
 import ShoppingListCreate from "./pages/ShoppingListCreate";
 import ShoppingListUpdate from "./pages/ShoppingListUpdate";
-import { useCallback, useEffect, useState } from "react";
-import axios from "axios";
 import NotFound from "./components/NotFound/NotFound";
 import ShoppingListMain from "./components/ShoppingListMain";
 import PlanningsMain from "./components/PlanningHub/PlanningsMain";
@@ -19,22 +17,6 @@ import Footer from "./components/Footer/Footer";
 import Navbar from "./components/Navbar/Navbar";
 
 function App() {
-  const [recipes, setRecipes] = useState([]);
-  const storedToken = localStorage.getItem("authToken");
-
-  const getAllRecipes = useCallback(() => {
-    axios
-      .get(`${process.env.REACT_APP_API_URL}/recipes`, {
-        headers: { Authorization: `Bearer ${storedToken}` },
-      })
-      .then((response) => setRecipes(response.data))
-      .catch((error) => console.log(error));
-  }, [storedToken]);
-
-  useEffect(() => {
-    getAllRecipes();
-  }, [getAllRecipes]);
-
   return (
     <div className="App">
       <Routes>
@@ -74,7 +56,7 @@ function App() {
             <>
               <Navbar />
               <Footer />
-              <RecipesList recipes={recipes} refreshRecipes={getAllRecipes} />
+              <RecipesList />
             </>
           }
         />
@@ -124,7 +106,7 @@ function App() {
             <>
               <Navbar />
               <Footer />
-              <PlanningsCreate recipes={recipes} />
+              <PlanningsCreate />
             </>
           }
         />

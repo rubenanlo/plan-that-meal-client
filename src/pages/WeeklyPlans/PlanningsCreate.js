@@ -1,11 +1,13 @@
 import axios from "axios";
 import moment from "moment";
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/auth.context";
 import "./Planning.css";
 
-function PlanningsCreate(props) {
+function PlanningsCreate() {
+  const [recipes, setRecipes] = useState([]);
+
   const { isLoading } = useContext(AuthContext);
 
   const [startDate, setStartDate] = useState("");
@@ -29,6 +31,15 @@ function PlanningsCreate(props) {
   const storedToken = localStorage.getItem("authToken");
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    axios
+      .get(`${process.env.REACT_APP_API_URL}/recipes`, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      })
+      .then((response) => setRecipes(response.data))
+      .catch((error) => console.log(error));
+  }, [storedToken]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -192,7 +203,7 @@ function PlanningsCreate(props) {
         <p>Loading...</p>
       ) : (
         <div>
-          {props.recipes.length === 0 ? (
+          {recipes.length === 0 ? (
             <div>
               <p>
                 No recipes? no weekly plans. Create a new recipe{" "}
@@ -230,7 +241,7 @@ function PlanningsCreate(props) {
                         <label>Lunch:</label>
                         <select required onChange={handleChangeMealOne}>
                           <option style={{ display: "none" }}></option>
-                          {props.recipes.map((recipe) => {
+                          {recipes.map((recipe) => {
                             return (
                               <option key={recipe._id} id={recipe._id}>
                                 {recipe.title}
@@ -243,7 +254,7 @@ function PlanningsCreate(props) {
                         <label>Dinner:</label>
                         <select required onChange={handleChangeMealTwo}>
                           <option style={{ display: "none" }}></option>
-                          {props.recipes.map((recipe) => {
+                          {recipes.map((recipe) => {
                             return (
                               <option key={recipe._id} id={recipe._id}>
                                 {recipe.title}
@@ -269,7 +280,7 @@ function PlanningsCreate(props) {
                         <select onChange={handleChangeMealThree}>
                           <option style={{ display: "none" }}></option>
 
-                          {props.recipes.map((recipe) => {
+                          {recipes.map((recipe) => {
                             return (
                               <option key={recipe._id} id={recipe._id}>
                                 {recipe.title}
@@ -282,7 +293,7 @@ function PlanningsCreate(props) {
                         <label>Dinner:</label>
                         <select required onChange={handleChangeMealFour}>
                           <option style={{ display: "none" }}></option>
-                          {props.recipes.map((recipe) => {
+                          {recipes.map((recipe) => {
                             return (
                               <option key={recipe._id} id={recipe._id}>
                                 {recipe.title}
@@ -307,7 +318,7 @@ function PlanningsCreate(props) {
                         <label>Lunch:</label>
                         <select onChange={handleChangeMealFive}>
                           <option style={{ display: "none" }}></option>
-                          {props.recipes.map((recipe) => {
+                          {recipes.map((recipe) => {
                             return (
                               <option key={recipe._id} id={recipe._id}>
                                 {recipe.title}
@@ -320,7 +331,7 @@ function PlanningsCreate(props) {
                         <label>Dinner:</label>
                         <select required onChange={handleChangeMealSix}>
                           <option style={{ display: "none" }}></option>
-                          {props.recipes.map((recipe) => {
+                          {recipes.map((recipe) => {
                             return (
                               <option key={recipe._id} id={recipe._id}>
                                 {recipe.title}
@@ -345,7 +356,7 @@ function PlanningsCreate(props) {
                         <label>Lunch:</label>
                         <select required onChange={handleChangeMealSeven}>
                           <option style={{ display: "none" }}></option>
-                          {props.recipes.map((recipe) => {
+                          {recipes.map((recipe) => {
                             return (
                               <option key={recipe._id} id={recipe._id}>
                                 {recipe.title}
@@ -358,7 +369,7 @@ function PlanningsCreate(props) {
                         <label>Dinner:</label>
                         <select required onChange={handleChangeMealEight}>
                           <option style={{ display: "none" }}></option>
-                          {props.recipes.map((recipe) => {
+                          {recipes.map((recipe) => {
                             return (
                               <option key={recipe._id} id={recipe._id}>
                                 {recipe.title}
@@ -383,7 +394,7 @@ function PlanningsCreate(props) {
                         <label>Lunch:</label>
                         <select required onChange={handleChangeMealNine}>
                           <option style={{ display: "none" }}></option>
-                          {props.recipes.map((recipe) => {
+                          {recipes.map((recipe) => {
                             return (
                               <option key={recipe._id} id={recipe._id}>
                                 {recipe.title}
@@ -396,7 +407,7 @@ function PlanningsCreate(props) {
                         <label>Dinner:</label>
                         <select required onChange={handleChangeMealTen}>
                           <option style={{ display: "none" }}></option>
-                          {props.recipes.map((recipe) => {
+                          {recipes.map((recipe) => {
                             return (
                               <option key={recipe._id} id={recipe._id}>
                                 {recipe.title}
@@ -421,7 +432,7 @@ function PlanningsCreate(props) {
                         <label>Lunch:</label>
                         <select required onChange={handleChangeMealEleven}>
                           <option style={{ display: "none" }}></option>
-                          {props.recipes.map((recipe) => {
+                          {recipes.map((recipe) => {
                             return (
                               <option key={recipe._id} id={recipe._id}>
                                 {recipe.title}
@@ -434,7 +445,7 @@ function PlanningsCreate(props) {
                         <label>Dinner:</label>
                         <select required onChange={handleChangeMealTwelve}>
                           <option style={{ display: "none" }}></option>
-                          {props.recipes.map((recipe) => {
+                          {recipes.map((recipe) => {
                             return (
                               <option key={recipe._id} id={recipe._id}>
                                 {recipe.title}
@@ -459,7 +470,7 @@ function PlanningsCreate(props) {
                         <label>Lunch:</label>
                         <select required onChange={handleChangeMealThirteen}>
                           <option style={{ display: "none" }}></option>
-                          {props.recipes.map((recipe) => {
+                          {recipes.map((recipe) => {
                             return (
                               <option key={recipe._id} id={recipe._id}>
                                 {recipe.title}
@@ -472,7 +483,7 @@ function PlanningsCreate(props) {
                         <label>Dinner:</label>
                         <select required onChange={handleChangeMealFourteen}>
                           <option style={{ display: "none" }}></option>
-                          {props.recipes.map((recipe) => {
+                          {recipes.map((recipe) => {
                             return (
                               <option key={recipe._id} id={recipe._id}>
                                 {recipe.title}

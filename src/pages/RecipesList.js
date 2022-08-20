@@ -1,14 +1,22 @@
-import { useContext, useEffect } from "react";
+import axios from "axios";
+import { useContext, useEffect, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
 import "./RecipesList.css";
 
-function RecipesList(props) {
+function RecipesList() {
   const { isLoading } = useContext(AuthContext);
+  const storedToken = localStorage.getItem("authToken");
+  const [recipes, setRecipes] = useState([]);
 
   useEffect(() => {
-    props.refreshRecipes();
-  }, []);
+    axios
+      .get(`${process.env.REACT_APP_API_URL}/recipes`, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      })
+      .then((response) => setRecipes(response.data))
+      .catch((error) => console.log(error));
+  }, [storedToken]);
 
   const [searchParams, setSearchParams] = useSearchParams();
   const searchTerm = searchParams.get("protein") || "";
@@ -20,7 +28,7 @@ function RecipesList(props) {
   const renderRecipes = () => {
     let result;
     searchTerm !== "All"
-      ? (result = props.recipes
+      ? (result = recipes
           .filter((recipe) => recipe.protein.includes(searchTerm))
           .map((recipe) => {
             return (
@@ -33,7 +41,7 @@ function RecipesList(props) {
               </div>
             );
           }))
-      : (result = props.recipes.map((recipe) => {
+      : (result = recipes.map((recipe) => {
           return (
             <div className="recipe" key={recipe._id}>
               <Link className="link-no-format" to={`/recipes/${recipe._id}`}>
@@ -77,7 +85,7 @@ function RecipesList(props) {
             </form>
           </div>
           <div className="recipes">
-            {props.recipes.length === 0 ? (
+            {recipes.length === 0 ? (
               <div style={{ marginLeft: "28vw" }}>
                 <p>
                   Be the first to create a new recipe{" "}
