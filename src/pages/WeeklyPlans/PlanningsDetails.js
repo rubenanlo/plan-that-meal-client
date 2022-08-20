@@ -52,7 +52,7 @@ function PlanningsDetails(props) {
                     className="link-planning"
                     to={`/recipes/${weeklyPlan.mealRecipes[0]?._id}`}
                   >
-                    {weeklyPlan.mealRecipes[0]?.title}
+                    {weeklyPlan.mealRecipes[0]?.title.slice(0, 7)}...
                   </Link>
                 </h3>
                 <h3>
@@ -61,7 +61,7 @@ function PlanningsDetails(props) {
                     className="link-planning"
                     to={`/recipes/${weeklyPlan.mealRecipes[1]?._id}`}
                   >
-                    {weeklyPlan.mealRecipes[1]?.title}
+                    {weeklyPlan.mealRecipes[1]?.title.slice(0, 7)}...
                   </Link>
                 </h3>
               </div>
@@ -76,7 +76,7 @@ function PlanningsDetails(props) {
                       className="link-planning"
                       to={`/recipes/${weeklyPlan.mealRecipes[2]?._id}`}
                     >
-                      {weeklyPlan.mealRecipes[2]?.title}
+                      {weeklyPlan.mealRecipes[2]?.title.slice(0, 7)}...
                     </Link>
                   </h3>
                   <h3>
@@ -85,7 +85,7 @@ function PlanningsDetails(props) {
                       className="link-planning"
                       to={`/recipes/${weeklyPlan.mealRecipes[3]?._id}`}
                     >
-                      {weeklyPlan.mealRecipes[3]?.title}
+                      {weeklyPlan.mealRecipes[3]?.title.slice(0, 7)}...
                     </Link>
                   </h3>
                 </div>
@@ -100,7 +100,7 @@ function PlanningsDetails(props) {
                     className="link-planning"
                     to={`/recipes/${weeklyPlan.mealRecipes[4]?._id}`}
                   >
-                    {weeklyPlan.mealRecipes[4]?.title}
+                    {weeklyPlan.mealRecipes[4]?.title.slice(0, 7)}...
                   </Link>
                 </h3>
                 <h3>
@@ -109,7 +109,7 @@ function PlanningsDetails(props) {
                     className="link-planning"
                     to={`/recipes/${weeklyPlan.mealRecipes[5]?._id}`}
                   >
-                    {weeklyPlan.mealRecipes[5]?.title}
+                    {weeklyPlan.mealRecipes[5]?.title.slice(0, 7)}...
                   </Link>
                 </h3>
               </div>
@@ -123,7 +123,7 @@ function PlanningsDetails(props) {
                     className="link-planning"
                     to={`/recipes/${weeklyPlan.mealRecipes[6]?._id}`}
                   >
-                    {weeklyPlan.mealRecipes[6]?.title}
+                    {weeklyPlan.mealRecipes[6]?.title.slice(0, 7)}...
                   </Link>
                 </h3>
                 <h3>
@@ -132,7 +132,7 @@ function PlanningsDetails(props) {
                     className="link-planning"
                     to={`/recipes/${weeklyPlan.mealRecipes[7]?._id}`}
                   >
-                    {weeklyPlan.mealRecipes[7]?.title}
+                    {weeklyPlan.mealRecipes[7]?.title.slice(0, 7)}...
                   </Link>
                 </h3>
               </div>
@@ -146,7 +146,7 @@ function PlanningsDetails(props) {
                     className="link-planning"
                     to={`/recipes/${weeklyPlan.mealRecipes[8]?._id}`}
                   >
-                    {weeklyPlan.mealRecipes[8]?.title}
+                    {weeklyPlan.mealRecipes[8]?.title.slice(0, 7)}...
                   </Link>
                 </h3>
                 <h3>
@@ -155,7 +155,7 @@ function PlanningsDetails(props) {
                     className="link-planning"
                     to={`/recipes/${weeklyPlan.mealRecipes[9]?._id}`}
                   >
-                    {weeklyPlan.mealRecipes[9]?.title}
+                    {weeklyPlan.mealRecipes[9]?.title.slice(0, 7)}...
                   </Link>
                 </h3>
               </div>
@@ -169,7 +169,7 @@ function PlanningsDetails(props) {
                     className="link-planning"
                     to={`/recipes/${weeklyPlan.mealRecipes[10]?._id}`}
                   >
-                    {weeklyPlan.mealRecipes[10]?.title}
+                    {weeklyPlan.mealRecipes[10]?.title.slice(0, 7)}...
                   </Link>
                 </h3>
                 <h3>
@@ -178,7 +178,7 @@ function PlanningsDetails(props) {
                     className="link-planning"
                     to={`/recipes/${weeklyPlan.mealRecipes[11]?._id}`}
                   >
-                    {weeklyPlan.mealRecipes[11]?.title}
+                    {weeklyPlan.mealRecipes[11]?.title.slice(0, 7)}...
                   </Link>
                 </h3>
               </div>
@@ -192,7 +192,8 @@ function PlanningsDetails(props) {
                     className="link-planning"
                     to={`/recipes/${weeklyPlan.mealRecipes[12]?._id}`}
                   >
-                    {weeklyPlan.mealRecipes[12]?.title}
+                    {weeklyPlan.mealRecipes[12]?.title.slice(0, 7)}
+                    ...
                   </Link>
                 </h3>
                 <h3 className="last-item">
@@ -201,7 +202,7 @@ function PlanningsDetails(props) {
                     className="link-planning"
                     to={`/recipes/${weeklyPlan.mealRecipes[13]?._id}`}
                   >
-                    {weeklyPlan.mealRecipes[13]?.title}
+                    {weeklyPlan.mealRecipes[13]?.title.slice(0, 7)}...
                   </Link>
                 </h3>
               </div>
