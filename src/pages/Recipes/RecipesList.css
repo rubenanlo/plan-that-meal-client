@@ -7,18 +7,20 @@
 }
 
 .recipe{
-    max-width: 20rem;
-    min-height: 20rem;
+    width: 20rem;
+    height: 20rem;
     margin-bottom: 1.5rem;
+    border:solid;
+    background-size: cover;
+    border-radius: 1rem;
+    margin: 2rem auto;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   }
   
   .link-no-format {
     text-decoration: none;
-    color: var(--purple-dark)
-  }
-  .recipe img {
-    max-width: 20rem;
-    min-width: 20rem;
+    color: var(--purple-dark);
+    margin: auto;
   }
 
   .search{

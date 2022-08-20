@@ -32,13 +32,16 @@ function RecipesList() {
           .filter((recipe) => recipe.protein.includes(searchTerm))
           .map((recipe) => {
             return (
-              <div className="recipe" key={recipe._id}>
-                <Link className="link-no-format" to={`/recipes/${recipe._id}`}>
+              <Link className="link-no-format" to={`/recipes/${recipe._id}`}>
+                <div
+                  className="recipe"
+                  key={recipe._id}
+                  style={{ backgroundImage: `url(${recipe.img})` }}
+                >
                   <h3>{recipe.title}</h3>
-                  <img src={recipe.img} alt="recipe" />
-                </Link>
-                <div className="divider"></div>
-              </div>
+                  <div className="divider"></div>
+                </div>
+              </Link>
             );
           }))
       : (result = recipes.map((recipe) => {
