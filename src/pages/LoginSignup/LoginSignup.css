@@ -42,7 +42,6 @@
 .field-user input{
   border: .1rem solid var(--purple-dark);
   border-radius: .2rem;
-  /* padding: .5vw 4vw; */
   background-color: var(--light-transparent)
 
 }

@@ -18,7 +18,7 @@ function PlanningsList({ refreshWeeklyPlans, weeklyPlans }) {
             >
               <div>
                 <h3 className="weekly-plan">
-                  {moment(weeklyPlan.startDate).format("dddd, DD MMMM YYYY")}
+                  Week of {moment(weeklyPlan.startDate).format("DD MMMM YYYY")}
                 </h3>
               </div>
             </a>

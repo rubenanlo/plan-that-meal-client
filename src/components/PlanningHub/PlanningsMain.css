@@ -1,4 +1,23 @@
 
+.create-option{
+  display: flex;
+  justify-content: center;
+  margin: 1rem;
+}
+
+.create-option a{
+  text-decoration: none;
+  color: var(--text-dark);
+  border: .1rem solid var(--purple-dark);
+  padding: .5rem 2rem;
+  margin: .5rem 0;
+  border-radius: 1rem;
+}
+
+.create-option p{
+  margin-right: 2rem;
+}
+
 .specificButton{
   margin-right: 1rem;
   margin-top: 2rem;
@@ -32,7 +51,7 @@
   margin: 0 3rem 0 3rem;
   justify-content: space-between;  
   min-width: 20rem;
-  min-height: 20rem;
+  min-height: 15rem;
 }
 
 .link-planning{
@@ -42,13 +61,12 @@
 
 .planning-list{
   border: 1px solid var(--purple-dark);
-  margin: 6rem 3rem 2rem 2.5rem;
+  margin: 2rem 3rem 2rem 2.5rem;
   height: 15vh;
   overflow: scroll;
   border-radius: 1rem;
 
 }
-
 .plan-name{
   color: black;
 }

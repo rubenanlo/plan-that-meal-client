@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useCallback, useContext, useEffect, useState } from "react";
-import { Link, Route, Routes } from "react-router-dom";
+import { Link, NavLink, Route, Routes } from "react-router-dom";
 import { AuthContext } from "../../context/auth.context";
 import PlanningsDetails from "../../pages/WeeklyPlans/PlanningsDetails";
 import PlanningsList from "../../pages/WeeklyPlans/PlanningsList";
@@ -46,6 +46,10 @@ function PlanningsMain() {
           )}
           <div>
             <div>
+              <div className="create-option">
+                <p> Want to create a new weekly plan?</p>
+                <NavLink to="/weeklyplans/create">Go for it!</NavLink>
+              </div>
               <div className="planning-list">
                 <PlanningsList
                   weeklyPlans={weeklyPlans}

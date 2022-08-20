@@ -209,7 +209,7 @@ function PlanningsDetails(props) {
             </div>
           )}
           <button className="specificButton" onClick={deleteWeeklyPlan}>
-            Delete
+            Delete planning
           </button>
         </div>
       )}
