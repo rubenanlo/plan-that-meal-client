@@ -10,7 +10,6 @@
     width: 20rem;
     height: 20rem;
     margin-bottom: 1.5rem;
-    border:solid;
     background-size: cover;
     border-radius: 1rem;
     margin: 2rem auto;
@@ -30,7 +29,6 @@
 
   .search select {
     border-radius: .3rem;
-    border: .2rem solid var(--purple-dark);
     padding: .5rem 0;
     text-align: center;
     color: var(--grey);
