@@ -72,7 +72,7 @@ function RecipesList() {
       ) : (
         <div>
           <div className="create-option">
-            <p> Any chance you want to share your recipe?</p>
+            <p> Any chance you want to create your recipe?</p>
             <NavLink to="/recipes/create">Dive right in!</NavLink>
           </div>
 
