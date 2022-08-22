@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
-import { Link, useSearchParams } from "react-router-dom";
+import { Link, NavLink, useSearchParams } from "react-router-dom";
 import { AuthContext } from "../../context/auth.context";
 import "./RecipesList.css";
 
@@ -71,6 +71,11 @@ function RecipesList() {
         <p>Loading...</p>
       ) : (
         <div>
+          <div className="create-option">
+            <p> Any chance you want to share your recipe?</p>
+            <NavLink to="/recipes/create">Dive right in!</NavLink>
+          </div>
+
           <div className="search">
             <form onChange={handleSearch}>
               <select
