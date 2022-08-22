@@ -1,8 +1,8 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
-import ShoppingList from "../pages/ShoppingList";
-import ShoppingListDetails from "../pages/ShoppingListDetails";
+import ShoppingList from "../pages/ShoppingList/ShoppingList";
+import ShoppingListDetails from "../pages/ShoppingList/ShoppingListDetails";
 import "../components/PlanningHub/PlanningsMain.css";
 
 function ShoppingListMain() {

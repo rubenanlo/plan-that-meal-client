@@ -2,8 +2,8 @@ import axios from "axios";
 import moment from "moment";
 import React, { useContext, useEffect, useState } from "react";
 import { NavLink, useNavigate, useParams } from "react-router-dom";
-import { AuthContext } from "../context/auth.context";
-import "../components/PlanningHub/PlanningsMain.css";
+import { AuthContext } from "../../context/auth.context";
+import "../../components/PlanningHub/PlanningsMain.css";
 
 function ShoppingListDetails() {
   const [list, setList] = useState([]);

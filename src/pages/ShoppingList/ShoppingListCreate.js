@@ -2,7 +2,7 @@ import axios from "axios";
 import { nanoid } from "nanoid";
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../context/auth.context";
+import { AuthContext } from "../../context/auth.context";
 
 function ShoppingListCreate(props) {
   const [items, setItems] = useState([]);

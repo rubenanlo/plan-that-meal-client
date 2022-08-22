@@ -1,7 +1,7 @@
 import moment from "moment";
 import { useContext, useEffect } from "react";
 import { NavLink } from "react-router-dom";
-import { AuthContext } from "../context/auth.context";
+import { AuthContext } from "../../context/auth.context";
 
 function ShoppingList(props) {
   const { isLoading } = useContext(AuthContext);

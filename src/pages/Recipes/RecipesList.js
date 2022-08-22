@@ -40,6 +40,7 @@ function RecipesList() {
                 >
                   <div className="recipe-details">
                     <h3>{recipe.title}</h3>
+                    <p>Protein: {recipe.protein}</p>
                   </div>
                 </div>
               </Link>

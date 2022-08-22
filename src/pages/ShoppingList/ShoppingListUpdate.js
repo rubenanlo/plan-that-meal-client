@@ -2,7 +2,7 @@ import axios from "axios";
 import { nanoid } from "nanoid";
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { AuthContext } from "../context/auth.context";
+import { AuthContext } from "../../context/auth.context";
 
 function ShoppingListUpdate() {
   const [items, setItems] = useState([]);
