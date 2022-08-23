@@ -32,15 +32,21 @@ function RecipesList() {
           .filter((recipe) => recipe.protein.includes(searchTerm))
           .map((recipe) => {
             return (
-              <Link className="link-no-format" to={`/recipes/${recipe._id}`}>
+              <Link
+                className="link-no-format"
+                to={`/recipes/${recipe._id}`}
+                key={recipe._id}
+              >
                 <div
                   className="recipe"
                   key={recipe._id}
                   style={{ backgroundImage: `url(${recipe.img})` }}
                 >
+                  <h3>{recipe.title}</h3>
                   <div className="recipe-details">
-                    <h3>{recipe.title}</h3>
                     <p>Protein: {recipe.protein}</p>
+                    <p>Ingredient: {recipe.ingredient}...</p>
+                    <p>Description: {recipe.description.slice(0, 60)}...</p>
                   </div>
                 </div>
               </Link>
@@ -48,14 +54,20 @@ function RecipesList() {
           }))
       : (result = recipes.map((recipe) => {
           return (
-            <Link className="link-no-format" to={`/recipes/${recipe._id}`}>
+            <Link
+              className="link-no-format"
+              to={`/recipes/${recipe._id}`}
+              key={recipe._id}
+            >
               <div
                 className="recipe"
                 key={recipe._id}
                 style={{ backgroundImage: `url(${recipe.img})` }}
               >
+                <h3>{recipe.title}</h3>
                 <div className="recipe-details">
-                  <h3>{recipe.title}</h3>
+                  <p>Protein: {recipe.protein}</p>
+                  <p>Description: {recipe.description.slice(0, 60)}...</p>
                 </div>
               </div>
             </Link>
