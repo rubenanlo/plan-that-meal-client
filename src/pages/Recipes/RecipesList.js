@@ -27,7 +27,7 @@ function RecipesList() {
 
   const renderRecipes = () => {
     let result;
-    searchTerm !== "All"
+    searchTerm !== ""
       ? (result = recipes
           .filter((recipe) => recipe.protein.includes(searchTerm))
           .map((recipe) => {
@@ -45,7 +45,15 @@ function RecipesList() {
                   <h3>{recipe.title}</h3>
                   <div className="recipe-details">
                     <p>Protein: {recipe.protein}</p>
-                    <p>Ingredient: {recipe.ingredient}...</p>
+                    <p>
+                      Ingredients:{" "}
+                      {recipe.ingredients.slice(0, 2).map((ingredient) => (
+                        <li key={ingredient.id}>
+                          {ingredient.quantity} gr {ingredient.ingredient}
+                        </li>
+                      ))}
+                      ...
+                    </p>
                     <p>Description: {recipe.description.slice(0, 60)}...</p>
                   </div>
                 </div>
@@ -67,6 +75,15 @@ function RecipesList() {
                 <h3>{recipe.title}</h3>
                 <div className="recipe-details">
                   <p>Protein: {recipe.protein}</p>
+                  <p>
+                    Ingredients:{" "}
+                    {recipe.ingredients.slice(0, 2).map((ingredient) => (
+                      <li key={ingredient.id}>
+                        {ingredient.quantity} gr {ingredient.ingredient}
+                      </li>
+                    ))}
+                    ...
+                  </p>
                   <p>Description: {recipe.description.slice(0, 60)}...</p>
                 </div>
               </div>
