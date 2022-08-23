@@ -74,10 +74,6 @@
     border-top-right-radius: 1rem;
   }
 
-  .divider {
-    border: solid white;
-  }
-
   .link-no-format {
     text-decoration: none;
     color: var(--text-light);
