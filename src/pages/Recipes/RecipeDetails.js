@@ -33,34 +33,49 @@ function RecipeDetails() {
       {isLoading ? (
         <p>Loading...</p>
       ) : (
-        <div className="RecipeDetails" key={recipeId}>
-          {recipe && (
-            <>
-              <h2>{recipe.title}</h2>
-              <img src={recipe.img} alt="dish" />
-              <p>Main protein: {recipe.protein}</p>
-              <p>Serving: {recipe.serving}</p>
-              <p>Ingredients:</p>
-              {recipe &&
-                recipe?.ingredients.map((ingredient) => (
-                  <li className="Ingredients" key={ingredient.id}>
-                    {ingredient.quantity} gr {ingredient.ingredient}
-                  </li>
-                ))}
-
-              <p style={{ maxWidth: "30%", marginLeft: "35vw" }}>
-                How to make it: {recipe.description}
-              </p>
-            </>
-          )}
-
-          <div>
+        <>
+          <div className="recipe-details" key={recipeId}>
+            {recipe && (
+              <>
+                <div className="card-wider-screen">
+                  <div>
+                    <h2>{recipe.title}</h2>
+                    <img className="image-recipe" src={recipe.img} alt="dish" />
+                    <section className="one-line left-wider-screen">
+                      <h3>Main protein: </h3>
+                      <p>{recipe.protein}</p>
+                    </section>
+                    <section className="one-line left-wider-screen">
+                      <h3>Serving: </h3>
+                      <p>{recipe.serving}</p>
+                    </section>
+                    <section className="multiple-lines left-wider-screen ingredients-wider">
+                      <h3>Ingredients:</h3>
+                      {recipe &&
+                        recipe?.ingredients.map((ingredient) => (
+                          <ul key={ingredient.id}>
+                            <li className="ingredients">
+                              {ingredient.quantity} gr {ingredient.ingredient}
+                            </li>
+                          </ul>
+                        ))}
+                    </section>
+                  </div>
+                  <section className="multiple-lines description-wider-screen">
+                    <h3>How to make it:</h3>
+                    <p>{recipe.description}</p>
+                  </section>
+                </div>
+              </>
+            )}
+          </div>
+          <div className="buttons-edit">
             <button onClick={() => navigate(-1)}>Back</button>
             <Link to={`/recipes/edit/${recipe?._id}`}>
               <button>Edit</button>
             </Link>
           </div>
-        </div>
+        </>
       )}
     </>
   );
