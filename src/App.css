@@ -11,6 +11,7 @@
   --light-transparent: rgba(248, 244, 244, 0.656);
   --grey: rgb(156, 149, 149);
   --highlight-link: #117964;
+  --required-field: red;
 }
 
 .App {
@@ -21,7 +22,7 @@ body {
   margin: 0;
   font-family: "Kalam", cursive;
   background-image: url('../public/homepage6.webp');
-  background-size: cover;
+  background-size: fill;
   background-repeat: no-repeat;
   background-position: center top;
   background-attachment: fixed;

@@ -1,81 +1,36 @@
-.form {
+.background{
+    border:solid;
+    margin: 1rem auto;
+    width: 80vw;
+    position:relative;
+}
+
+.background::before{
+    content: "";
     background-image: url("../../../public/form.jpeg");
-    background-position: bottom;
-    background-size:cover;
-    margin: 0 20% 5rem 20%;
-    padding-top: .3rem;
-    min-height: 110vh;
-    box-shadow: 10px 10px 5px #aaaaaa; 
+    background-size: cover;
+    background-repeat: none;  
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top:0;
+    left:0;
+    opacity: 0.5;
 }
 
-.required-fields {
-    margin-bottom: 3rem;
-}
 
-.field {
+.fields-user{
     display: flex;
-    justify-content: space-between;
-    margin: 2rem 10rem;
+    flex-direction: column;
+    margin:auto;
+}
+
+.fields-user p {
+    color: var(--required-field)
+}
+
+.fields-user form, .ingredients {
     text-align: left;
-}
-
-.field input {
-    padding: .3rem 20%;
-    text-align: center;
-
-}
-
-.back{
-    margin-right: 1rem;
-    margin-bottom: 4rem;
-}
-
-.img-input {
-    margin: 0 .3rem 0 0;
-}
-
-.protein-field {
-    display:flex;
-    margin-left: 6rem;
-}
-.field button {
-    width: 10rem;
-    text-align: center;
-    margin-bottom: 1rem;
-}
-
-.ingredient{
-    margin-left: 14%;
-}
-
-.add {
-    border-radius: .3rem;
-    padding: 0 1rem;
-    margin-left: 4rem;
-}
-
-.deleteTwo{
-    border-radius: .3rem;
-    padding: 0 1rem;
-
-}
-
-.show-ingredient{
-    display:flex;
-    justify-content: baseline;
-    align-items: baseline;
-    margin-left: 40%;
-}
-.show-ingredient p{
-    margin-right: 20%;
-    min-width: 30%;
-    text-align: left;
-}
-
-
-.show-ingredient button{
-    background-color: var(--delete);
-    border: none;
-    padding: .3rem 1rem;
+    margin: auto;
 }
 

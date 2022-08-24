@@ -52,4 +52,5 @@
 
 button {
   position: relative;
+  color: var(--text-dark)
 }
