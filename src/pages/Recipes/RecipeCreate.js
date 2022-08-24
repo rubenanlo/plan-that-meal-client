@@ -102,8 +102,12 @@ function RecipeCreate() {
               </div>
 
               <div>
-                <label>Image:</label>
-                <input type="file" onChange={(e) => handleFileUpload(e)} />
+                <label className="upload-label">Image:</label>
+                <label className="image">
+                  <img src="../../../upload-icon.png" alt="upload-icon" />
+                  Upload your recipe's image
+                  <input type="file" onChange={(e) => handleFileUpload(e)} />
+                </label>
               </div>
 
               <div className="protein-structure">
@@ -256,31 +260,36 @@ function RecipeCreate() {
                 </div>
               </div>
             </div>
+            <span></span>
+          </div>
 
+          <div className="part-right-wider">
             <form id="recipe-form">
               <div className="description-field">
                 <label>How to make it:</label>
                 <textarea
                   type="textarea"
                   cols={40}
-                  rows={10}
+                  rows={20}
                   name="description"
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
                 />
               </div>
             </form>
+            <div>
+              <button
+                onClick={() => {
+                  navigate(-1);
+                }}
+              >
+                Back
+              </button>
+              <button type="submit" form="recipe-form">
+                Submit
+              </button>
+            </div>
           </div>
-          <button
-            onClick={() => {
-              navigate(-1);
-            }}
-          >
-            Back
-          </button>
-          <button type="submit" form="recipe-form">
-            Submit
-          </button>
         </div>
       )}
     </div>

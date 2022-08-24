@@ -36,6 +36,10 @@
     margin: 1rem 0;
 }
 
+.fields-user span{
+    margin-top:3rem;
+}
+
 .fields-user form, .ingredients {
     text-align: left;
     width: 70vw;
@@ -47,6 +51,33 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 1rem;
+}
+
+input[type="file"] {
+    display:none;
+}
+
+.image {
+    border: 0.1rem solid var(--grey);
+    border-radius: 0.2rem;
+    background-color: var(--text-light);
+    display: inline-block;
+    font-family: arial;
+    font-size: 0.9rem;
+    padding: 0.1rem 0.9rem;
+    cursor: pointer;
+    display:flex;
+    align-items: center;
+    width: 7.6rem;
+}
+
+.image img{
+    width:1rem;
+    margin-right: 1rem;
+}
+
+.upload-label{
+    margin-right: 1rem;
 }
 
 .protein-structure{
@@ -93,14 +124,14 @@
 .showing-ingredients{
     margin: 0.3rem 0;
     justify-content: space-between;
-    width: 9rem;
+    width: 9.5rem;
 }
 
 .scroll-ingredients{
     max-height: 10rem;
     overflow: auto;
-
 }
+
 
 .showing-ingredients p{
     margin: 0;
@@ -110,5 +141,45 @@
 .description-field{
     display:flex;
     flex-direction: column;
-    /* border: solid; */
+    position: relative;
+    z-index: 1;
+    width: 70vw;
+    margin:1rem auto;
+    text-align: left;
+}
+
+@media (min-width: 1025px) {
+    .background{
+        display: flex;
+        width: 90vw;
+        margin-top:4rem;
+    }
+
+    .fields-user{
+        margin: 0 3rem;
+        width: 30vw;
+    }
+    .fields-user form, .ingredients {
+        width: 30vw;
+    }
+    .description-field{
+        width: 50vw;
+    }
+    .description-field textarea{
+        height: 42vh;
+    }
+
+    .part-right-wider{
+        display:flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+
+    .part-right-wider button {
+        margin: 4rem 1rem 0 0;
+    }
+
+  
+    
 }
