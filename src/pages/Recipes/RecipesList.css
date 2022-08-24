@@ -1,7 +1,6 @@
 .recipes {
   display: grid;
   justify-content: space-between;
-  justify-content: center;
   margin: 3rem 2rem;
   grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
 }

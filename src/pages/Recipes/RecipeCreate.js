@@ -90,20 +90,24 @@ function RecipeCreate() {
               onSubmit={handleSubmit}
               encType="multipart/form-data"
             >
-              <label>Title:(*)</label>
-              <input
-                type="text"
-                name="title"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-                required
-              />
-
-              <label>Image:</label>
-              <input type="file" onChange={(e) => handleFileUpload(e)} />
-
-              <label>Main protein:(*)</label>
               <div>
+                <label>Name:(*)</label>
+                <input
+                  type="text"
+                  name="title"
+                  value={title}
+                  onChange={(e) => setTitle(e.target.value)}
+                  required
+                />
+              </div>
+
+              <div>
+                <label>Image:</label>
+                <input type="file" onChange={(e) => handleFileUpload(e)} />
+              </div>
+
+              <div className="protein-structure">
+                <label>Main protein:(*)</label>
                 <div>
                   <button
                     type="button"
@@ -153,8 +157,6 @@ function RecipeCreate() {
                   >
                     Eggs
                   </button>
-                </div>
-                <div>
                   <button
                     name="protein"
                     type="button"
@@ -191,72 +193,82 @@ function RecipeCreate() {
                   </button>
                 </div>
               </div>
-              <label>Serving:</label>
-              <input
-                type="number"
-                min="0"
-                name="serving"
-                value={serving}
-                onChange={(e) => setServing(e.target.value)}
-              />
+              <div>
+                <label>Serving:</label>
+                <input
+                  type="number"
+                  min="0"
+                  name="serving"
+                  value={serving}
+                  onChange={(e) => setServing(e.target.value)}
+                />
+              </div>
             </form>
 
             <div className="ingredients">
               <label>Ingredients: </label>
               <div>
-                <input
-                  placeholder="Add ingredient"
-                  value={inputIngredient}
-                  onChange={(e) => setInputIngredient(e.target.value)}
-                ></input>
-                <input
-                  placeholder="Add quantity (gr.)"
-                  value={inputQuantity}
-                  onChange={(e) => setInputQuantity(e.target.value)}
-                />
-              </div>
-              <button
-                onClick={() => {
-                  if (inputIngredient && inputQuantity) {
-                    handleAddButtonClick();
-                  } else {
-                    alert("Please add an ingredient and quantity");
-                  }
-                }}
-              >
-                Add
-              </button>
-              {ingredients.map((ingredient) => {
-                return (
-                  <div key={ingredient.id}>
-                    <p>
-                      {ingredient.quantity} gr. {ingredient.ingredient}
-                    </p>
+                <div>
+                  <input
+                    placeholder="Add ingredient"
+                    value={inputIngredient}
+                    onChange={(e) => setInputIngredient(e.target.value)}
+                  ></input>
+                  <div className="quantity-and-button">
+                    <input
+                      placeholder="Add quantity"
+                      value={inputQuantity}
+                      onChange={(e) => setInputQuantity(e.target.value)}
+                    />
                     <button
-                      onClick={(e) => {
-                        e.preventDefault();
-                        setIngredients(
-                          ingredients.filter((x) => x.id !== ingredient.id)
-                        );
+                      onClick={() => {
+                        if (inputIngredient && inputQuantity) {
+                          handleAddButtonClick();
+                        } else {
+                          alert("Please add an ingredient and quantity");
+                        }
                       }}
                     >
-                      x
+                      {">"}
                     </button>
                   </div>
-                );
-              })}
+                </div>
+                <div className="scroll-ingredients">
+                  {ingredients.map((ingredient) => {
+                    return (
+                      <div key={ingredient.id} className="showing-ingredients">
+                        <p>
+                          {ingredient.quantity} {""} {ingredient.ingredient}
+                        </p>
+                        <button
+                          onClick={(e) => {
+                            e.preventDefault();
+                            setIngredients(
+                              ingredients.filter((x) => x.id !== ingredient.id)
+                            );
+                          }}
+                        >
+                          x
+                        </button>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
             </div>
 
             <form id="recipe-form">
-              <label>Description:</label>
-              <textarea
-                type="textarea"
-                cols={40}
-                rows={10}
-                name="description"
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-              />
+              <div className="description-field">
+                <label>How to make it:</label>
+                <textarea
+                  type="textarea"
+                  cols={40}
+                  rows={10}
+                  name="description"
+                  value={description}
+                  onChange={(e) => setDescription(e.target.value)}
+                />
+              </div>
             </form>
           </div>
           <button

@@ -1,7 +1,10 @@
 .background{
-    border:solid;
+    border:0.1rem solid;
+    border-radius: 1rem;
     margin: 1rem auto;
     width: 80vw;
+    height: auto;
+    padding-bottom: 2rem;
     position:relative;
 }
 
@@ -18,19 +21,94 @@
     opacity: 0.5;
 }
 
-
 .fields-user{
     display: flex;
     flex-direction: column;
     margin:auto;
+    width: 70vw;
 }
 
 .fields-user p {
     color: var(--required-field)
 }
 
-.fields-user form, .ingredients {
-    text-align: left;
-    margin: auto;
+.fields-user h2{
+    margin: 1rem 0;
 }
 
+.fields-user form, .ingredients {
+    text-align: left;
+    width: 70vw;
+    margin: auto;
+    /* border: solid; */
+}
+
+.fields-user form div, .ingredients, .showing-ingredients{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.protein-structure{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: auto;
+    justify-content: space-between;  
+}
+
+.protein-structure div{
+    display:flex;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+}
+
+.protein-structure button{
+    padding:0.4rem;
+    border-radius: 0.2rem;
+    margin-right: 1rem;
+}
+
+.ingredients button, .showing-ingredients button {
+    padding: 0.05rem 0.5rem;
+    border-radius: 0.1rem;
+}
+.ingredients input{
+    display:flex;
+    flex-direction: column;
+    justify-content: right;
+    margin-bottom: 0.3rem;
+}
+
+.quantity-and-button{
+    display:flex;
+    justify-content: space-between;
+}
+
+.quantity-and-button input{
+    width: 6.8rem;
+    height: 0.9rem;
+}
+
+.showing-ingredients{
+    margin: 0.3rem 0;
+    justify-content: space-between;
+    width: 9rem;
+}
+
+.scroll-ingredients{
+    max-height: 10rem;
+    overflow: auto;
+
+}
+
+.showing-ingredients p{
+    margin: 0;
+    color: var(--text-dark)
+}
+
+.description-field{
+    display:flex;
+    flex-direction: column;
+    /* border: solid; */
+}
