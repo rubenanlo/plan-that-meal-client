@@ -92,20 +92,19 @@ function RecipesUpdate() {
       {isLoading ? (
         <p>Loading...</p>
       ) : (
-        <div className="form">
-          <h2>Create your recipe</h2>
-          {errorMsg && <p className="error">{errorMsg}</p>}
-          <p className="required-fields">(*) required fields</p>
-          <div>
+        <div className="background">
+          <div className="fields-user">
+            <h2>Create your recipe</h2>
+            {errorMsg && <p className="error">{errorMsg}</p>}
+            <p className="required-fields">(*) required fields</p>
             <form
               id="recipe-form"
               onSubmit={handleSubmit}
               encType="multipart/form-data"
             >
-              <div className="field">
-                <label>Title:(*)</label>
+              <div>
+                <label>Name:(*)</label>
                 <input
-                  className="img-input"
                   type="text"
                   name="title"
                   value={title}
@@ -114,103 +113,103 @@ function RecipesUpdate() {
                 />
               </div>
 
-              <div className="field">
-                <label>Image:</label>
-                <input type="file" onChange={(e) => handleFileUpload(e)} />
+              <div>
+                <label className="upload-label">Image:</label>
+                <label className="image">
+                  <img src="../../../upload-icon.png" alt="upload-icon" />
+                  Upload your recipe's image
+                  <input type="file" onChange={(e) => handleFileUpload(e)} />
+                </label>
               </div>
 
-              <div className="field">
+              <div className="protein-structure">
                 <label>Main protein:(*)</label>
-                <div className="protein-field">
-                  <div>
-                    <button
-                      type="button"
-                      name="protein"
-                      value={protein}
-                      style={{
-                        backgroundColor:
-                          protein === "Meat" ? "var(--purple-dark)" : "",
-                        color:
-                          protein === "Meat"
-                            ? "var(--text-light)"
-                            : "var(--text-dark)",
-                      }}
-                      onClick={() => setProtein("Meat")}
-                    >
-                      Meat
-                    </button>
-                    <button
-                      name="protein"
-                      type="button"
-                      value={protein}
-                      style={{
-                        backgroundColor:
-                          protein === "Fish" ? "var(--purple-dark)" : "",
-                        color:
-                          protein === "Fish"
-                            ? "var(--text-light)"
-                            : "var(--text-dark)",
-                      }}
-                      onClick={() => setProtein("Fish")}
-                    >
-                      Fish
-                    </button>
-                    <button
-                      name="protein"
-                      type="button"
-                      value={protein}
-                      style={{
-                        backgroundColor:
-                          protein === "Eggs" ? "var(--purple-dark)" : "",
-                        color:
-                          protein === "Eggs"
-                            ? "var(--text-light)"
-                            : "var(--text-dark)",
-                      }}
-                      onClick={() => setProtein("Eggs")}
-                    >
-                      Eggs
-                    </button>
-                  </div>
-                  <div>
-                    <button
-                      name="protein"
-                      type="button"
-                      value={protein}
-                      style={{
-                        backgroundColor:
-                          protein === "Legumes" ? "var(--purple-dark)" : "",
-                        color:
-                          protein === "Legumes"
-                            ? "var(--text-light)"
-                            : "var(--text-dark)",
-                      }}
-                      onClick={() => setProtein("Legumes")}
-                    >
-                      Legumes
-                    </button>
-                    <button
-                      name="protein"
-                      type="button"
-                      value={protein}
-                      style={{
-                        backgroundColor:
-                          protein === "Seeds and nuts"
-                            ? "var(--purple-dark)"
-                            : "",
-                        color:
-                          protein === "Seeds and nuts"
-                            ? "var(--text-light)"
-                            : "var(--text-dark)",
-                      }}
-                      onClick={() => setProtein("Seeds and nuts")}
-                    >
-                      Seeds and nuts
-                    </button>
-                  </div>
+                <div>
+                  <button
+                    type="button"
+                    name="protein"
+                    value={protein}
+                    style={{
+                      backgroundColor:
+                        protein === "Meat" ? "var(--purple-dark)" : "",
+                      color:
+                        protein === "Meat"
+                          ? "var(--text-light)"
+                          : "var(--text-dark)",
+                    }}
+                    onClick={() => setProtein("Meat")}
+                  >
+                    Meat
+                  </button>
+                  <button
+                    name="protein"
+                    type="button"
+                    value={protein}
+                    style={{
+                      backgroundColor:
+                        protein === "Fish" ? "var(--purple-dark)" : "",
+                      color:
+                        protein === "Fish"
+                          ? "var(--text-light)"
+                          : "var(--text-dark)",
+                    }}
+                    onClick={() => setProtein("Fish")}
+                  >
+                    Fish
+                  </button>
+                  <button
+                    name="protein"
+                    type="button"
+                    value={protein}
+                    style={{
+                      backgroundColor:
+                        protein === "Eggs" ? "var(--purple-dark)" : "",
+                      color:
+                        protein === "Eggs"
+                          ? "var(--text-light)"
+                          : "var(--text-dark)",
+                    }}
+                    onClick={() => setProtein("Eggs")}
+                  >
+                    Eggs
+                  </button>
+                  <button
+                    name="protein"
+                    type="button"
+                    value={protein}
+                    style={{
+                      backgroundColor:
+                        protein === "Legumes" ? "var(--purple-dark)" : "",
+                      color:
+                        protein === "Legumes"
+                          ? "var(--text-light)"
+                          : "var(--text-dark)",
+                    }}
+                    onClick={() => setProtein("Legumes")}
+                  >
+                    Legumes
+                  </button>
+                  <button
+                    name="protein"
+                    type="button"
+                    value={protein}
+                    style={{
+                      backgroundColor:
+                        protein === "Seeds and nuts"
+                          ? "var(--purple-dark)"
+                          : "",
+                      color:
+                        protein === "Seeds and nuts"
+                          ? "var(--text-light)"
+                          : "var(--text-dark)",
+                    }}
+                    onClick={() => setProtein("Seeds and nuts")}
+                  >
+                    Seeds and nuts
+                  </button>
                 </div>
               </div>
-              <div className="field">
+              <div>
                 <label>Serving:</label>
                 <input
                   type="number"
@@ -222,84 +221,86 @@ function RecipesUpdate() {
               </div>
             </form>
 
-            <div id="add-ingredient">
-              <div className="field">
-                <label>Ingredients: </label>
-                <div className="ingredient">
+            <div className="ingredients">
+              <label>Ingredients: </label>
+              <div>
+                <div>
                   <input
-                    className="ingredient"
                     placeholder="Add ingredient"
                     value={inputIngredient}
                     onChange={(e) => setInputIngredient(e.target.value)}
                   ></input>
-                  <input
-                    className="ingredient"
-                    placeholder="Add quantity (gr.)"
-                    value={inputQuantity}
-                    onChange={(e) => setInputQuantity(e.target.value)}
-                  />
-                </div>
-
-                <button
-                  className="add"
-                  onClick={() => {
-                    if (inputIngredient && inputQuantity) {
-                      handleAddButtonClick();
-                    } else {
-                      alert("Please add an ingredient and quantity");
-                    }
-                  }}
-                >
-                  Add
-                </button>
-              </div>
-              {ingredients.map((ingredient) => {
-                return (
-                  <div key={ingredient.id} className="show-ingredient">
-                    <p>
-                      {ingredient.quantity} gr. {ingredient.ingredient}
-                    </p>
+                  <div className="quantity-and-button">
+                    <input
+                      placeholder="Add quantity"
+                      value={inputQuantity}
+                      onChange={(e) => setInputQuantity(e.target.value)}
+                    />
                     <button
-                      className="add"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        setIngredients(
-                          ingredients.filter((x) => x.id !== ingredient.id)
-                        );
+                      onClick={() => {
+                        if (inputIngredient && inputQuantity) {
+                          handleAddButtonClick();
+                        } else {
+                          alert("Please add an ingredient and quantity");
+                        }
                       }}
                     >
-                      x
+                      {">"}
                     </button>
                   </div>
-                );
-              })}
+                </div>
+                <div className="scroll-ingredients">
+                  {ingredients.map((ingredient) => {
+                    return (
+                      <div key={ingredient.id} className="showing-ingredients">
+                        <p>
+                          {ingredient.quantity} {""} {ingredient.ingredient}
+                        </p>
+                        <button
+                          onClick={(e) => {
+                            e.preventDefault();
+                            setIngredients(
+                              ingredients.filter((x) => x.id !== ingredient.id)
+                            );
+                          }}
+                        >
+                          x
+                        </button>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
             </div>
+            <span></span>
+          </div>
 
+          <div className="part-right-wider">
             <form id="recipe-form">
-              <div className="field">
-                <label>Description:</label>
+              <div className="description-field">
+                <label>How to make it:</label>
                 <textarea
                   type="textarea"
                   cols={40}
-                  rows={10}
+                  rows={20}
                   name="description"
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
                 />
               </div>
             </form>
-
-            <button
-              className="back"
-              onClick={() => {
-                navigate(-1);
-              }}
-            >
-              Back
-            </button>
-            <button type="submit" form="recipe-form">
-              Submit
-            </button>
+            <div>
+              <button
+                onClick={() => {
+                  navigate(-1);
+                }}
+              >
+                Back
+              </button>
+              <button type="submit" form="recipe-form">
+                Submit
+              </button>
+            </div>
           </div>
         </div>
       )}
