@@ -31,7 +31,7 @@ function RecipesList() {
       ? (result =
           recipes.filter((recipe) => recipe.protein?.includes(searchTerm))
             .length === 0 ? (
-            <div className="no-recipes">
+            <div className="no-data">
               <p>
                 Be the first to create a new recipe{" "}
                 <Link to="/recipes/create">here</Link>

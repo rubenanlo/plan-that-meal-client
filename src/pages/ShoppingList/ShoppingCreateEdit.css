@@ -1,0 +1,42 @@
+.structure{
+  border:1px solid;
+  border-radius: 1rem;
+  max-height: 58rem;
+  margin: 2.5rem;
+  position: relative;
+  padding: 1rem;
+}
+
+.structure:before{
+  content: "";
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0.5;
+  background-image: url("../../../public/sugar.jpeg");
+  background-size: cover;
+  border-radius: 1rem;;
+  z-index: -1;
+}
+
+.scroll-ingredients{
+  max-height: 45rem;
+  margin-left: 1rem;
+}
+
+.structure input{
+  width: 5rem;
+}
+
+.buttons-shopping{
+  display: flex;  
+}
+
+.buttons-shopping button{
+  margin: 0.5rem;
+}
+
+
+

@@ -11,7 +11,7 @@ import SignupPage from "./pages/LoginSignup/SignupPage";
 import ShoppingListCreate from "./pages/ShoppingList/ShoppingListCreate";
 import ShoppingListUpdate from "./pages/ShoppingList/ShoppingListUpdate";
 import NotFound from "./components/NotFound/NotFound";
-import ShoppingListMain from "./components/ShoppingListMain";
+import ShoppingListMain from "./components/ShoppingHub/ShoppingListMain";
 import PlanningsMain from "./components/PlanningHub/PlanningsMain";
 import Footer from "./components/Footer/Footer";
 import Navbar from "./components/Navbar/Navbar";

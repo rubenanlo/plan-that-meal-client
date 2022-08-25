@@ -3,12 +3,12 @@ import { useContext, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { AuthContext } from "../../context/auth.context";
 
-function ShoppingList(props) {
+function ShoppingList({ refreshShoppingLists, list }) {
   const { isLoading } = useContext(AuthContext);
 
   useEffect(() => {
-    props.refreshShoppingLists();
-  }, []);
+    refreshShoppingLists();
+  }, [refreshShoppingLists]);
 
   return (
     <>
@@ -16,20 +16,7 @@ function ShoppingList(props) {
         <p>Loading...</p>
       ) : (
         <div>
-          {props.list.length === 0 && (
-            <div>
-              <p>
-                There is still no shopping list? Get in there and create one{" "}
-                <NavLink to="/shoppingitems/create">here</NavLink>
-              </p>
-              <img
-                style={{ width: "20vw" }}
-                src="../../empty-recipe.jpeg"
-                alt=""
-              />
-            </div>
-          )}
-          {props.list?.map((element) => {
+          {list?.map((element) => {
             return (
               <div key={element._id}>
                 <NavLink to={`/shoppingitems/${element._id}`}>

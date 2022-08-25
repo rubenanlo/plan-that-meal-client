@@ -3,6 +3,7 @@ import { nanoid } from "nanoid";
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { AuthContext } from "../../context/auth.context";
+import "./ShoppingCreateEdit.css";
 
 function ShoppingListUpdate() {
   const [items, setItems] = useState([]);
@@ -71,44 +72,49 @@ function ShoppingListUpdate() {
       {isLoading ? (
         <p>Loading...</p>
       ) : (
-        <div>
-          <div className="AddRecipe">
-            <h2>Create your shopping list</h2>
+        <div className="structure">
+          <div className="fields-user">
+            <h2>Edit your shopping list</h2>
             {errorMsg && <p className="error">{errorMsg}</p>}
-            <div className="Input-value">
-              <label>items: </label>
-              <input
-                className="add-items"
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-              ></input>
-              <label>Quantity</label>
-              <input
-                className="add-quantity"
-                value={quantity}
-                onChange={(e) => setQuantity(e.target.value)}
-              />
-              <span>gr</span>
-              <button onClick={() => handleAddButtonClick()}>Add</button>
-              {items.map((item, index) => {
-                return (
-                  <div key={item._id}>
-                    <p>
-                      {item.description} x {item.quantity}
-                    </p>
-                    <button
-                      onClick={(e) => {
-                        e.preventDefault();
-                        setItems(
-                          items.filter((element) => element._id !== item._id)
-                        );
-                      }}
-                    >
-                      x
-                    </button>
-                  </div>
-                );
-              })}
+            <div className="ingredients">
+              <div>
+                <label>Items: </label>
+                <input
+                  className="add-items"
+                  value={description}
+                  onChange={(e) => setDescription(e.target.value)}
+                ></input>
+                <label>Quantity</label>
+                <input
+                  className="add-quantity"
+                  value={quantity}
+                  onChange={(e) => setQuantity(e.target.value)}
+                />
+                <button onClick={() => handleAddButtonClick()}>Add</button>
+              </div>
+              <div className="scroll-ingredients">
+                {items.map((item, index) => {
+                  return (
+                    <div key={item._id} className="showing-ingredients">
+                      <p>
+                        {item.description} x {item.quantity}
+                      </p>
+                      <button
+                        onClick={(e) => {
+                          e.preventDefault();
+                          setItems(
+                            items.filter((element) => element._id !== item._id)
+                          );
+                        }}
+                      >
+                        x
+                      </button>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+            <div className="buttons-shopping">
               <button
                 onClick={() => {
                   navigate(-1);
@@ -117,7 +123,7 @@ function ShoppingListUpdate() {
                 Back
               </button>
 
-              <button onClick={() => handleSubmit()}>Save shopping list</button>
+              <button onClick={() => handleSubmit()}>Save</button>
             </div>
           </div>
         </div>

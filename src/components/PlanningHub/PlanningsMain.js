@@ -31,7 +31,7 @@ function PlanningsMain() {
       ) : (
         <div>
           {weeklyPlans?.length === 0 ? (
-            <div className="no-recipes">
+            <div className="no-data">
               <p>
                 Not a weekly plan yet? Not to worry, we've got you covered, you
                 can create your first one{" "}
@@ -40,33 +40,35 @@ function PlanningsMain() {
               <img src="../../empty-recipe.jpeg" alt="" />
             </div>
           ) : (
-            <div>
+            weeklyPlans?.length > 0 && (
               <div>
-                <div className="create-option">
-                  <p> Want to create a new weekly plan?</p>
-                  <NavLink to="/weeklyplans/create">Go for it!</NavLink>
+                <div>
+                  <div className="create-option">
+                    <p> Want to create a new weekly plan?</p>
+                    <NavLink to="/weeklyplans/create">Go for it!</NavLink>
+                  </div>
+                  <div className="planning-list">
+                    <PlanningsList
+                      weeklyPlans={weeklyPlans}
+                      refreshWeeklyPlans={getAllWeeklyPlans}
+                    />
+                  </div>
                 </div>
-                <div className="planning-list">
-                  <PlanningsList
-                    weeklyPlans={weeklyPlans}
-                    refreshWeeklyPlans={getAllWeeklyPlans}
-                  />
+                <div>
+                  <Routes>
+                    <Route
+                      path="/:weeklyPlanId"
+                      element={
+                        <PlanningsDetails
+                          details={weeklyPlans}
+                          refreshWeeklyPlans={getAllWeeklyPlans}
+                        />
+                      }
+                    ></Route>
+                  </Routes>
                 </div>
               </div>
-              <div>
-                <Routes>
-                  <Route
-                    path="/:weeklyPlanId"
-                    element={
-                      <PlanningsDetails
-                        details={weeklyPlans}
-                        refreshWeeklyPlans={getAllWeeklyPlans}
-                      />
-                    }
-                  ></Route>
-                </Routes>
-              </div>
-            </div>
+            )
           )}
         </div>
       )}
