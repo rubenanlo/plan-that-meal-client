@@ -9,7 +9,7 @@ function Navbar() {
   return (
     <>
       {isLoading ? (
-        <p></p>
+        <p>loading...</p>
       ) : (
         <nav className="navbar">
           <div>
