@@ -22,7 +22,7 @@ body {
   margin: 0;
   font-family: "Kalam", cursive;
   background-image: url('../public/homepage6.webp');
-  background-size: fill;
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: center top;
   background-attachment: fixed;

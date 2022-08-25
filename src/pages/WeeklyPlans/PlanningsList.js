@@ -1,5 +1,6 @@
 import moment from "moment";
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 function PlanningsList({ refreshWeeklyPlans, weeklyPlans }) {
   useEffect(() => {
@@ -11,17 +12,15 @@ function PlanningsList({ refreshWeeklyPlans, weeklyPlans }) {
       <div>
         {weeklyPlans?.map((weeklyPlan) => {
           return (
-            <a
+            <Link
               className="plan-name"
-              href={`/weeklyplans/${weeklyPlan._id}`}
+              to={`/weeklyplans/${weeklyPlan._id}`}
               key={weeklyPlan._id}
             >
-              <div>
-                <h3 className="weekly-plan">
-                  Week of {moment(weeklyPlan.startDate).format("DD MMMM YYYY")}
-                </h3>
-              </div>
-            </a>
+              <h3 className="weekly-plan">
+                Week of {moment(weeklyPlan.startDate).format("DD MMMM YYYY")}
+              </h3>
+            </Link>
           );
         })}
       </div>

@@ -92,3 +92,10 @@
     width: 80vw;
     background-color: var(--light-transparent);
   }
+
+
+  .no-recipes img{
+    width: 50vw;
+    margin: auto;
+    border-radius: 1rem;
+  }

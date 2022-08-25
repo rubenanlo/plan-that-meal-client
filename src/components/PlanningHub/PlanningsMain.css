@@ -65,8 +65,9 @@
   height: 15vh;
   overflow: scroll;
   border-radius: 1rem;
-
+  position: relative;
 }
+
 .plan-name{
   color: black;
 }
