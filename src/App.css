@@ -75,3 +75,14 @@ h2{
 .link{
   color: var(--text-light);
 }
+
+
+.no-recipes{
+  margin-top: 3rem;
+}
+
+.no-recipes img{
+  width: 50vw;
+  margin: auto;
+  border-radius: 1rem;
+}

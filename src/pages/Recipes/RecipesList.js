@@ -139,7 +139,7 @@ function RecipesList() {
           </div>
           <div className="recipes">
             {recipes?.length === 0 ? (
-              <div style={{ marginLeft: "28vw" }}>
+              <div className="no-recipes">
                 <p>
                   Be the first to create a new recipe{" "}
                   <Link to="/recipes/create">here</Link>

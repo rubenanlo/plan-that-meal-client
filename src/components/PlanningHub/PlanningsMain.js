@@ -7,7 +7,7 @@ import PlanningsList from "../../pages/WeeklyPlans/PlanningsList";
 import "./PlanningsMain.css";
 
 function PlanningsMain() {
-  const [weeklyPlans, setWeeklyPlans] = useState([]);
+  const [weeklyPlans, setWeeklyPlans] = useState(null);
   const storedToken = localStorage.getItem("authToken");
   const { isLoading } = useContext(AuthContext);
 
@@ -30,47 +30,44 @@ function PlanningsMain() {
         <p>Loading...</p>
       ) : (
         <div>
-          {weeklyPlans.length === 0 && (
-            <div>
+          {weeklyPlans?.length === 0 ? (
+            <div className="no-recipes">
               <p>
                 Not a weekly plan yet? Not to worry, we've got you covered, you
                 can create your first one{" "}
                 <Link to="/weeklyplans/create">here</Link>
               </p>
-              <img
-                style={{ width: "20vw" }}
-                src="../../empty-recipe.jpeg"
-                alt=""
-              />
+              <img src="../../empty-recipe.jpeg" alt="" />
+            </div>
+          ) : (
+            <div>
+              <div>
+                <div className="create-option">
+                  <p> Want to create a new weekly plan?</p>
+                  <NavLink to="/weeklyplans/create">Go for it!</NavLink>
+                </div>
+                <div className="planning-list">
+                  <PlanningsList
+                    weeklyPlans={weeklyPlans}
+                    refreshWeeklyPlans={getAllWeeklyPlans}
+                  />
+                </div>
+              </div>
+              <div>
+                <Routes>
+                  <Route
+                    path="/:weeklyPlanId"
+                    element={
+                      <PlanningsDetails
+                        details={weeklyPlans}
+                        refreshWeeklyPlans={getAllWeeklyPlans}
+                      />
+                    }
+                  ></Route>
+                </Routes>
+              </div>
             </div>
           )}
-          <div>
-            <div>
-              <div className="create-option">
-                <p> Want to create a new weekly plan?</p>
-                <NavLink to="/weeklyplans/create">Go for it!</NavLink>
-              </div>
-              <div className="planning-list">
-                <PlanningsList
-                  weeklyPlans={weeklyPlans}
-                  refreshWeeklyPlans={getAllWeeklyPlans}
-                />
-              </div>
-            </div>
-            <div>
-              <Routes>
-                <Route
-                  path="/:weeklyPlanId"
-                  element={
-                    <PlanningsDetails
-                      details={weeklyPlans}
-                      refreshWeeklyPlans={getAllWeeklyPlans}
-                    />
-                  }
-                ></Route>
-              </Routes>
-            </div>
-          </div>
         </div>
       )}
     </div>
