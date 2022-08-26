@@ -77,19 +77,21 @@ function ShoppingListUpdate() {
             <h2>Edit your shopping list</h2>
             {errorMsg && <p className="error">{errorMsg}</p>}
             <div className="ingredients">
-              <div>
-                <label>Items: </label>
-                <input
-                  className="add-items"
-                  value={description}
-                  onChange={(e) => setDescription(e.target.value)}
-                ></input>
-                <label>Quantity</label>
-                <input
-                  className="add-quantity"
-                  value={quantity}
-                  onChange={(e) => setQuantity(e.target.value)}
-                />
+              <div className="single-item">
+                <div>
+                  <label>Items: </label>
+                  <input
+                    value={description}
+                    onChange={(e) => setDescription(e.target.value)}
+                  ></input>
+                </div>
+                <div className="single-item">
+                  <label>Quantity</label>
+                  <input
+                    value={quantity}
+                    onChange={(e) => setQuantity(e.target.value)}
+                  />
+                </div>
                 <button onClick={() => handleAddButtonClick()}>Add</button>
               </div>
               <div className="scroll-ingredients">
