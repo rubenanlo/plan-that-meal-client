@@ -4,6 +4,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { NavLink, useNavigate, useParams } from "react-router-dom";
 import { AuthContext } from "../../context/auth.context";
 import "../../components/PlanningHub/PlanningsMain.css";
+import "./ShoppingDetails.css";
 
 function ShoppingListDetails() {
   const [list, setList] = useState([]);
@@ -45,31 +46,28 @@ function ShoppingListDetails() {
       {isLoading ? (
         <p>Loading...</p>
       ) : (
-        <div className="item">
-          <div>
+        <div className="structure">
+          <div className="fields-user">
             <h3>Created: {moment(list.date).format("dddd, DD MMMM yyyy")}</h3>
-            <NavLink to={`/shoppingitems/edit/${shoppingListId}`}>
-              <button>Edit</button>
-            </NavLink>
-            <button
-              style={{ backgroundColor: "var(--delete)" }}
-              onClick={handleDelete}
-            >
-              Delete
-            </button>
-          </div>
-
-          <div key={list._id}>
-            {list.items?.map((element, index) => {
-              return (
-                <div key={element._id}>
-                  <p>
+            <div className="scroll-ingredients">
+              {list.items?.map((element, index) => {
+                return (
+                  <p key={element._id}>
                     {element.description} x {element.quantity}
                   </p>
-                </div>
-              );
-            })}
+                );
+              })}
+            </div>
           </div>
+          <NavLink to={`/shoppingitems/edit/${shoppingListId}`}>
+            <button>Edit</button>
+          </NavLink>
+          <button
+            style={{ backgroundColor: "var(--delete)" }}
+            onClick={handleDelete}
+          >
+            Delete
+          </button>
         </div>
       )}
     </>

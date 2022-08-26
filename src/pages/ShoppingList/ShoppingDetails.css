@@ -1,0 +1,9 @@
+.scroll-ingredients p{
+  color: var(--text-dark);
+}
+
+button{
+  margin: 1rem;
+  
+}
+

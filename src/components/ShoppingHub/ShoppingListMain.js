@@ -4,7 +4,6 @@ import { NavLink, Route, Routes } from "react-router-dom";
 import ShoppingList from "../../pages/ShoppingList/ShoppingList";
 import ShoppingListDetails from "../../pages/ShoppingList/ShoppingListDetails";
 import { AuthContext } from "../../context/auth.context";
-import "./ShoppingMain.css";
 
 function ShoppingListMain() {
   const [list, setList] = useState(null);
