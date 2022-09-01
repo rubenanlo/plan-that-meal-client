@@ -95,7 +95,7 @@ function PlanningsCreate() {
                     <div className="meal">
                       <label>Lunch:</label>
                       <select required onChange={handleChange}>
-                        <option selected style={{ display: "none" }}></option>
+                        <option style={{ display: "none" }}></option>
                         {recipes.map((recipe) => {
                           return (
                             <option key={recipe._id} id={recipe._id}>
