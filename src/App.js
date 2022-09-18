@@ -1,5 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
+import Navbar from "./components/Navbar/Navbar";
 import HomePage from "./pages/Homepage/HomePage";
 import LoginPage from "./pages/LoginSignup/LoginPage";
 import PlanningsCreate from "./pages/WeeklyPlans/PlanningsCreate";
@@ -14,7 +15,6 @@ import NotFound from "./components/NotFound/NotFound";
 import ShoppingListMain from "./components/ShoppingHub/ShoppingListMain";
 import PlanningsMain from "./components/PlanningHub/PlanningsMain";
 import Footer from "./components/Footer/Footer";
-import Navbar from "./components/Navbar/Navbar";
 
 function App() {
   return (
